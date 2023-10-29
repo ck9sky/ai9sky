@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 
-from openai import views_no_models
+from ai9sky import views_no_models
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,7 +30,7 @@ urlpatterns = [
     #path('chatgpt_api_py/', include("chatgpt_api_py.urls")),
     #path('dalle_api_js/', include("dalle_api.urls_js")),
     
-    # robots.txt in sitewide templates folder. Browse to 127.0.0.1:8000/robots.txt (production: openai.com/robots.txt).
+    # robots.txt in sitewide templates folder. Browse to 127.0.0.1:8000/robots.txt (production: ai9sky.com/robots.txt).
     # Documentation and info: https://www.robotstxt.org/robotstxt.html + https://adamj.eu/tech/2020/02/10/robots-txt/
     path(
         "robots.txt",

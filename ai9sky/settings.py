@@ -99,7 +99,7 @@ elif not DEBUG:
         'default': {
             ## 'ENGINE': 'django.db.backends.postgresql',
             ## 'NAME': os.getenv('AI9SKY_DB_NAME'),
-            ## 'USER': os.getenv('AI9SKY_DB_USER'),  # openai database admin (if this were a production site)
+            ## 'USER': os.getenv('AI9SKY_DB_USER'),         # ai9sky database admin (live, not test db)
             ## 'PASSWORD': os.getenv('AI9SKY_DB_USER_PW'),  # ai9sky database admin password (live, not test db)
             ## 'HOST': os.getenv('AI9SKY_DB_HOST'),
             ## 'PORT': os.getenv('AI9SKY_DB_PORT'),
