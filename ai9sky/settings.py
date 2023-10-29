@@ -14,6 +14,10 @@ from pathlib import Path
 
 import os
 
+""" Version Cache Bust: "v=W.XYZ" per given master branch version "vW.XYZ. Used for query string cache busting.
+    Do not insert "?". Must include "=" or query string will fail. 10/13/23 """
+VERSION_CACHE_BUST = "v=0.015"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +31,13 @@ SECRET_KEY = 'django-insecure-z2k5u)z3%vwb8fvo6*l)b#0gopp%d6mf@8ezl=o6&##(b#un5_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = []
+elif not DEBUG:
+    ALLOWED_HOSTS = [
+        ## 'mysite.com',
+        ## 'www.mysite.com',
+    ]
 
 
 # Application definition
@@ -65,6 +75,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # site_wide_template_tags need not be loaded, it is defined here as 'builtins'
+            'builtins': ['templatetags.site_wide_template_tags', ],
         },
     },
 ]
@@ -75,12 +87,24 @@ WSGI_APPLICATION = 'ai9sky.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+elif not DEBUG:
+    DATABASES = {
+        'default': {
+            ## 'ENGINE': 'django.db.backends.postgresql',
+            ## 'NAME': os.getenv('OAI_DB_NAME'),
+            ## 'USER': os.getenv('OAI_DB_USER'),  # openai database admin (if this were a production site)
+            ## 'PASSWORD': os.getenv('OAI_DB_USER_PW'),  # Tagbirds database admin password
+            ## 'HOST': os.getenv('OAI_DB_HOST'),
+            ## 'PORT': os.getenv('OAI_DB_PORT'),
+        }
+    }
 
 
 # Password validation
@@ -130,3 +154,12 @@ Django Debug Toolbar - update INTERNAL_IPS to allow display. This was not necess
 https://django-debug-toolbar.readthedocs.io/en/stable/installation.html
 """
 INTERNAL_IPS = ['127.0.0.1', ]
+
+SESSION_COOKIE_AGE = 7776000    # 7776000 sec = 90 days (no commas)
+SESSION_COOKIE_HTTPONLY = True  # True: client-side javascript cannot access session cookie
+"""WARNING: Set SESSION_COOKIE_SECURE = True only if using https server! """
+if DEBUG:
+    SESSION_COOKIE_SECURE = False   # False: Django debug server is http.
+elif not DEBUG:
+    SESSION_COOKIE_SECURE = True    # True: If this were live/production site
+
