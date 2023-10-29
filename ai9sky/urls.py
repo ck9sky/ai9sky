@@ -37,9 +37,9 @@ urlpatterns = [
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), ),
 ]
 
-# # ================ # # TEST/DEV/Debug=True: Django Debug Toolbar # # ================= # #
-#if settings.DEBUG:
-#    import debug_toolbar
-#    urlpatterns = [
-#        path('__debug__/', include(debug_toolbar.urls)),
-#    ] + urlpatterns
+# ================ # # TEST/DEV/Debug=True: Django Debug Toolbar # # ================= # #
+if settings.DEBUG:
+   import debug_toolbar
+   urlpatterns = [
+       path('__debug__/', include(debug_toolbar.urls)),
+   ] + urlpatterns
