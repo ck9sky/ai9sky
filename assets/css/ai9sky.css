@@ -1,0 +1,50 @@
+/* -------------------------------------------------------------------------------------------------------- */
+/* Bootstrap 4 bug in display-2/3/4 display classes, not responsive, these class overrides are a "temp" fix.
+   Note I have extra large device size variation of these display-2/3/4 display classes, see farther below.
+   https://github.com/twbs/bootstrap/issues/22104   (Ref. 7/22/18, 6/29/19)
+   Still not fixed, note Tagbirds uses Bootstrap CDN i.e. I am using most recent release of Bootstrap 4.  10/28/23 */
+
+
+/*.display-2{*/
+/*    font-size: 2.75rem;*/
+/*    font-weight: 300;*/
+/*    line-height: 1.0;*/
+/*}*/
+/*.display-3{*/
+/*    font-size: 2.25rem;*/
+/*    font-weight: 300;*/
+/*    line-height: 1.0;*/
+/*}*/
+/*.display-4{*/
+/*    font-size: 1.75rem;*/
+/*    font-weight: 300;*/
+/*    line-height: 1.0;*/
+/*}*/
+
+
+/* -------------- EXTRA LARGE DEVICE: device size > md=1200px (desktop PC/mac)---------------- */
+/*
+   Bootstrap 4 bug in display-2,3,4 display heading class, not responsive, see small screen css and notes above.
+   https://github.com/twbs/bootstrap/issues/22104
+   As of Oct 2023 this is still an issue, so I still avoid using bootrap display classes, too bad, they look cool
+*/
+
+
+/*@media screen and (min-width: 1200px){*/
+
+/*    .display-2{*/
+/*        font-size: 5.00rem;*/
+/*        font-weight: 300;*/
+/*        line-height: 1.0;*/
+/*    }*/
+/*    .display-3{*/
+/*        font-size: 4.25rem;*/
+/*        font-weight: 300;*/
+/*        line-height: 1.0;*/
+/*    }*/
+/*    .display-4{*/
+/*        font-size: 3.75rem;*/
+/*        font-weight: 300;*/
+/*        line-height: 1.0;*/
+/*    }*/
+/*}*/

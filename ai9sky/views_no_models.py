@@ -16,7 +16,7 @@ from django.views import generic
     |  NOTE: ~/ai9sky/ai9sky/ folder is not a Django app! It Django project's  |
     |  sitewide "stub" folder (created by django-admin startproject).          |
     |  i.e. ~/ai9sky/ai9sky/ IS NOT IN settings.py INSTALLED_APPS.             |
-    |  10/27/23                                                                |
+    |  10/28/23                                                                |
     |__________________________________________________________________________|
 """
 
@@ -24,7 +24,7 @@ from django.views import generic
 class HomeRedirects(generic.TemplateView):
     """ HomeRedirects view allows different redirects based on whether user is authenticated or a guest, or perhaps
     some other db/sessions var state, or etc. HOWEVER, as of Oct 2023, anyone who browses to root of ai9sky site
-    is redirected to home-no-redirects. 10/27/23
+    is redirected to home-no-redirects. 10/28/23
     """
     template_name = "index.html"
 
