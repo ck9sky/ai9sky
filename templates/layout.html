@@ -43,10 +43,10 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" rel="stylesheet" >
 
-        {% comment %} ((( 2nd ))) INTERNAL CSS, SITE-WIDE: Tagbirds custom site-wide CSS {% endcomment %}
+        {% comment %} ((( 2nd ))) INTERNAL CSS, SITE-WIDE: Custom site-wide CSS {% endcomment %}
 		<link href="{{ staticTag }}{{ CB.ai9sky_css }}" rel="stylesheet">
 
-        {% comment %} ((( 3rd ))) INTERNAL CSS, APP LEVEL: Tagbirds custom app-level CSS (child templates) {% endcomment %}
+        {% comment %} ((( 3rd ))) INTERNAL CSS, APP LEVEL: Custom app-level CSS (child templates) {% endcomment %}
 		{% block css %}
 		{% endblock %}
 	</head>
@@ -107,7 +107,7 @@
 
 			{% comment %}
 				DANGER: Only assign AI9SKY1_IndexPageCSRF if request user is not authenticated!
-				DANGER: TAGBIRDS1_IndexPageCSRF is needed by ai9sky.js [0-tb] and Django view
+				DANGER: AI9SKY1_IndexPageCSRF is needed by ai9sky.js [0-tb] and Django view
 				AnonymousUserAuthAjax, in order to send the saved localStorage value of session_key
 				back to Django so that AnonymousUserAuthAjax can know if the session_key changed.
 				VERY SENSITIVE PLACEMENT of AI9SKY_IndexPageCSRF assignment below, cannot use
@@ -118,7 +118,7 @@
             {% comment %}
 			{ % if not request.user.is_authenticated %}
 				<script>
-    				TAGBIRDS1_IndexPageCSRF = "{{ csrf_token }}";    // 6/10/23
+    				AI9SKY1_IndexPageCSRF = "{{ csrf_token }}";
 				</script>
 			{ % endif %}
             {% endcomment %}
@@ -153,7 +153,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        {% comment %} ((( 2nd ))) INTERNAL JAVASCRIPT, SITE-WIDE: Tagbirds custom site-wide JavaScript {% endcomment %}
+        {% comment %} ((( 2nd ))) INTERNAL JAVASCRIPT, SITE-WIDE: Custom site-wide JavaScript {% endcomment %}
         <script src="{{ staticTag }}{{ CB.ai9sky_js }}" defer></script>
 
         {% comment %} ((( 3rd ))) INTERNAL JAVASCRIPT, APP LEVEL: custom app-level JavaScript (child templates) {% endcomment %}

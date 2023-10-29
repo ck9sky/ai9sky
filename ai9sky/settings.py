@@ -98,11 +98,11 @@ elif not DEBUG:
     DATABASES = {
         'default': {
             ## 'ENGINE': 'django.db.backends.postgresql',
-            ## 'NAME': os.getenv('OAI_DB_NAME'),
-            ## 'USER': os.getenv('OAI_DB_USER'),  # openai database admin (if this were a production site)
-            ## 'PASSWORD': os.getenv('OAI_DB_USER_PW'),  # Tagbirds database admin password
-            ## 'HOST': os.getenv('OAI_DB_HOST'),
-            ## 'PORT': os.getenv('OAI_DB_PORT'),
+            ## 'NAME': os.getenv('AI9SKY_DB_NAME'),
+            ## 'USER': os.getenv('AI9SKY_DB_USER'),  # openai database admin (if this were a production site)
+            ## 'PASSWORD': os.getenv('AI9SKY_DB_USER_PW'),  # ai9sky database admin password (live, not test db)
+            ## 'HOST': os.getenv('AI9SKY_DB_HOST'),
+            ## 'PORT': os.getenv('AI9SKY_DB_PORT'),
         }
     }
 

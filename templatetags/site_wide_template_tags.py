@@ -18,7 +18,7 @@ def settings_DEBUG():
     EXAMPLE USE:
         {% settings_DEBUG as DEBUG %}
         ... {{ DEBUG }} ...
-        {% if DEBUG %} ... {% endif %}  <!-- if DEBUG=True then Tagbirds project is in DEBUG mode -->
+        {% if DEBUG %} ... {% endif %}  <!-- if DEBUG=True then project is in DEBUG mode -->
     """
     return settings.DEBUG
 
@@ -41,7 +41,7 @@ def settings_VERSION_CACHE_BUST():
 @register.simple_tag
 def cacheBusterFileNames():
     """Query string cache busting. Ensures fresh static media for browser.
-    (1) UPDATE QUERYSTRING BELOW FOR EVERY NEW RELEASE/TAG OF TAGBIRDS! e.g. if latest release tag is "v0.68" -->
+    (1) UPDATE QUERYSTRING BELOW FOR EVERY NEW RELEASE/TAG OF AI9SKY PROJECT! e.g. if latest release tag is "v0.68" -->
         queryString="?v0.68" ... first step of Webfaction cheat sheet "SWAP/UPDATE DJANGO PROJECT..."
     (2) THIS IS TEMPORARY(?) CACHE BUSTING STRATEGY FOR TWO REASONS: #1 query string cache busting may disable ALL
         caching due to proxies & networks not caching urls query strings. #2 does query string cache busting cause
