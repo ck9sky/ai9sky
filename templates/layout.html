@@ -1,0 +1,163 @@
+{% load static %}
+{% static "" as staticTag %}
+{% cacheBusterFileNames as CB %}
+{% comment %}
+    WARNING: Use the settings_* tags once only in this top-level layout.html. Their "as" values will probably be
+    recognized by child/grandchild templates. Ref. ~/openai/templatetags/site_wide_template_tags.py
+{% endcomment %}
+{% settings_DEBUG as DEBUG %}
+{% settings_VERSION_CACHE_BUST as VERSION_CACHE_BUST %}
+{% assign "?" as QM %} {% comment %} suppress url percent encoding "?" to "%3F" {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        {% comment %} Warning: Next viewport meta tag is important to allow responsive design/bootstrap {% endcomment %}
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+     {% comment %} Viewport may only require following meta tag? But I use above for now. 10/21/23{% endcomment %}
+     {# <meta content='width=device-width, initial-scale=1.0' name='viewport'>#}
+
+        <title>{% block title_tag %}OpenAI{% endblock %}</title>
+
+		<link rel="shortcut icon" type="image/png" href="{% static 'img/icons/favicon.ico'%}{{ QM }}{{ VERSION_CACHE_BUST }}"/>
+
+        {% comment %}
+            Mobile phone, tablet bookmark icons 4/2/21. https://manytools.org/http-html-text/apple-touch-icon-generator/go/
+            /Users/ckom9/Desktop/Cheat Sheets/Tagbirds favicon, apple touch icons/apple-touch-icon_base_040221.png
+         {% endcomment %}
+        <link rel="apple-touch-icon" href="{% static 'img/icons/apple-touch-icon-iphone-60x60.png'%}{{ QM }}{{ VERSION_CACHE_BUST }}">
+		<link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/icons/apple-touch-icon-ipad-76x76.png'%}{{ QM }}{{ VERSION_CACHE_BUST }}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/icons/apple-touch-icon-iphone-retina-120x120.png'%}{{ QM }}{{ VERSION_CACHE_BUST }}">
+		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/icons/apple-touch-icon-ipad-retina-152x152.png'%}{{ QM }}{{ VERSION_CACHE_BUST }}">
+
+        {% comment %} ((( 1st ))) EXTERNAL CSS: libraries, frameworks, CDNs {% endcomment %}
+		<link href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+			integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+			integrity="sha384-CmLV3WR+cw/TcN50vJSYAs2EAzhDD77tQvGcmoZ1KEzxtpl2K5xkrpFz9N2H9ClN" crossorigin="anonymous" rel="stylesheet">
+        {% comment %} WARNING: next jquery-ui link seems to slightly affect spacing? 10/21/23 {% endcomment %}
+		<link href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
+			integrity="sha384-xewr6kSkq3dBbEtB6Z/3oFZmknWn7nHqhLVLrYgzEFRbU/DHSxW7K3B44yWUN60D" crossorigin="anonymous" rel='stylesheet'>
+        {% comment %} WARNING: next bootstrap linke seems to slightly affect spacing? 10/21/23 {% endcomment %}
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" rel="stylesheet" >
+
+        {% comment %} ((( 2nd ))) INTERNAL CSS, SITE-WIDE: Tagbirds custom site-wide CSS {% endcomment %}
+		<link href="{{ staticTag }}{{ CB.openai_css }}" rel="stylesheet">
+
+        {% comment %} ((( 3rd ))) INTERNAL CSS, APP LEVEL: Tagbirds custom app-level CSS (child templates) {% endcomment %}
+		{% block css %}
+		{% endblock %}
+	</head>
+	<body>
+
+        {% comment %} Bootstrap navbar is flex box, hence d-flex class is not used {% endcomment %}
+        {% comment %} As of Oct 2023, openai project does not use a navbar. 10/13/23 {% endcomment %}
+
+        {% comment %} Suppress navbar for now. {% endcomment %}
+{#	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justify-content-around">#}
+{#		<div class="container">#}
+{#			{% if request.user.is_authenticated %}#}
+{#                 {% nav_items_auth taghouse tagscene %}#}
+{#				{% else %}#}
+{#					{% nav_items_no_auth %}#}
+{#				{% endif %}#}
+{#            </div>#}
+{#        </nav>#}
+
+		{% comment %}
+            NOTE ALSO: Django default message(s) can be overridden in views.py (see communites/views.py).
+			NOTE ALSO: The default jumbotron does is not flush with the navbar, there is too big a white space, and
+			I note a very tiny space at bottom with footer. I find that '<span>&nbsp;</span>' above message container,
+			pt-3, mt-4 on message container, and mb-2 on jumbotron make even white space (given white background)
+			surrounding jumbotron. But this is odd, may need to troubleshoot. Note you want a space between message
+			and navbar when message pops up, easier for user to see, so may not actually want jumbotron flush with
+			navbar anyway.
+		{% endcomment %}
+
+        {% comment %} As of Oct 2023, openai project does not use a jumbotron/large image. 10/13/23{% endcomment %}
+		{% comment %}<span>&nbsp;</span>{% endcomment %}{% comment %} css alternative to < span > &nbsp; < /span >? 9/14/19 {% endcomment %}
+
+        {% comment %} ----- Suppress Django messages for now ----- {% endcomment %}
+{#        <div class="container-fluid pt-3 mt-3 px-0 {% block wrapper_class %}{% endblock %}">#}
+{#			{% if messages %}#}
+{#				<div>#}
+                    {% comment %}
+                        (1) django.contrib.messages (settings.py) to display error message(s) for all field
+                            error(s) all at once (where best practice is to display error(s) at top of page (here).
+                            NOTE: use of {{ form }}, {% bootstrap_form form %}, or custom form does not matter.
+                        (2) form_valid()
+                        (3) messages.*(request,'Error message!')
+                        (4) form.add_error('fieldname', True)
+                        (5) return form_invalid()
+                    {% endcomment %}
+{#					{ % for message in messages %}#}
+{#					<div class="alert {{ message.tags }} alert-dismissible mb-0" role="alert">#}
+{#						<button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#							<span aria-hidden="true">&times;</span>#}
+{#						</button>#}
+{#						<div class="container text-center">#}
+{#							<p class="text-dark mb-0">{{ message|safe }}</p>#}
+{#						</div>#}
+{#					</div>#}
+{#					{ % endfor %}#}
+{#				</div>#}
+{#			{% endif %}#}
+
+			{% comment %}
+				DANGER: Only assign TAGBIRDS1_IndexPageCSRF if request user is not authenticated!
+				DANGER: TAGBIRDS1_IndexPageCSRF is needed by openai.js [0-tb] and Django view
+				AnonymousUserAuthAjax, in order to send the saved localStorage value of session_key
+				back to Django so that AnonymousUserAuthAjax can know if the session_key changed.
+				VERY SENSITIVE PLACEMENT of TAGBIRDS1_IndexPageCSRF assignment below, cannot use
+				{% block %} tag as is normally the case for this trick. 6/10/23
+			{% endcomment %}
+
+            {% comment %} As of Oct 2023, openai project does not have anonymous user objs. 10/13/23{% endcomment %}
+            {% comment %}
+			{% if not request.user.is_authenticated %}
+				<script>
+    				TAGBIRDS1_IndexPageCSRF = "{{ csrf_token }}";    // 6/10/23
+				</script>
+			{% endif %}
+            {% endcomment %}
+{#		</div>#}
+        {% comment %} ----- Suppress Django messages for now ----- {% endcomment %}
+
+		{% block body_content %}
+			{% comment %} - - - - - - - OPENAI EXPERIMENTAL WEB PAGES HERE! - - - - - - - - - - {% endcomment %}
+		{% endblock %}
+
+        {% comment %} As of Oct 2023, openai project does not authenticate users. 10/13/23{% endcomment %}
+{#		{% if request.user.is_authenticated %}#}
+{#            {% logout_modal %}#}
+{#		{% endif %}#}
+
+{% comment %} As long as app uses flex container, footer is pointless. 10/21/23 {% endcomment %}
+{#		<footer class="footer bg-dark text-light text-center m-0 p-2" style="flex-basis: 50px; padding: 15px 0;">test</footer>#}
+{#		<footer style="flex-basis: 0; padding: 0;"></footer>#}
+
+		{% comment %} ((( 1st ))) EXTERNAL JAVASCRIPT: libraries, frameworks, CDNs {% endcomment %}
+        {% comment %} Warning: use jQuery min CDN, not slim min! jQuery slim min lacks ajax support!? 2/10/19 {% endcomment %}
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+        {% comment %} jQuery UI {% endcomment %}
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+        {% comment %} jQueryUI touch screen hack Touch Punch 4/28/19 {% endcomment %}
+        <script src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        {% comment %} ((( 2nd ))) INTERNAL JAVASCRIPT, SITE-WIDE: Tagbirds custom site-wide JavaScript {% endcomment %}
+        <script src="{{ staticTag }}{{ CB.openai_js }}" defer></script>
+
+        {% comment %} ((( 3rd ))) INTERNAL JAVASCRIPT, APP LEVEL: Tagbirds custom app-level JavaScript (child templates) {% endcomment %}
+		{% block javascript %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,13 @@
+{% comment %}
+	-------------------------------------------------------------------------------------------------------
+	This is a Django "inline/include" tag, not a normal custom tag, used to inject js/css into html by
+	using on* or style attributes, requires one-line with tag to assign js/css to text string.
+	-------------------------------------------------------------------------------------------------------
+	WARNING! MUST ASSIGN A SINGLE-LINE STRING TO TempString! SINGLE-LINE STRING A LIMITATION OF DJANGO
+	WARNING: MULTIPLE LINES OF JS REQUIRE USE OF SELF-INVOKING ANON FUNC WITH EVENT (ON ONE LINE!)
+	-------------------------------------------------------------------------------------------------------
+	PURPOSE: Tagbirds custom template plan for adding darker colored outline to buttons (e.g. teal).
+{% endcomment %}
+{% with TempString="let that=event.target; that.style.outline='none'; that.parentNode.style.cssText='outline: 2px solid Teal; outline-offset: 2px;';" %}
+	{{ TempString }}
+{% endwith %}

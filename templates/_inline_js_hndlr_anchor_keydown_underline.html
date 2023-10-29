@@ -1,0 +1,17 @@
+{% comment %}
+	-------------------------------------------------------------------------------------------------------
+	This is a Django "inline/include" tag, not a normal custom tag, used to inject js/css into html by
+	using on* or style attributes, requires one-line with tag to assign js/css to text string
+	-------------------------------------------------------------------------------------------------------
+	WARNING! MUST ASSIGN A SINGLE-LINE STRING TO TempString! SINGLE-LINE STRING A LIMITATION OF DJANGO
+	WARNING: MULTIPLE LINES OF JS REQUIRE USE OF SELF-INVOKING ANON FUNC WITH EVENT (ON ONE LINE!)
+	-------------------------------------------------------------------------------------------------------
+	PURPOSE: Remove outline from element (e.g. button) when element loses focus. 3/28/20
+	-------------------------------------------------------------------------------------------------------
+{% endcomment %}
+{% with TempString="this.parentNode.style.cssText='text-decoration: underline;'" %}
+	{{ TempString }}
+{% endwith %}
+
+
+

@@ -1,0 +1,21 @@
+{% comment %}
+	-------------------------------------------------------------------------------------------------------
+	This is a Django "inline/include" tag, not a normal custom tag, used to inject js/css into html by
+	using on* or style attributes, requires one-line with tag to assign js/css to text string.
+	-------------------------------------------------------------------------------------------------------
+	WARNING! MUST ASSIGN A SINGLE-LINE STRING TO TempString! SINGLE-LINE STRING A LIMITATION OF DJANGO
+	WARNING: MULTIPLE LINES OF JS REQUIRE USE OF SELF-INVOKING ANON FUNC WITH EVENT (ON ONE LINE!)
+	-------------------------------------------------------------------------------------------------------
+	PURPOSE: Suppress outline of parent element when clicked, used with buttons and 'fake' anchor buttons etc.
+	         Suppress inner 'span' element's mousedown event seems to do this, no parent click() event needed,
+	         thus avoid 'double post' problems (e.g. no double post for submit button). I assume click event
+	         itself is not suppressed, thus trigger click of parent unnecessary.
+ 	-------------------------------------------------------------------------------------------------------
+	WARNING: if this javascript for onmousedown causes 'double post' or etc. problems, just stop using it,
+	         user merely sees brief outline around button when clicked (which I think looks silly/ugly). 4/4/20
+	-------------------------------------------------------------------------------------------------------
+	NOTE: If you find clicking parent 'fake button' creates ugly/unnecessary outline, use this.
+{% endcomment %}
+{% with TempString="event.preventDefault(); event.stopImmediatePropagation();" %}
+	{{ TempString }}
+{% endwith %}

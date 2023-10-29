@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% comment %}
+    This template used by cookies and javascript enabled test templates to follow normal template extend process (use a
+    'layout' type template), thus not requiring cookies/js test templates to directly use body_content block directly.
+    8/10/19
+{% endcomment %}
+{% block title_tag %}{% endblock %}
+{% block wrapper_class %}{% endblock %}
+{% block body_content %}
+<div>
+	{% block pre_layout_plain_content %}{% endblock %}
+	{% block layout_plain_content %}{% endblock %}
+	{% block post_layout_plain_content %}{% endblock %}
+</div>
+{% endblock %}

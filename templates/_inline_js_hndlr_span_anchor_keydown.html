@@ -1,0 +1,15 @@
+{% comment %}
+	-------------------------------------------------------------------------------------------------------
+	This is a Django "inline/include" tag, not a normal custom tag, used to inject js/css into html by
+	using on* or style attributes, requires one-line with tag to assign js/css to text string.
+	-------------------------------------------------------------------------------------------------------
+	WARNING! MUST ASSIGN A SINGLE-LINE STRING TO TempString! SINGLE-LINE STRING A LIMITATION OF DJANGO
+	WARNING: MULTIPLE LINES OF JS REQUIRE USE OF SELF-INVOKING ANON FUNC WITH EVENT (ON ONE LINE!)
+	-------------------------------------------------------------------------------------------------------
+	PURPOSE: For tabbing to <a> element, allows user to press Enter or Space bar insead of clicking.
+	-------------------------------------------------------------------------------------------------------
+	WARNING: event.target should be the content of the <a> tag, i.e. the <span> element itself typically. 3/28/20
+{% endcomment %}
+{% with TempString="if (event.key==='Enter' || event.key===' '){event.target.click();}" %}
+	{{ TempString }}
+{% endwith %}

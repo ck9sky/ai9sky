@@ -1,0 +1,4 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# This is stub. Will add to it if and as required. 4/2/21
+User-Agent: *
+Disallow: /words/
