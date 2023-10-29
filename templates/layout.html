@@ -3,7 +3,7 @@
 {% cacheBusterFileNames as CB %}
 {% comment %}
     WARNING: Use the settings_* tags once only in this top-level layout.html. Their "as" values will probably be
-    recognized by child/grandchild templates. Ref. ~/openai/templatetags/site_wide_template_tags.py
+    recognized by child/grandchild templates. Ref. ~/ai9sky/templatetags/site_wide_template_tags.py
 {% endcomment %}
 {% settings_DEBUG as DEBUG %}
 {% settings_VERSION_CACHE_BUST as VERSION_CACHE_BUST %}
@@ -18,7 +18,7 @@
      {% comment %} Viewport may only require following meta tag? But I use above for now. 10/21/23{% endcomment %}
      {# <meta content='width=device-width, initial-scale=1.0' name='viewport'>#}
 
-        <title>{% block title_tag %}OpenAI{% endblock %}</title>
+        <title>{% block title_tag %}OpenAI Experiments{% endblock %}</title>
 
 		<link rel="shortcut icon" type="image/png" href="{% static 'img/icons/favicon.ico'%}{{ QM }}{{ VERSION_CACHE_BUST }}"/>
 
@@ -44,7 +44,7 @@
 			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" rel="stylesheet" >
 
         {% comment %} ((( 2nd ))) INTERNAL CSS, SITE-WIDE: Tagbirds custom site-wide CSS {% endcomment %}
-		<link href="{{ staticTag }}{{ CB.openai_css }}" rel="stylesheet">
+		<link href="{{ staticTag }}{{ CB.ai9sky_css }}" rel="stylesheet">
 
         {% comment %} ((( 3rd ))) INTERNAL CSS, APP LEVEL: Tagbirds custom app-level CSS (child templates) {% endcomment %}
 		{% block css %}
@@ -53,16 +53,16 @@
 	<body>
 
         {% comment %} Bootstrap navbar is flex box, hence d-flex class is not used {% endcomment %}
-        {% comment %} As of Oct 2023, openai project does not use a navbar. 10/13/23 {% endcomment %}
+        {% comment %} As of Oct 2023, ai9sky project does not use a navbar. 10/28/23 {% endcomment %}
 
         {% comment %} Suppress navbar for now. {% endcomment %}
 {#	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justify-content-around">#}
 {#		<div class="container">#}
-{#			{% if request.user.is_authenticated %}#}
+{#			{ % if request.user.is_authenticated %}#}
 {#                 {% nav_items_auth taghouse tagscene %}#}
-{#				{% else %}#}
+{#				{ % else %}#}
 {#					{% nav_items_no_auth %}#}
-{#				{% endif %}#}
+{#				{ % endif %}#}
 {#            </div>#}
 {#        </nav>#}
 
@@ -76,7 +76,7 @@
 			navbar anyway.
 		{% endcomment %}
 
-        {% comment %} As of Oct 2023, openai project does not use a jumbotron/large image. 10/13/23{% endcomment %}
+        {% comment %} As of Oct 2023, ai9sky "openai" project does not use a jumbotron/large image. 10/28/23{% endcomment %}
 		{% comment %}<span>&nbsp;</span>{% endcomment %}{% comment %} css alternative to < span > &nbsp; < /span >? 9/14/19 {% endcomment %}
 
         {% comment %} ----- Suppress Django messages for now ----- {% endcomment %}
@@ -106,21 +106,21 @@
 {#			{% endif %}#}
 
 			{% comment %}
-				DANGER: Only assign TAGBIRDS1_IndexPageCSRF if request user is not authenticated!
-				DANGER: TAGBIRDS1_IndexPageCSRF is needed by openai.js [0-tb] and Django view
+				DANGER: Only assign AI9SKY1_IndexPageCSRF if request user is not authenticated!
+				DANGER: TAGBIRDS1_IndexPageCSRF is needed by ai9sky.js [0-tb] and Django view
 				AnonymousUserAuthAjax, in order to send the saved localStorage value of session_key
 				back to Django so that AnonymousUserAuthAjax can know if the session_key changed.
-				VERY SENSITIVE PLACEMENT of TAGBIRDS1_IndexPageCSRF assignment below, cannot use
-				{% block %} tag as is normally the case for this trick. 6/10/23
+				VERY SENSITIVE PLACEMENT of AI9SKY_IndexPageCSRF assignment below, cannot use
+				{ % block % } tag as is normally the case for this trick. 10/28/23
 			{% endcomment %}
 
-            {% comment %} As of Oct 2023, openai project does not have anonymous user objs. 10/13/23{% endcomment %}
+            {% comment %} As of Oct 2023, ai9sky project does not have anonymous user objs. 10/28/23{% endcomment %}
             {% comment %}
-			{% if not request.user.is_authenticated %}
+			{ % if not request.user.is_authenticated %}
 				<script>
     				TAGBIRDS1_IndexPageCSRF = "{{ csrf_token }}";    // 6/10/23
 				</script>
-			{% endif %}
+			{ % endif %}
             {% endcomment %}
 {#		</div>#}
         {% comment %} ----- Suppress Django messages for now ----- {% endcomment %}
@@ -129,12 +129,12 @@
 			{% comment %} - - - - - - - OPENAI EXPERIMENTAL WEB PAGES HERE! - - - - - - - - - - {% endcomment %}
 		{% endblock %}
 
-        {% comment %} As of Oct 2023, openai project does not authenticate users. 10/13/23{% endcomment %}
+        {% comment %} As of Oct 2023, ai9sky project does not authenticate users. 10/28/23{% endcomment %}
 {#		{% if request.user.is_authenticated %}#}
 {#            {% logout_modal %}#}
 {#		{% endif %}#}
 
-{% comment %} As long as app uses flex container, footer is pointless. 10/21/23 {% endcomment %}
+{% comment %} As long as app uses flex container, footer is pointless. 10/28/23 {% endcomment %}
 {#		<footer class="footer bg-dark text-light text-center m-0 p-2" style="flex-basis: 50px; padding: 15px 0;">test</footer>#}
 {#		<footer style="flex-basis: 0; padding: 0;"></footer>#}
 
@@ -154,9 +154,9 @@
 			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         {% comment %} ((( 2nd ))) INTERNAL JAVASCRIPT, SITE-WIDE: Tagbirds custom site-wide JavaScript {% endcomment %}
-        <script src="{{ staticTag }}{{ CB.openai_js }}" defer></script>
+        <script src="{{ staticTag }}{{ CB.ai9sky_js }}" defer></script>
 
-        {% comment %} ((( 3rd ))) INTERNAL JAVASCRIPT, APP LEVEL: Tagbirds custom app-level JavaScript (child templates) {% endcomment %}
+        {% comment %} ((( 3rd ))) INTERNAL JAVASCRIPT, APP LEVEL: custom app-level JavaScript (child templates) {% endcomment %}
 		{% block javascript %}
 		{% endblock %}
 	</body>
