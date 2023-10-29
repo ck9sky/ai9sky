@@ -125,7 +125,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -136,7 +135,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -162,4 +160,3 @@ if DEBUG:
     SESSION_COOKIE_SECURE = False   # False: Django debug server is http.
 elif not DEBUG:
     SESSION_COOKIE_SECURE = True    # True: If this were live/production site
-
