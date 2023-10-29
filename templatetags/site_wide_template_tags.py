@@ -58,12 +58,14 @@ def cacheBusterFileNames():
     """
     urlQueryString = f"?{settings.VERSION_CACHE_BUST}"
     CB = {
-        "openai_js": f"js/openai.js{urlQueryString}",
-        "openai_css": f"css/openai.css{urlQueryString}",
-        "chatgpt_api_css": f"chatgpt_api/css/chatgpt_api.css{urlQueryString}",
-        "chatgpt_api_js": f"chatgpt_api/js/chatgpt_api.js{urlQueryString}",
-        "dalle_api_css": f"dalle_api/css/dalle_api.css{urlQueryString}",
-        "dalle_api_js": f"dalle_api/js/dalle_api.js{urlQueryString}",
+        "ai9sky_js": f"js/ai9sky.js{urlQueryString}",
+        "ai9sky_css": f"css/ai9sky.css{urlQueryString}",
+        #"chatgpt_api_js_css": f"chatgpt_api_js/css/chatgpt_api_js.css{urlQueryString}",
+        #"chatgpt_api_js_js": f"chatgpt_api_js/js/chatgpt_api_js.js{urlQueryString}",
+        #"chatgpt_api_py_css": f"chatgpt_api_py/css/chatgpt_api_py.css{urlQueryString}",
+        #"chatgpt_api_py_js": f"chatgpt_api_py/js/chatgpt_api_py.js{urlQueryString}",
+        #"dalle_api_js_css": f"dalle_api_js/css/dalle_api_js.css{urlQueryString}",
+        #"dalle_api_js_js": f"dalle_api_js/js/dalle_api_js.js{urlQueryString}",
     }
     return CB
 
