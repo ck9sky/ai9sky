@@ -15,14 +15,14 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ai9sky.settings')
 
 # On local dev/test, the next 3 lines are unnecessary when starting the            <-- please add these comments ...
 # test server from command line (./manage.py runserver) because the command
-# line uses .bash_profile line "set -a; source ~/.env_tagbirds; set +a" to
+# line uses .bash_profile line "set -a; source ~/.env_ai9sky; set +a" to
 # load environment variables for dev. But in future if any any tool or software
 # is ever used to start dev server without command line, then these next 3
 # lines might be able to load environment variables. Otherwise you probably
 # need create your virtualenv with virtualenvwrapper (or probably
 # pyenv-virtualenvwrapper) copy or move next 3 lines to postactivate file
-# of the virtualenv folder. 2/13/21
-# load environment variables, run before calling get_wsgi_application()! 2/13/21   <-- ADD comment
+# of the virtualenv folder.
+# load environment variables, run before calling get_wsgi_application()! 10/29/23
 from dotenv import load_dotenv
 home_folder = os.path.expanduser('~')
 load_dotenv(os.path.join(home_folder, '.env_ai9sky'))
