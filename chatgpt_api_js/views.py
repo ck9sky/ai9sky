@@ -1,6 +1,9 @@
 ## from django.urls import reverse_lazy
 from django.views import generic
 
+## from . import models
+from . import forms
+
 
 class ChatGPT_API_JS_Test1(generic.TemplateView):
     """ Access ChaptGPT API using (mostly) javascript.
