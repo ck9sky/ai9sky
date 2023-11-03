@@ -5,7 +5,10 @@
 {% static "" as staticTag %}
 {% cacheBusterFileNames as CB %}
 {% load bootstrap4 %}
-{% load chaptgpt_api_js_tags %}
+
+<!--
+{ % load chaptgpt_api_js_tags %}
+-->
 
 {% block css %}
 	<link rel="stylesheet" href="{{ staticTag }}{{ CB.chatgpt_api_js_css }}">
