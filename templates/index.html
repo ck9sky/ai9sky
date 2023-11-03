@@ -8,17 +8,15 @@
             {% comment %} As of Oct 2023 ai9sky project does not authenticate users. 10/28/23 {% endcomment %}
             {% comment %}{ % if request.user.is_authenticated % }{% endcomment %}
 
-            {% comment %}
-                 <a href="{ % url 'chatgpt_api_js:chatgpt_api_js_test1' %}"
+            <a href="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}"
                     class="badge badge-primary mx-0 my-1 p-1 " id="id_chatgpt-api-js-app-btn"
                     tabindex="-1" role="button">
-                        <span class="m-0 p-0"
-                                onmousedown="{ % include '_inline_js_hndlr_span_mousedown.html' %}"
-                                onkeydown="{ % include '_inline_js_hndlr_span_anchor_keydown.html' %}"
-                                onfocus="{ % include '_inline_js_hndlr_span_focus.html' %}"
-                                onblur="{ % include '_inline_js_hndlr_span_blur.html' %}"
-                              tabindex="0">ChatGPT API with only JS Test</span></a><br>
-            {% endcomment %}
+                <span class="m-0 p-0"
+                    onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
+                    onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
+                    onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
+                    tabindex="0">ChatGPT API with (mostly) JS Test</span></a><br>
 
             {% comment %}
                  <a href="{ % url 'chatgpt_api_py:chatgpt_api_py_test1' %}"
