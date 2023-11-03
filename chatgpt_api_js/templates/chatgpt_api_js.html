@@ -1,0 +1,51 @@
+{% extends "chatgpt_api_js/layout.html" %}
+{% settings_VERSION_CACHE_BUST as VERSION_CACHE_BUST %}
+{% assign "?" as QM %}{% comment %} suppress url percent encoding "?" to "%3F" {% endcomment %}
+{% load static %}
+{% static "" as staticTag %}
+{% cacheBusterFileNames as CB %}
+{% load bootstrap4 %}
+{% load chaptgpt_api_js_tags %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ staticTag }}{{ CB.chatgpt_api_js_css }}">
+{% endblock %}
+
+{% comment %}
+    ChatGPT API accessed using (mostly) javascript, i.e. the Python openai module is not used.
+    THIS IS NOT HOW I WANT TO ACCESS CHATGPT API, NORMALLY, BUT A GOOD EXERCISE TO INVESTIGATE
+    HOW (I ASSUME) PYTHON openai MODULE WORKS UNDER THE HOOD. 11/2/23
+{% endcomment %}
+
+{% block chatgpt_api_content %}
+	<div class="chat-container">
+        <div class="chat-log">
+            <div class="message-instance-container">
+                <div class="message user-message">
+                    <div class="content">
+                        <div class="message-image"></div>
+                        <p>This is a message from the user</p>
+                    </div>
+                </div>
+                <div class="message ai-message">
+                    <div class="content">
+                        <div class="message-image">
+                            <img src="{% static 'img/icon/chatgpt-icon-150x150.png' %}{{ QM }}{{ VERSION_CACHE_BUST }}" alt="">
+                        </div>
+                        <p class="thinking">Thinking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-message">
+            <form>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input type="text" id="prompt" placeholder="Send a message...">
+            </form>
+        </div>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{ staticTag }}{{ CB.chatgpt_api_js_js }}" defer></script>
+{% endblock %}
