@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',     # 10/28/23
     'debug_toolbar',  # 10/28/23
+    'chatgpt_api_js', # 11/2/23
 ]
 
 MIDDLEWARE = [
