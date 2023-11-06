@@ -1,4 +1,22 @@
+/* DANGER: Do not assign api key to a GLOBAL VARIABLE! Js global vars easily read in browser inspector! 11/5/23 */
+const url = 'https://api.openai.com/v1/chat/completions';
 
+const form = document.querySelector('#prompt-form');
+const promptInput = document.querySelector('#id_prompt');
+const chatLog = document.querySelector('.chat-log');
+var value;    // Must be global variable for my logic.
+
+form.addEventListener('submit', e => {
+    // Prevent prompt-form from submitting anything (stop page refresh).
+    e.preventDefault();
+    value = promptInput.value;  // Global var ######## needed?
+    if (value !== ''){
+        createMessageInstance();
+        askChatGPT();
+        handleScroll();
+        promptInput.value = '';
+    }
+})
 
 $("#id_prompt").on("click", function(event){
     $.ajax({
@@ -23,25 +41,10 @@ $("#id_prompt").on("click", function(event){
     });  // .done()
 });
 
+function createMessageInstance(){}
+function askChatGPT(){}
 
-
-
-
-
-// ############### NOT GOOD SOLUTION 11/5/23 ###################################################
-// $("#prompt").on("click", function(event){
-//     if (typeof(api)==="undefined") {
-//         $.get("/chatgpt_api_js/test1redirect/", function (data) {
-//             if (JSON.stringify(data) !== '{}') {
-//                 if (typeof (data['chatgpt_api_key']) !== "undefined" && data['chatgpt_api_key'] !== '') {
-//                     // DANGER: api must be a local variable to prevent security hole!
-//                     api = data['chatgpt_api_key']; // From Django
-//
-//                     alert(`api = ${api}`);   // ################## test, remove !!!
-//
-//                 }  // if (typeof(data['chatgpt_api_key']...)
-//             }
-//         });  // $.get()
-//     }
-// });
-// ############### NOT GOOD SOLUTION 11/5/23 ###################################################
+// Scrolls the chatlog to the bottom
+function handleScroll(){
+    chatLog.scrollTop = chatLog.scrollHeight;
+}

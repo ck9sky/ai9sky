@@ -49,7 +49,7 @@
         {% comment %} THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/5/23
         {% endcomment %}
-        <div class="new-message">
+        <div class="new-message" id="prompt-form">
             <form method="POST">
                 {% csrf_token %}
                 {% comment %} Django form convention: id_prompt {% endcomment %}
