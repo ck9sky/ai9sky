@@ -4,7 +4,7 @@
 $("#prompt").on("click", function(event){
     $.ajax({
         type: "POST",
-        url: 'test1/',
+        url: '/chatgpt_api_js/test1/',
         dataType: "json",
         data: {},
     })  // ajax()

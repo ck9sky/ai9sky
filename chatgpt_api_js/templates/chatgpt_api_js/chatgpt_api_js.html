@@ -38,7 +38,9 @@
             </div>
         </div>
         <div class="new-message">
-            <form>
+            <form action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}">
+                {% csrf_token %}
+                {{ form }}
                 <!--suppress HtmlFormInputWithoutLabel -->
                 <input type="text" id="prompt" placeholder="Send a message...">
             </form>
