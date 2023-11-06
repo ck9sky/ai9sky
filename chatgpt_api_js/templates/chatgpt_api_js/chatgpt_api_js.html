@@ -37,17 +37,18 @@
                 </div>
             </div>
         </div>
-        <div class="new-message">
-            <form action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}" id="prompt-form">
-                {% csrf_token %}
-                {{ form }}
-                <!--suppress HtmlFormInputWithoutLabel -->
-{#                <input type="text" id="prompt" placeholder="Send a message..." form="prompt-form" name="prompt_question">#}
-                <button type="submit" form="prompt-form" class="btn btn-outline-light btn-sm my-1 mx-1"
-                        tabindex="-1" id="save-button" aria-label="question prompt">
-                    <span class="font-weight-normal" tabindex="0">Submit</span>
-                </button>
 
+
+{#        <form action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}" id="hidden-form">#}
+{#            {% csrf_token %}#}
+{#        </form>#}
+
+
+        <div class="new-message">
+            <form>
+                {% csrf_token %}
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input type="text" id="id_prompt" placeholder="Send a message...">
             </form>
         </div>
 	</div>
