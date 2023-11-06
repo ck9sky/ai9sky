@@ -38,18 +38,22 @@
             </div>
         </div>
 
-{#        <form action="{ % url 'chatgpt_api_js:chatgpt_api_js_test1' %}" style="display: none;">#}
-        <form method="POST" action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}"
-                style="border: 1px yellow solid; height: 15px" id="hidden-form">
+        {% comment %} Hidden form to allow Django to send API key to JavaScript. This form is NOT part of the original
+            Treehouse example video. It is security trick to hide API key (in LOCAL js variable). 11/5/23
+        {% endcomment %}
+        <form method="POST" action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}" style="display: none;">
             {% csrf_token %}
             <input type="submit">
         </form>
 
+        {% comment %} THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
+            Django view and form and csrf token in order to not crash to browser. 11/5/23
+        {% endcomment %}
         <div class="new-message">
             <form method="POST">
                 {% csrf_token %}
-                <!--suppress HtmlFormInputWithoutLabel -->
                 {% comment %} Django form convention: id_prompt {% endcomment %}
+                    <!--suppress HtmlFormInputWithoutLabel -->
                 <input type="text" id="id_prompt" placeholder="Send a message...">
             </form>
         </div>
