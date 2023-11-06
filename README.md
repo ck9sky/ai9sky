@@ -22,3 +22,36 @@ IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL L
 
 ~/ai9sky/ai9sky/settings.py, version_cache_bust = 'v=W.XYZ'
 ~/ai9sky/templatetags/site_wide_template_tags.py, cacheBusterFileNames()
+
+## Notes on getting API Key from OpenAI.com
+
+I'm not sure social login account (with Google) will enable me to get ChatGPT API key?
+
+1. Social login w/ Google cdk_______@_____.com (or should I open a password account w/ OpenAI?)
+   Click on ChatGPT button.
+2. DANGER: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.
+   BUT, to access Personal settings, YOU MAY NEED TO LOGIN "AGAIN" (even if it seems unnecessary?)
+3. TWO TABS NOW OPEN: Go to (or browse to) OpenAI.com
+   Menu: API|Overview: https://openai.com/product
+4. NEXT PAGE: ...
+   Button: Get Started
+5. NEXT PAGE: https://auth0.openai.com/u/signup/identifier?state=...
+   Already have an account? Log in (click the "Log in" link). i.e. Login "again"?
+   Continue with Google...
+6. YOUR PROFILE PAGE!
+   GET TO THIS URL: https://platform.openai.com/overview
+   (You may need to verify with google app on iphone...)
+   Top of page, upper right, (my google account image), click "Personal"
+   Menu expands down: click "View API Keys"
+7. YOU API KEYS PAGE: https://platform.openai.com/account/api-keys
+   TO CREATE NEW API KEY:
+   Click "+Create new secret key"
+   Popup...
+   Name: ChatGPT API - ai9sky.com
+   Button: Create secret key
+   DANGER: Copy the ENTIRE key to safe location (DO NOT ALLOW IT TO BE WRITTEN TO GITHUB!)
+   (OpenAI will never let you know what this key is again!)
+   Done
+   WARNING: You may need to use API key at least once within several hours or it will be revoked?!
+11/5/23 cdk
+
