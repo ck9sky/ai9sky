@@ -4,4 +4,4 @@ from django import forms
 
 
 class ChatGPT_API_JS_Test1_Form(forms.Form):
-	pass
+	prompt_question = forms.CharField()
