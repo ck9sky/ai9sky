@@ -22,4 +22,4 @@ class ChatGPT_API_JS_Test1(generic.TemplateView):
             The OpenAI ChatGPT API key is returned (to chatgpt_api_js.js). This is security measure to hide the value
             of API key. IMPORTANT: THE API KEY MUST NOT BE SAVED TO A JAVASCRIPT GLOBAL VARIABLE !!!.
         """
-        return JsonResponse({'chatgpt_api_key', settings.OPENAI_CHATGPT_API_KEY})
+        return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
