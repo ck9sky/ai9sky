@@ -44,13 +44,14 @@ $("#id_prompt").on("click", function(event){
 
 function askChatGPT(api){
     // Ping the API and get a response
+    // fetch() is promised-based, so we can chain a dot-then method on this...
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${api}`
         },
-        body: {
+        body: JSON.stringify({
             model: 'gpt-3.5-turbo',
             messages: [
                 {
@@ -59,8 +60,16 @@ function askChatGPT(api){
                 }
             ],
             max_tokens: 200,
-        }
+        })
     })
+    .then(res => res.json())
+    .then(data => updateMessage(data))
+}
+
+function updateMessage(message){
+    // The data we get back from our response
+    const p = document.querySelector('.thinking');
+    console.log(message);
 }
 
 function createMessageInstance(){
