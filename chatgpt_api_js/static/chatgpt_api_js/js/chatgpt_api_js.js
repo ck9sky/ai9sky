@@ -133,9 +133,13 @@ function askChatGPT(api){
 }
 
 function updateMessage(message){
-    // // The data we get back from our response
+    /* You can study structure of response w/ console.log(message):
+       Object | choices Array: 1st index = object "message", content prop of this obj holds response.
+    */
     const p = document.querySelector('.thinking');
-    console.log(message);
+    p.textContent = message.choices[0].message.content;
+    p.classList.remove('thinking');
+    handleScroll();
 }
 
 function createMessageInstance(){
