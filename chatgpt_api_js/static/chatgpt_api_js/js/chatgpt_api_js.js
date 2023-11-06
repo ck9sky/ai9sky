@@ -37,10 +37,31 @@ $("#id_prompt").on("click", function(event){
                are sophisticated tools that can read LOCAL vs vars too? Hopefully not, BUT THIS IS ANOTHER GOOD REASON
                TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23 */
             let api = data['chatgpt_api_key'];
-
+            askChatGPT(api);
         }
     });  // .done()
 });
+
+function askChatGPT(api){
+    // Ping the API and get a response
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${api}`
+        },
+        body: {
+            model: 'gpt-3.5-turbo',
+            messages: [
+                {
+                    role: 'user',
+                    content: value
+                }
+            ],
+            max_tokens: 200,
+        }
+    })
+}
 
 function createMessageInstance(){
     // Replace inner html of our chatlog container
@@ -66,7 +87,6 @@ function createMessageInstance(){
     </div>    
     `
 }
-function askChatGPT(){}
 
 // Scrolls the chatlog to the bottom
 function handleScroll(){
