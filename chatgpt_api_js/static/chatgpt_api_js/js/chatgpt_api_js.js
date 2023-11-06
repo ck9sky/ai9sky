@@ -13,8 +13,12 @@ $("#id_prompt").on("click", function(event){
     })  // ajax()
     .done(function(data){
         if (typeof (data['chatgpt_api_key']) !== "undefined"){
+            /* HERE! Assign api key to a LOCAL javascript variable. This is the best security I can provide, but it
+               still may not be enough? Picking off GLOBAL JS VARS is EASY in a browser inspector, but I suspect there
+               are sophisticated tools that can read LOCAL vs vars too? Hopefully not, BUT THIS IS ANOTHER GOOD REASON
+               TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23 */
             let api = data['chatgpt_api_key'];
-            alert(`api = ${api}`);
+
         }
     });  // .done()
 });
