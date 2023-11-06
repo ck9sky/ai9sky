@@ -38,16 +38,15 @@
             </div>
         </div>
 
-
-{#        <form action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}" id="hidden-form">#}
-{#            {% csrf_token %}#}
-{#        </form>#}
-
+        <form action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}" id="hidden-form" style="display: none;">
+            {% csrf_token %}
+        </form>
 
         <div class="new-message">
             <form>
                 {% csrf_token %}
                 <!--suppress HtmlFormInputWithoutLabel -->
+                {% comment %} Django form convention: id_prompt {% endcomment %}
                 <input type="text" id="id_prompt" placeholder="Send a message...">
             </form>
         </div>

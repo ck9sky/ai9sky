@@ -30,7 +30,7 @@ class ChatGPT_API_JS_Test1(generic.FormView):
         Django 3.1 request.is_ajax() is deprecated, see comments above 9/21/20
         """
 
-        print(f"form.cleaned_data['prompt_question']: {form.cleaned_data['prompt_question']}")  ########## test
+        # print(f"form.cleaned_data['prompt_question']: {form.cleaned_data['prompt_question']}")  ########## test
 
         response = super().form_valid(form)
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
@@ -42,6 +42,10 @@ class ChatGPT_API_JS_Test1_Prompt(generic.FormView):
     form_class = forms.ChatGPT_API_JS_Test1_Prompt_Form
     ## model = models.xxxxxx
     template_name = "chatgpt_api_js/chatgpt_api_js.html"
+
+    def get_success_url(self, *args, **kwargs):
+        """ Does not leave the page """
+        return reverse_lazy("chatgpt_api_js:chatgpt_api_js_test1")
 
 ############### NOT GOOD SOLUTION 11/5/23 ###################################################
 # class ChatGPT_API_JS_Test1(generic.TemplateView):
