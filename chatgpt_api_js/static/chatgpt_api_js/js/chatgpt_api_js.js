@@ -4,6 +4,7 @@ const url = 'https://api.openai.com/v1/chat/completions';
 const form = document.querySelector('#prompt-form');
 const promptInput = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
+const iconStr = "{% static 'img/icon/chatgpt-icon-150x150.png' %}{{ QM }}{{ VERSION_CACHE_BUST }}"
 var value;    // Must be global variable for my logic.
 
 form.addEventListener('submit', e => {
@@ -57,7 +58,7 @@ function createMessageInstance(){
         <div class="message ai-message">
             <div class="content">
                 <div class="message-image">
-                    <img src="{% static 'img/icon/chatgpt-icon-150x150.png' %}{{ QM }}{{ VERSION_CACHE_BUST }}" alt="">
+                    <img src="${iconStr}" alt="">
                 </div>
                 <p class="thinking">Thinking</p>
             </div>
