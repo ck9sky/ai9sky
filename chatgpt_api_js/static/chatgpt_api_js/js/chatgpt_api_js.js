@@ -9,6 +9,7 @@ $("#prompt").on("click", function(event){
         data: {},
     })  // ajax()
     .done(function(data){
+        alert("done");  // ############## test
         if (typeof (data['chatgpt_api_key']) !== "undefined"){
             let api = data['chatgpt_api_key'];
             alert(`api = ${api}`);

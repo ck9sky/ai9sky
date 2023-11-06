@@ -25,6 +25,9 @@ class ChatGPT_API_JS_Test1(generic.FormView):
         is_ajax() 6/2/19
         Django 3.1 request.is_ajax() is deprecated, see comments above 9/21/20
         """
+
+        print(f"form.cleaned_data['prompt-question']: {form.cleaned_data['prompt-question']}")  ########## test
+
         response = super().form_valid(form)
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
