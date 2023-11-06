@@ -7,9 +7,29 @@ from django.views import generic
 from . import forms
 
 
-class ChatGPT_API_JS_Test1(generic.UpdateView):
+class ChatGPT_API_JS_Test1(generic.FormView):
     # Ref. Tagbirds, tagchapters/views.py, UpdateTagChapterEventFormFieldNameDescAjax
-    pass
+    form_class = forms.ChatGPT_API_JS_Test1_Form
+    ## model = models.xxxxxx
+    template_name = "chatgpt_api_js/chatgpt_api_js.html"
+
+    def get_success_url(self, *args, **kwargs):
+        """ Does not leave the page """
+        return reverse_lazy("chatgpt_api_js:chatgpt_api_js_test1")
+
+    def get_queryset(self):
+        return None
+
+    def form_valid(self, form):
+        """Django docs say to call super().form_valid() before you call
+        is_ajax() 6/2/19
+        Django 3.1 request.is_ajax() is deprecated, see comments above 9/21/20
+        """
+        response = super().form_valid(form)
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
+        return response
+
 
 ############### NOT GOOD SOLUTION 11/5/23 ###################################################
 # class ChatGPT_API_JS_Test1(generic.TemplateView):
