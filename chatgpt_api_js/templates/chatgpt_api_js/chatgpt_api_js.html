@@ -38,12 +38,15 @@
             </div>
         </div>
 
-        <form action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}" id="hidden-form" style="display: none;">
+{#        <form action="{ % url 'chatgpt_api_js:chatgpt_api_js_test1' %}" style="display: none;">#}
+        <form method="POST" action="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}"
+                style="border: 1px yellow solid; height: 15px" id="hidden-form">
             {% csrf_token %}
+            <input type="submit">
         </form>
 
         <div class="new-message">
-            <form>
+            <form method="POST">
                 {% csrf_token %}
                 <!--suppress HtmlFormInputWithoutLabel -->
                 {% comment %} Django form convention: id_prompt {% endcomment %}
