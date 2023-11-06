@@ -17,6 +17,12 @@ class ChatGPT_API_JS_Test1(generic.FormView):
         """ Does not leave the page """
         return reverse_lazy("chatgpt_api_js:chatgpt_api_js_test1")
 
+    def get(self, request, *args, **kwargs):  ############### ????????
+        response = super().get(request, *args, **kwargs)
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
+        return response
+
     # def form_invalid(self, form):
     #     print("... form_invalid() ...")  ############# test
     #     response = super().form_invalid(form)
@@ -24,18 +30,18 @@ class ChatGPT_API_JS_Test1(generic.FormView):
     #         return JsonResponse(form.errors, status=304)
     #     return response
 
-    def form_valid(self, form):
-        """Django docs say to call super().form_valid() before you call
-        is_ajax() 6/2/19
-        Django 3.1 request.is_ajax() is deprecated, see comments above 9/21/20
-        """
-
-        print(f"form.cleaned_data: {form.cleaned_data}")  ########## test
-
-        response = super().form_valid(form)
-        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
-        return response
+    # def form_valid(self, form):
+    #     """Django docs say to call super().form_valid() before you call
+    #     is_ajax() 6/2/19
+    #     Django 3.1 request.is_ajax() is deprecated, see comments above 9/21/20
+    #     """
+    #
+    #     print(f"form.cleaned_data: {form.cleaned_data}")  ########## test
+    #
+    #     response = super().form_valid(form)
+    #     if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    #         return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
+    #     return response
 
 
 class ChatGPT_API_JS_Test1_Prompt(generic.FormView):
