@@ -21,26 +21,6 @@
 	<div class="chat-container">
         <div class="chat-log">
             {% comment %} Dynamically rendered by javascript, createMessageInstance() {% endcomment %}
-
-{#    <div class="message-instance-container">#}
-{#        <div class="message user-message">#}
-{#            <div class="content">#}
-{#                <div class="message-image"></div>#}
-{#                <p>${value}</p>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="message ai-message">#}
-{#            <div class="content">#}
-{#                <div class="message-image">#}
-{#                    <img src="{ % static 'img/icon/chatgpt-icon-150x150.png' %}{{ QM }}{{ VERSION_CACHE_BUST }}" alt="">#}
-{#                </div>#}
-{#                <p class="thinking">Thinking</p>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-
-
-
         </div>
 
         {% comment %} Hidden form to allow Django to send API key to JavaScript. This form is NOT part of the original

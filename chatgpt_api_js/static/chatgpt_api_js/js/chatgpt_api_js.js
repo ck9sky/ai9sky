@@ -62,14 +62,14 @@ function askChatGPT(api){
             max_tokens: 200,
         })
     })
-    .then(res => res.json())
-    .then(data => updateMessage(data))
+    // .then(res => res.json())
+    // .then(data => updateMessage(data))
 }
 
 function updateMessage(message){
-    // The data we get back from our response
-    const p = document.querySelector('.thinking');
-    console.log(message);
+    // // The data we get back from our response
+    // const p = document.querySelector('.thinking');
+    // console.log(message);
 }
 
 function createMessageInstance(){
