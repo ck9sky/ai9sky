@@ -1,1 +1,2 @@
-// chatgpt_api_js.js
+
+//api =
