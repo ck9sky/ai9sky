@@ -41,7 +41,30 @@ $("#id_prompt").on("click", function(event){
     });  // .done()
 });
 
-function createMessageInstance(){}
+function createMessageInstance(){
+    // Replace inner html of our chatlog container
+    // In video, he renames local var from 'value' to 'prompt'...
+    // noinspection HtmlUnknownTarget
+    chatLog.innerHTML +=
+    `
+    <div class="message-instance-container">
+        <div class="message user-message">
+            <div class="content">
+                <div class="message-image"></div>
+                <p>${value}</p>
+            </div>
+        </div>
+        <div class="message ai-message">
+            <div class="content">
+                <div class="message-image">
+                    <img src="{% static 'img/icon/chatgpt-icon-150x150.png' %}{{ QM }}{{ VERSION_CACHE_BUST }}" alt="">
+                </div>
+                <p class="thinking">Thinking</p>
+            </div>
+        </div>
+    </div>    
+    `
+}
 function askChatGPT(){}
 
 // Scrolls the chatlog to the bottom
