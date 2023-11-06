@@ -8,20 +8,19 @@ var iconStr;
 var value;    // Must be global variable for my logic.
 
 $(function(){
-   $("#id_prompt").unbind("click");
+    /* Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
+     */
+    $("#id_prompt").unbind("click");
 });
 
 form.addEventListener('submit', e => {
-    // Prevent prompt-form from submitting anything (stop page refresh).
+    // Prevent prompt-form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
     value = promptInput.value;  // Global var ######## needed?
-
-    console.log(`value: ${value}`);  // ############################# 11/5/23
-
-    $("#id_prompt").on("click", function(e){
-
+    $id_prompt = $("#id_prompt");
+    // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
+    $id_prompt.on("click", function(){
         $.ajax({
-            // type: "POST",  ######### old?
             /* I don't believe I have ever used type "GET" for the jQuery ajax(). BUT I need to avoid error 403 problems,
                and I only need to "get" the OpenAI ChatGPT API key and assign to a LOCAL(!) javascipt variable. So using
                type "POST" is (luckily) unnecessary. 11/5/23 */
@@ -32,14 +31,12 @@ form.addEventListener('submit', e => {
         })  // ajax()
         .done(function(data){
             if (typeof (data['chatgpt_api_key']) !== "undefined"){
-                /* HERE! Assign api key to a LOCAL javascript variable. This is the best security I can provide, but it
-                   still may not be enough? Picking off GLOBAL JS VARS is EASY in a browser inspector, but I suspect there
-                   are sophisticated tools that can read LOCAL vs vars too? Hopefully not, BUT THIS IS ANOTHER GOOD REASON
-                   TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23 */
-
+                /* HERE! Assign api key to a LOCAL javascript variable!!! This is the best security I can provide, but
+                   it still may not be enough? Picking off GLOBAL JS VARS is EASY in a browser inspector, but I suspect
+                   there are sophisticated tools that can read LOCAL vs vars too? Hopefully not, BUT THIS IS ANOTHER
+                   GOOD REASON TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23
+                 */
                 let api = data['chatgpt_api_key'];
-                console.log(`api: ${api}\nvalue: ${value}`);  // ########### test
-
                 if (value !== '') {
                     createMessageInstance();
                     askChatGPT(api);
@@ -49,68 +46,14 @@ form.addEventListener('submit', e => {
             }
         });  // .done()
     });
-    $("#id_prompt").click();
-
-    // // ########## no, not here (deviate from video) ######
-    // if (value !== ''){
-    //     createMessageInstance();
-    //     askChatGPT();
-    //     handleScroll();
-    //     promptInput.value = '';
-    // }
-    // // ########## no, not here (deviate from video) ######
+    // Trick #3: Force a click event on id_prompt: THIS ALLOWS ABOVE CLICK EVENT TO RUN SUCH THAT API AND THE PROMPT
+    // ARE AVAILABLE AND READY TO SEND TO API. Yes, this is not professional code practice. I just want to learn how
+    // Django can implement "pure" js solution and STILL hide the api key. 11/25/23
+    $id_prompt.click();
 })
-
-// $("#id_prompt").on("click", function(e){
-// // $("#id_prompt").on("submit", function(e){
-//
-//     // https://stackoverflow.com/questions/5651933/what-is-the-opposite-of-evt-preventdefault
-//     // form.unbind('submit');  // ########### ???
-//     // $(this).submit();
-//
-//     // // Prevent hidden-form from submitting anything (stop page refresh).
-//     // e.preventDefault();   // ############ ??
-//     // e.stopPropagation();  // ###########??
-//
-//     $.ajax({
-//         // type: "POST",  ######### old?
-//         /* I don't believe I have ever used type "GET" for the jQuery ajax(). BUT I need to avoid error 403 problems,
-//            and I only need to "get" the OpenAI ChatGPT API key and assign to a LOCAL(!) javascipt variable. So using
-//            type "POST" is (luckily) unnecessary. 11/5/23 */
-//         type: "GET",  // ############# test?
-//         url: '/chatgpt_api_js/test1/',
-//         dataType: "json",
-//         data: {},
-//     })  // ajax()
-//     .done(function(data){
-//         if (typeof (data['chatgpt_api_key']) !== "undefined"){
-//             /* HERE! Assign api key to a LOCAL javascript variable. This is the best security I can provide, but it
-//                still may not be enough? Picking off GLOBAL JS VARS is EASY in a browser inspector, but I suspect there
-//                are sophisticated tools that can read LOCAL vs vars too? Hopefully not, BUT THIS IS ANOTHER GOOD REASON
-//                TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23 */
-//
-//             let api = data['chatgpt_api_key'];
-//             console.log(`api: ${api}\nvalue: ${value}`);  // ########### test
-//
-//             if (value !== '') {
-//
-//
-//                 createMessageInstance();
-//                 askChatGPT(api);
-//                 handleScroll();
-//                 promptInput.value = '';
-//             }
-//         }
-//     });  // .done()
-// });
 
 function askChatGPT(api){
     // Ping the API and get a response
-    // fetch() is promised-based, so we can chain a dot-then method on this...
-
-    // https://openai.com/blog/gpt-4-api-general-availability
-    // https://www.reddit.com/r/ChatGPTCoding/comments/11wq2mq/chatgpt_35_turbo_is_still_available_if_you_have/?rdt=55962
-
     fetch(url, {
         method: 'POST',
         headers: {
