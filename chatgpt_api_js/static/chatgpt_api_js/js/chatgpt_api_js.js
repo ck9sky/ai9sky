@@ -20,7 +20,6 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    // e.stopPropagation();   // ############## fix? nope
     prompt_value = prompt_input.value;
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
@@ -46,8 +45,8 @@ prompt_form.addEventListener('submit', e => {
                     createMessageInstance();
                     askChatGPT(api_key);
                     handleScroll();
-                    prompt_input.value = '';
-                    $id_prompt.unbind("click");  // Unbind click event again...
+                    prompt_input.value = '';  // Reset prompt back to blank
+                    $id_prompt.unbind("click");  // Unbind click event again! (Trick #1)
                 }
             }
         });  // .done()
@@ -66,9 +65,6 @@ function askChatGPT(api_key){
     use promise .then() to format and update ChatGPT message. 11/8/23
        IMPORTANT: api_key is still a LOCAL javascript variable! Still hides api key from bad guys. 11/8/23
      */
-
-    // alert(`askChatGPT() called`);  // ################ test, YES askChatGPT() is called twice! Error must be fixed.... 11/8/23
-
     fetch(chatgpt_api_url, {
         method: 'POST',
         headers: {
