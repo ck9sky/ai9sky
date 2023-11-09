@@ -58,7 +58,10 @@ prompt_form.addEventListener('submit', e => {
 })
 
 function askChatGPT(api_key){
-    /* Ping the API and get a response with fetch(), use promise .then() to format and update ChatGPT message. 11/8/23
+    /* Ping the API and get a response with fetch(). Since fetch() is promise-based, we use .then() to format the
+       response message, and then call
+
+    use promise .then() to format and update ChatGPT message. 11/8/23
        IMPORTANT: api_key is still a LOCAL javascript variable! Still hides api key from bad guys. 11/8/23
      */
     fetch(chatgpt_api_url, {
@@ -67,29 +70,32 @@ function askChatGPT(api_key){
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${api_key}`
         },
-        body: JSON.stringify({
-            model: 'gpt-3.5-turbo',
+        body: JSON.stringify({ // convert to json string
+            model: 'gpt-3.5-turbo',  // gpt-3.5-turbo deprecated 2024+
             messages: [
                 {
                     role: 'user',
                     content: prompt_value
                 }
             ],
-            max_tokens: 200,
+            max_tokens: 200,  // How long of response from AI (from ChatGPT API)
         })
     })
     /* res and data and variables returned by fetch()
-       res = response
+       res = response of fetch()
+       data = data obj returned by fetch()
      */
-    .then(res => res.json())
-    .then(data => updateMessage(data))
+    .then(res => res.json())  // convert response back into json format
+    .then(data => updateMessage(data))  // data "message" obj contains response message--update our UI
 }
 
 function updateMessage(message){
     /* TRICK: You can study structure of response w/ console.log(message):
        Object | choices Array: 1st index = object "message", content prop of this obj holds response.
     */
+    // ************* Study the data "message" obj *****************************************
     // console.log(message);  // *** Excellent study of data "message" object returned by OpenAI ChatGPT API ***
+    // ************************************************************************************
     const p = document.querySelector('.thinking');
     p.textContent = message.choices[0].message.content;
     p.classList.remove('thinking');
