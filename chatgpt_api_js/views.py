@@ -21,13 +21,3 @@ class ChatGPT_API_JS_Test1(generic.FormView):
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse({'chatgpt_api_key': settings.OPENAI_CHATGPT_API_KEY})
         return response
-
-
-class ChatGPT_API_JS_Test1_Prompt(generic.FormView):
-    form_class = forms.ChatGPT_API_JS_Test1_Prompt_Form
-    ## model = models.xxxxxx
-    template_name = "chatgpt_api_js/chatgpt_api_js.html"
-
-    def get_success_url(self, *args, **kwargs):
-        """ Does not leave the page """
-        return reverse_lazy("chatgpt_api_js:chatgpt_api_js_test1")

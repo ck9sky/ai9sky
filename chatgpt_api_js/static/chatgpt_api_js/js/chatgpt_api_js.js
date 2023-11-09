@@ -17,7 +17,7 @@ form.addEventListener('submit', e => {
     // Prevent prompt-form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
     value = promptInput.value;  // Global var ######## needed?
-    $id_prompt = $("#id_prompt");
+    let $id_prompt = $("#id_prompt");
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $id_prompt.on("click", function(){
         $.ajax({
