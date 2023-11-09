@@ -4,8 +4,7 @@ const url = 'https://api.openai.com/v1/chat/completions';
 const form = document.querySelector('#prompt-form');
 const promptInput = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
-var iconStr;
-var value;    // Must be global variable for my logic.
+var iconStr, value; // Must be global variable for my logic.
 
 $(function(){
     /* Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
@@ -17,13 +16,15 @@ form.addEventListener('submit', e => {
     // Prevent prompt-form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
     value = promptInput.value;  // Global var ######## needed?
+    // noinspection LocalVariableNamingConventionJS
     let $id_prompt = $("#id_prompt");
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $id_prompt.on("click", function(){
         $.ajax({
             /* I don't believe I have ever used type "GET" for the jQuery ajax(). BUT I need to avoid error 403 problems,
                and I only need to "get" the OpenAI ChatGPT API key and assign to a LOCAL(!) javascipt variable. So using
-               type "POST" is (luckily) unnecessary. 11/5/23 */
+               type "POST" is (luckily) unnecessary. 11/5/23
+             */
             type: "GET",  // ############# test?
             url: '/chatgpt_api_js/test1/',
             dataType: "json",
@@ -46,14 +47,15 @@ form.addEventListener('submit', e => {
             }
         });  // .done()
     });
-    // Trick #3: Force a click event on id_prompt: THIS ALLOWS ABOVE CLICK EVENT TO RUN SUCH THAT API AND THE PROMPT
-    // ARE AVAILABLE AND READY TO SEND TO API. Yes, this is not professional code practice. I just want to learn how
-    // Django can implement "pure" js solution and STILL hide the api key. 11/25/23
+    /* Trick #3: Force a click event on id_prompt: THIS ALLOWS ABOVE CLICK EVENT TO RUN SUCH THAT API AND THE PROMPT
+       ARE AVAILABLE AND READY TO SEND TO API. Yes, this is not professional code practice. I just want to learn how
+        Django can implement "pure" js solution and STILL hide the api key. 11/25/23
+     */
     $id_prompt.click();
 })
 
 function askChatGPT(api){
-    // Ping the API and get a response
+    // Ping the API and get a response with fetch(), use promise .then() to format and update ChatGPT message. 11/8/23
     fetch(url, {
         method: 'POST',
         headers: {
@@ -76,7 +78,7 @@ function askChatGPT(api){
 }
 
 function updateMessage(message){
-    /* You can study structure of response w/ console.log(message):
+    /* TRICK: You can study structure of response w/ console.log(message):
        Object | choices Array: 1st index = object "message", content prop of this obj holds response.
     */
     const p = document.querySelector('.thinking');
