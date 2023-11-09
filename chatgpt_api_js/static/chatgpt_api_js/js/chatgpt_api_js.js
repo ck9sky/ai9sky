@@ -97,6 +97,7 @@ function updateMessage(message){
     // console.log(message);  // *** Excellent study of data "message" object returned by OpenAI ChatGPT API ***
     // ************************************************************************************
     const p = document.querySelector('.thinking');
+    // noinspection JSUnresolvedVariable
     p.textContent = message.choices[0].message.content;
     p.classList.remove('thinking');
     handleScroll();
