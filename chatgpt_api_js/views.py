@@ -8,6 +8,9 @@ from . import forms
 
 
 class ChatGPT_API_JS_Test1(generic.FormView):
+    """ Just one view used, no redirect view, only way to ensure api key is available to javascript when needed.
+        11/8/23
+    """
     form_class = forms.ChatGPT_API_JS_Test1_Hidden_Form
     template_name = "chatgpt_api_js/chatgpt_api_js.html"
 

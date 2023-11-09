@@ -1,7 +1,7 @@
 // noinspection ES6ConvertVarToLetConst,LocalVariableNamingConventionJS
 //
 /* DANGER: api_key MUST BE a LOCAL VAR, NOT A GLOBAL VAR !!! A global var is easy to see in a browser!
-   This is a very IMPORTANT security feature. 11/8/23
+   This is a very IMPORTANT security feature.  11/8/23
  */
 const chatgpt_api_url = 'https://api.openai.com/v1/chat/completions';
 const prompt_form = document.querySelector('#prompt-form');
