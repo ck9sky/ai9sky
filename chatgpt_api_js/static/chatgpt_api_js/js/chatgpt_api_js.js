@@ -35,15 +35,14 @@ prompt_form.addEventListener('submit', e => {
         })  // ajax()
         .done(function(data){
             if (typeof (data['chatgpt_api_key']) !== "undefined"){
-                /* HERE! Assign api key to a LOCAL javascript variable!!! This is the best security I can provide, but
-                   it still may not be enough? Picking off GLOBAL JS VARS is EASY in a browser inspector, but I suspect
-                   there are sophisticated tools that can read LOCAL vs vars too? Hopefully not, BUT THIS IS ANOTHER
-                   GOOD REASON TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23
+                /* DANGER! Assign api key to a LOCAL javascript variable!!! The "api_key" local variable will only
+                   exist for a few milliseconds, then be deleted SUCH THAT ITS VALUE CANNOT BE EASILY FOUND, unlike
+                   the case if api_key was a javascript global variable. 11/5/23, 11/8/23
                  */
-                let api = data['chatgpt_api_key'];
+                let api_key = data['chatgpt_api_key'];
                 if (prompt_value !== '') {
                     createMessageInstance();
-                    askChatGPT(api);
+                    askChatGPT(api_key);
                     handleScroll();
                     prompt_input.value = '';
                 }
@@ -76,6 +75,9 @@ function askChatGPT(api){
             max_tokens: 200,
         })
     })
+    /* res and data and variables returned by fetch()
+       res = response
+     */
     .then(res => res.json())
     .then(data => updateMessage(data))
 }
@@ -84,6 +86,7 @@ function updateMessage(message){
     /* TRICK: You can study structure of response w/ console.log(message):
        Object | choices Array: 1st index = object "message", content prop of this obj holds response.
     */
+    // console.log(message);  // *** Excellent study of data "message" object returned by OpenAI ChatGPT API ***
     const p = document.querySelector('.thinking');
     p.textContent = message.choices[0].message.content;
     p.classList.remove('thinking');
