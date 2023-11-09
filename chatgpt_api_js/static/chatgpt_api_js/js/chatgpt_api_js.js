@@ -1,9 +1,9 @@
 // noinspection ES6ConvertVarToLetConst
-/*
-    DANGER: Do not assign api key to a GLOBAL VARIABLE! Js global vars easily read in browser inspector! 11/5/23
+//
+/* DANGER: Do not assign api key to a GLOBAL VARIABLE! Js global vars easily read in browser inspector! 11/5/23
  */
 const url = 'https://api.openai.com/v1/chat/completions';
-const form = document.querySelector('#prompt-form');
+const prompt_form = document.querySelector('#prompt-form');
 const promptInput = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
 var iconStr, value; // Must be global variable for my logic.
@@ -14,8 +14,8 @@ $(function(){
     $("#id_prompt").unbind("click");
 });
 
-form.addEventListener('submit', e => {
-    // Prevent prompt-form from submitting anything (stop page refresh w/ so user can see results!).
+prompt_form.addEventListener('submit', e => {
+    // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
     value = promptInput.value;  // Global var ######## needed?
     // noinspection LocalVariableNamingConventionJS
