@@ -1,25 +1,26 @@
-// noinspection ES6ConvertVarToLetConst
+// noinspection ES6ConvertVarToLetConst,LocalVariableNamingConventionJS
 //
-/* DANGER: Do not assign api key to a GLOBAL VARIABLE! Js global vars easily read in browser inspector! 11/5/23
+/* DANGER: api_key MUST BE a LOCAL VAR, NOT A GLOBAL VAR !!! A global var is easy to see in a browser!
+   This is a very IMPORTANT security feature. 11/8/23
  */
-const url = 'https://api.openai.com/v1/chat/completions';
+const chatgpt_api_url = 'https://api.openai.com/v1/chat/completions';
 const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
-var iconStr, prompt_value; // Must be global variable for my logic.
+var iconStr, prompt_value, $id_prompt; // Must be global variable for my logic.
 
 $(function(){
     /* Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
      */
-    $("#id_prompt").unbind("click");
+    $id_prompt = $("#id_prompt");
+    $id_prompt.unbind("click");
 });
 
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    prompt_value = prompt_input.value;  // Global var ######## needed?
-    // noinspection LocalVariableNamingConventionJS
-    let $id_prompt = $("#id_prompt");
+    prompt_value = prompt_input.value;
+
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $id_prompt.on("click", function(){
         $.ajax({
@@ -27,7 +28,7 @@ prompt_form.addEventListener('submit', e => {
                and I only need to "get" the OpenAI ChatGPT API key and assign to a LOCAL(!) javascipt variable. So using
                type "POST" is (luckily) unnecessary. 11/5/23
              */
-            type: "GET",  // ############# test?
+            type: "GET",  // Not POST! Much less common in my code work. 11/8/23
             url: '/chatgpt_api_js/test1/',
             dataType: "json",
             data: {},
@@ -58,7 +59,7 @@ prompt_form.addEventListener('submit', e => {
 
 function askChatGPT(api){
     // Ping the API and get a response with fetch(), use promise .then() to format and update ChatGPT message. 11/8/23
-    fetch(url, {
+    fetch(chatgpt_api_url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ function askChatGPT(api){
             messages: [
                 {
                     role: 'user',
-                    content: value
+                    content: prompt_value
                 }
             ],
             max_tokens: 200,
