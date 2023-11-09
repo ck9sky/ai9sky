@@ -1,6 +1,8 @@
-/* DANGER: Do not assign api key to a GLOBAL VARIABLE! Js global vars easily read in browser inspector! 11/5/23 */
+// noinspection ES6ConvertVarToLetConst
+/*
+    DANGER: Do not assign api key to a GLOBAL VARIABLE! Js global vars easily read in browser inspector! 11/5/23
+ */
 const url = 'https://api.openai.com/v1/chat/completions';
-
 const form = document.querySelector('#prompt-form');
 const promptInput = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
