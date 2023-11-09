@@ -4,9 +4,9 @@
  */
 const url = 'https://api.openai.com/v1/chat/completions';
 const prompt_form = document.querySelector('#prompt-form');
-const promptInput = document.querySelector('#id_prompt');
+const prompt_input = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
-var iconStr, value; // Must be global variable for my logic.
+var iconStr, prompt_value; // Must be global variable for my logic.
 
 $(function(){
     /* Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
@@ -17,7 +17,7 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    value = promptInput.value;  // Global var ######## needed?
+    prompt_value = prompt_input.value;  // Global var ######## needed?
     // noinspection LocalVariableNamingConventionJS
     let $id_prompt = $("#id_prompt");
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
@@ -40,11 +40,11 @@ prompt_form.addEventListener('submit', e => {
                    GOOD REASON TO USE PYTHON openai MODULE/PIP INSTEAD OF A "PURE" JAVASCRIPT SOLUTION. 11/5/23
                  */
                 let api = data['chatgpt_api_key'];
-                if (value !== '') {
+                if (prompt_value !== '') {
                     createMessageInstance();
                     askChatGPT(api);
                     handleScroll();
-                    promptInput.value = '';
+                    prompt_input.value = '';
                 }
             }
         });  // .done()
@@ -99,7 +99,7 @@ function createMessageInstance(){
         <div class="message user-message">
             <div class="content">
                 <div class="message-image"></div>
-                <p>${value}</p>
+                <p>${prompt_value}</p>
             </div>
         </div>
         <div class="message ai-message">
