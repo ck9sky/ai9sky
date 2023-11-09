@@ -10,7 +10,8 @@ const chatLog = document.querySelector('.chat-log');
 var iconStr, prompt_value, $id_prompt; // Must be global variable for my logic.
 
 $(function(){
-    /* Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
+    /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
+       Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
      */
     $id_prompt = $("#id_prompt");
     $id_prompt.unbind("click");
@@ -56,13 +57,15 @@ prompt_form.addEventListener('submit', e => {
     $id_prompt.click();
 })
 
-function askChatGPT(api){
-    // Ping the API and get a response with fetch(), use promise .then() to format and update ChatGPT message. 11/8/23
+function askChatGPT(api_key){
+    /* Ping the API and get a response with fetch(), use promise .then() to format and update ChatGPT message. 11/8/23
+       IMPORTANT: api_key is still a LOCAL javascript variable! Still hides api key from bad guys. 11/8/23
+     */
     fetch(chatgpt_api_url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${api}`
+            'Authorization': `Bearer ${api_key}`
         },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
