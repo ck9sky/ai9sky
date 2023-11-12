@@ -5,8 +5,12 @@
  */
 const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
-const chatLog = document.querySelector('.chat-log');
-var prompt, message, fresh_page;  // ############# experiment
+
+// const chatLog = document.querySelector('.chat-log');  // ########### no, don't make a constant?
+var chatLog = document.querySelector('.chat-log');
+
+// var prompt, message, fresh_page;  // ############# experiment / var fresh_page not needed? #######
+var prompt, message;  // ############# experiment
 
 
 $(function(){
@@ -46,7 +50,8 @@ function createMessageInstance(){
 prompt_form.addEventListener('submit', e => {
 
     prompt_value = prompt_input.value;
-    if (prompt_value !== "" && !fresh_page) {
+    // if (prompt_value !== "" && !fresh_page) {  // ####### var fresh_page not needed? ##########
+    if (prompt_value !== "") {
         createMessageInstance();
     }
 
