@@ -24,7 +24,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.plus_context:
+        if self.plus_context['message']:
             context['message'] = self.plus_context['message']
         else:
             context['message'] = "Thinking"
