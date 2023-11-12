@@ -1,10 +1,18 @@
 ## Experimental OpenAI ChatGPT and DALLE pages.
 
-This is a Django project to experiment with creation of APIs of openai.com api.
-This project may include other experiments, such as 3rd-party model testing.
+This Django project experiments with use of various Artificial Intelligence/AI APIs, primarily APIs 
+from openai.com. This project may include other experiments, such as 3rd-party model testing.
+
+This Django project consists of different ways to access OpenAI ChatGPT and DALLE APIs. __Each app of 
+this project is dedicated to a single API and/or method of accessing that API.__ I may add experiments 
+with APIs from other sites (such as Google or Facebook).
+
+In the future I made add one or more apps to experiment with *clones* of 3rd party AI models&mdash;3rd 
+party models would reside in *this* website/project (instead of being accessed via API of a 
+*different* website). Downloading 3rd party AI models is probably much more sophisticated way
+of using AI and may require special knowledge or training I do not currently have.
 
 ## Use Markdown syntax for this document (README.md):
-## This project uses a custom user model, one that extends AbstractBaseUser, and has custom fields as of Spring 2019
 
 [Online Markdown editor](https://stackedit.io/app#)  
 [Markdown cheatsheet, adam-p/markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  
