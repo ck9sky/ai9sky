@@ -6,6 +6,7 @@
 const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
+var prompt, message;  // ############# experiment
 
 
 $(function(){
@@ -25,7 +26,8 @@ function createMessageInstance(){
         <div class="message user-message">
             <div class="content">
                 <div class="message-image"></div>
-                <p>{{ prompt }}</p>
+<!--                <p>{{ prompt }}</p>--> <!-- ########## old/cannot use django context var here? -->
+                <p>${prompt}</p>
             </div>
         </div>
         <div class="message ai-message">
@@ -33,7 +35,8 @@ function createMessageInstance(){
                 <div class="message-image">
                     <img src="${iconStr}" alt="">
                 </div>
-                <p class="thinking">{{ message }}</p>
+<!--                <p class="thinking">{{ message }}</p>--> <!-- ########## old/cannot use django context var here? -->
+                <p class="thinking">${message}</p>
             </div>
         </div>
     </div>    
