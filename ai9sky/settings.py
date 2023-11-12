@@ -170,3 +170,5 @@ if DEBUG:
     SESSION_COOKIE_SECURE = False   # False: Django debug server is http.
 elif not DEBUG:
     SESSION_COOKIE_SECURE = True    # True: If this were live/production site
+
+NULL_STR = ""
