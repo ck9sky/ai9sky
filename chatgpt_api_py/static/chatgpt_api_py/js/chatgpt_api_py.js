@@ -20,18 +20,19 @@ var prompt, message;  // ############# experiment / var fresh_page not needed? #
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
      */
-    // ############ put in load event?
-    // if (first_prompt) {
-    //     chatLog.innerHTML = "";
-    // }
+});
+
+(function(){
+    // This runs faster than calling in ready function / $(function)...
     createMessageInstance();
-});
+})();
 
-
-addEventListener('load',() => {
-    alert("load event");  // ######### test
-    chatLog.innerHTML = "";
-});
+// addEventListener('load',(event) => {
+//     // alert("load event");  // ######### test
+//     // chatLog.innerHTML = "";
+//     chatLog.innerHTML = "";
+//     createMessageInstance();
+// });
 
 
 function createMessageInstance(){
