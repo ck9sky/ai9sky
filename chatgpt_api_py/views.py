@@ -26,12 +26,10 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         context = super().get_context_data(**kwargs)
 
         if self.plus_context:
-
-            ########### just use js handler to write prompt to above ... ##########
-            # if 'prompt' in self.plus_context:
-            #     context['prompt'] = self.plus_context['prompt']
-            # else:
-            #     context['prompt'] = ""
+            if 'prompt' in self.plus_context:
+                context['prompt'] = self.plus_context['prompt']
+            else:
+                context['prompt'] = ""
 
             if 'message' in self.plus_context:
                 context['message'] = self.plus_context['message']
@@ -39,7 +37,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
                 context['message'] = "Thinking"
         else:
             ######### stop using 'prompt' context var...
-            # context['prompt'] = ""
+            context['prompt'] = ""
             context['message'] = "Thinking"
 
         print(f"\n(1) context = {context}\nkwargs = {kwargs}")  ############# test
@@ -74,11 +72,11 @@ class ChatGPT_API_PY_Test1(generic.FormView):
             messages=[{"role": "user", "content": question}]
         )
 
-        kwargs = self.get_form_kwargs()
-        context = self.get_context_data(**kwargs)
-        print(f"\n(2) context = {context}\nkwargs = {kwargs}")  ############# test
+        # kwargs = self.get_form_kwargs()
+        # context = self.get_context_data(**kwargs)
+        # print(f"\n(2) context = {context}\nkwargs = {kwargs}")  ############# test
 
-        # self.plus_context['prompt'] = question  ############ 'prompt' no longer a context var...
+        self.plus_context['prompt'] = question  ############ 'prompt' no longer a context var...
         self.plus_context['message'] = chat_completion.choices[0].message.content
 
         return super().form_valid(form)
