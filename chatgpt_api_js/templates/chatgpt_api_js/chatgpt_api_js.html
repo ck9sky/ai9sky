@@ -18,21 +18,18 @@
 {% endcomment %}
 
 {% block chatgpt_api_content %}
-
 	<div class="chat-container">
-
-    <div class="d-flex justify-content-center">
-        <a href="{% url 'home-no-redirects' %}"
-                class="badge badge-primary mx-0 my-2 p-2"
-                tabindex="-1" role="button">
-            <span class="m-0 p-0"
-                onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
-                onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
-                onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
-                onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                tabindex="0">Back to Main Page</span></a><br>
-    </div>
-
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'home-no-redirects' %}"
+                    class="badge badge-primary mx-0 my-2 p-2"
+                    tabindex="-1" role="button">
+                <span class="m-0 p-0"
+                    onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
+                    onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
+                    onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
+                    tabindex="0">Back to Main Page</span></a><br>
+        </div>
         <div class="chat-log">
             {% comment %} Dynamically rendered by javascript, createMessageInstance() {% endcomment %}
         </div>
