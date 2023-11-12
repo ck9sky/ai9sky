@@ -9,14 +9,16 @@ const prompt_input = document.querySelector('#id_prompt');
 // const chatLog = document.querySelector('.chat-log');  // ########### no, don't make a constant?
 var chatLog = document.querySelector('.chat-log');
 
-// var prompt, message, fresh_page;  // ############# experiment / var fresh_page not needed? #######
-var prompt, message;  // ############# experiment
+var prompt, message, fresh_page;  // ############# experiment / var fresh_page not needed? #######
+// var prompt, message;  // ############# experiment
 
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
      */
-    chatLog.innerHTML = "";
+    if (fresh_page) {
+        chatLog.innerHTML = "";
+    }
     createMessageInstance();
 });
 
