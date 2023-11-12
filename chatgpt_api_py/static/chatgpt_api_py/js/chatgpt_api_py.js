@@ -12,6 +12,7 @@ var prompt, message;  // ############# experiment
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
      */
+    chatLog.innerHTML = "";
     createMessageInstance();
 });
 
