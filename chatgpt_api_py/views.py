@@ -14,23 +14,31 @@ class ChatGPT_API_PY_Test1(generic.FormView):
     """
     form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"
+    plus_context = dict()    ################################ experiment
 
     def get_success_url(self, *args, **kwargs):
         """ Does not leave the page """
         return reverse_lazy("chatgpt_api_py:chatgpt_api_py_test1")
 
-    # def form_valid(self, form):  ############# ?
-    #     # We will add code to show this message (or remove this message if not necessary. 11/11/23
-    #     if settings.NULL_STR.__eq__(form.cleaned_data['prompt']):
-    #         messages.error(
-    #             self.request,
-    #             "You Must Enter a Question!")
-    #         form.add_error('prompt', True)
-    #         return self.form_invalid(form)
-    #
-    #     self.request.session['prompt'] = form.cleaned_data['prompt']
-    #     self.request.session.modified = True
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.plus_context:
+            context['message'] = self.plus_context['message']
+        else:
+            context['message'] = "Thinking"
+        return context
 
+    def form_valid(self, form):  ############# experiment
+        # We will add code to show this message (or remove this message if not necessary. 11/11/23
+        if settings.NULL_STR.__eq__(form.cleaned_data['prompt']):
+            messages.error(
+                self.request,
+                "You Must Enter a Question!")
+            form.add_error('prompt', True)
+            return self.form_invalid(form)
+
+        self.plus_context['message'] = form.cleaned_data['prompt']
+        return super().form_valid(form)
 
 
 
