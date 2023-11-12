@@ -5,17 +5,8 @@
  */
 const prompt_form = document.querySelector('#prompt-form');  // ############ don't use "document." NO NO NO
 const prompt_input = document.querySelector('#id_prompt');
-
-// const prompt_form = querySelector('#prompt-form');  // ######### no ?! "document." needed here?
-// const prompt_input = querySelector('#id_prompt');
-
-// const chatLog = document.querySelector('.chat-log');  // ########### no, don't make a constant?  // "document." would be needed here?
 var chatLog = document.querySelector('.chat-log');  // ######### no ?! "document." needed here?
-// var chatLog = querySelector('.chat-log');  // ########### no no no
-
-var prompt, message;  // ############# experiment / var fresh_page not needed? #######
-// var prompt, message;  // ############# experiment
-
+var prompt, message;
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
@@ -28,17 +19,14 @@ $(function(){
 })();
 
 // addEventListener('load',(event) => {
-//     // alert("load event");  // ######### test
-//     // chatLog.innerHTML = "";
-//     chatLog.innerHTML = "";
-//     createMessageInstance();
 // });
 
 
 function createMessageInstance(){
-    // Replace inner html of our chatlog container
-    // In video, he renames local var from 'value' to 'prompt'...
-    // noinspection HtmlUnknownTarget
+    /* Replace inner html of our chatlog container
+       In video, he renames local var from 'value' to 'prompt'...
+       noinspection HtmlUnknownTarget
+     */
     chatLog.innerHTML +=
     `
     <div class="message-instance-container">
