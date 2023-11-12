@@ -31,7 +31,24 @@
 
 <!-- ############## REMOVE? MODIFY? Not sure if and how this template is used ########### 11/11/23 -->
         <div class="chat-log">
-            { % comment %} Dynamically rendered by javascript, createMessageInstance() { % endcomment %}
+    <!--   { % comment %} Dynamically rendered by javascript, createMessageInstance() { % endcomment %} ####### ? -->
+
+            <div class="message-instance-container">
+                <div class="message user-message">
+                    <div class="content">
+                        <div class="message-image"></div>
+                        <p>${prompt_value}</p>
+                    </div>
+                </div>
+                <div class="message ai-message">
+                    <div class="content">
+                        <div class="message-image">
+                            <img src="{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}" alt="">
+                        </div>
+                        <p class="thinking">Thinking</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -46,7 +63,6 @@
             <input type="submit">
         </form>
 {% endcomment %}
-
 
         { % comment %}
             Prompt Form: Where user enters question for ChatGPT.

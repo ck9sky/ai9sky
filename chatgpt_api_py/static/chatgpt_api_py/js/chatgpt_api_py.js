@@ -3,6 +3,7 @@
 /* NOTE: Unlike app 'chaptgpt_api_js', this app uses Python openai library. Thus we probably can avoid the
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
+var iconStr; // ############## possibly not necessary? ######### 11/11/23
 
 
 $(function(){
