@@ -18,14 +18,14 @@ $(function(){
     createMessageInstance();
 })();
 
-// addEventListener('load',(event) => {
+// addEventListener('load',(event) => {  // ******* No help, cannot implement running chatlog as of 11/11/23
 // });
 
 
 function createMessageInstance(){
     /* Replace inner html of our chatlog container
-       In video, he renames local var from 'value' to 'prompt'...
-       noinspection HtmlUnknownTarget
+       Unlike app 'chatgpt_api_js', this app currently has problem with "+=" such that I cannot create a running
+       chatlog--instead, for now, we just replace the old prompt/message with the latest prompt/message. 11/11/23
      */
     // chatLog.innerHTML +=   // ******* What I want to do... 11/11/23
     chatLog.innerHTML =  // ************ What my Django app is stuck with for the moment. 11/11/23
