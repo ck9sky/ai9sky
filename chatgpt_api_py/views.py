@@ -33,13 +33,14 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         else:
             context['message'] = "Thinking"
 
-        # print(f"\ncontext = {context}\n")  ############# test
+        print(f"\ncontext = {context}\n")  ############# test
 
         return context
 
     def form_valid(self, form):  ############# experiment
         # We will add code to show this message (or remove this message if not necessary. 11/11/23
-        if settings.NULL_STR.__eq__(form.cleaned_data['prompt']):
+        question = form.cleaned_data['prompt']
+        if settings.NULL_STR.__eq__(question):
             messages.error(
                 self.request,
                 "You Must Enter a Question!")
@@ -48,7 +49,6 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         """
             Now we use Python library module openai. 11/11/23
         """
-        question = form.cleaned_data['prompt']
         client = OpenAI()
         chat_completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
