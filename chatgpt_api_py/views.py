@@ -25,12 +25,17 @@ class ChatGPT_API_PY_Test1(generic.FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        if 'message' in self.plus_context:
-            if self.plus_context['message']:
+        if self.plus_context:
+            if 'prompt' in self.plus_context:
+                context['prompt'] = self.plus_context['prompt']
+            else:
+                context['prompt'] = ""
+            if 'message' in self.plus_context:
                 context['message'] = self.plus_context['message']
             else:
                 context['message'] = "Thinking"
         else:
+            context['prompt'] = ""
             context['message'] = "Thinking"
 
         print(f"\ncontext = {context}\n")  ############# test
@@ -55,6 +60,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
             messages=[{"role": "user", "content": question}]
         )
 
+        self.plus_context['prompt'] = question
         self.plus_context['message'] = chat_completion.choices[0].message.content
         return super().form_valid(form)
 
