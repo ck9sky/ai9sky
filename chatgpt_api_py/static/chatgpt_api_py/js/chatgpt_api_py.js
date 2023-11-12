@@ -3,23 +3,24 @@
 /* NOTE: Unlike app 'chaptgpt_api_js', this app uses Python openai library. Thus we probably can avoid the
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
-// const prompt_form = document.querySelector('#prompt-form');  // ############ don't use "document."
-// const prompt_input = document.querySelector('#id_prompt');
+const prompt_form = document.querySelector('#prompt-form');  // ############ don't use "document." NO NO NO
+const prompt_input = document.querySelector('#id_prompt');
 
-const prompt_form = querySelector('#prompt-form');
-const prompt_input = querySelector('#id_prompt');
+// const prompt_form = querySelector('#prompt-form');  // ######### no ?! "document." needed here?
+// const prompt_input = querySelector('#id_prompt');
 
-// const chatLog = document.querySelector('.chat-log');  // ########### no, don't make a constant?  // ############ don't use "document."
-// var chatLog = document.querySelector('.chat-log');  // ############ don't use "document."
-var chatLog = querySelector('.chat-log');
+// const chatLog = document.querySelector('.chat-log');  // ########### no, don't make a constant?  // "document." would be needed here?
+var chatLog = document.querySelector('.chat-log');  // ######### no ?! "document." needed here?
+// var chatLog = querySelector('.chat-log');  // ########### no no no
 
-var prompt, message, first_prompt;  // ############# experiment / var fresh_page not needed? #######
+var prompt, message;  // ############# experiment / var fresh_page not needed? #######
 // var prompt, message;  // ############# experiment
 
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
      */
+    // ############ put in load event?
     // if (first_prompt) {
     //     chatLog.innerHTML = "";
     // }
