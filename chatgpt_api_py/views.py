@@ -34,31 +34,14 @@ class ChatGPT_API_PY_Test1(generic.FormView):
                 context['message'] = self.plus_context['message']
             else:
                 context['message'] = "Thinking"
-
-            # # if 'fresh_page' in self.plus_context:  ################ old? ######## fail
-            # if 'chatgpt_api_py_first_prompt' in self.request.session:  ############ new?
-            #     context['first_prompt'] = True
-            #     del self.request.session['chatgpt_api_py_first_prompt']
-            #     self.request.session.modified = True
-            # else:
-            #     context['first_prompt'] = False
         else:
             context['prompt'] = ""
             context['message'] = "Thinking"
-
-            #################################################### fail ###################
-            # if 'chatgpt_api_py_first_prompt' in self.request.session:  ############ new?
-            #     context['first_prompt'] = True
-            #     del self.request.session['chatgpt_api_py_first_prompt']
-            #     self.request.session.modified = True
-            # else:
-            #     context['first_prompt'] = False
         return context
 
-    def form_valid(self, form):  ############# experiment
+    def form_valid(self, form):
         """ We will add code to show this message (or remove this message if not necessary. 11/11/23
         """
-
         question = form.cleaned_data['prompt']
         if settings.NULL_STR.__eq__(question):
             messages.error(
@@ -77,7 +60,5 @@ class ChatGPT_API_PY_Test1(generic.FormView):
 
         self.plus_context['prompt'] = question
         self.plus_context['message'] = chat_completion.choices[0].message.content
-        # self.plus_context['first_prompt'] = False  ########### no needed here? fail
-
         return super().form_valid(form)
 
