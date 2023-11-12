@@ -41,12 +41,12 @@ class HomeNoRedirects(generic.TemplateView):
     template_name = "index.html"
 
 
-################################### NEW ######################################
-class ChatGPT_API_PY_First_Prompt_Redirect(generic.RedirectView):
-    """ Trick to tell app 'chatgpt_api_py' when the very first prompt is being processed. We anly want to clear the
-        chatlog ONE time. 11/11/23
-    """
-    def get_redirect_url(self, *args, **kwargs):
-        self.request.session['chatgpt_api_py_first_prompt'] = True
-        self.request.session.modified = True
-        return reverse_lazy("chatgpt_api_py:chatgpt_api_py_test1")
+# ################################### NEW ######################################
+# class ChatGPT_API_PY_First_Prompt_Redirect(generic.RedirectView):
+#     """ Trick to tell app 'chatgpt_api_py' when the very first prompt is being processed. We anly want to clear the
+#         chatlog ONE time. 11/11/23
+#     """
+#     def get_redirect_url(self, *args, **kwargs):
+#         self.request.session['chatgpt_api_py_first_prompt'] = True
+#         self.request.session.modified = True
+#         return reverse_lazy("chatgpt_api_py:chatgpt_api_py_test1")

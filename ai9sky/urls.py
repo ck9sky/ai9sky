@@ -25,8 +25,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views_no_models.HomeRedirects.as_view(), name="home"),  # The About page: Root
     path('noredir/', views_no_models.HomeNoRedirects.as_view(), name="home-no-redirects"),  # The About page: Non-Root
-    path('chatgpt_api_py_button', views_no_models.ChatGPT_API_PY_First_Prompt_Redirect.as_view,
-         name="chatgpt_api_py_new_prompt_redir"),  ################ NEW 11/11/23
+
+    # path('chatgpt_api_py_button', views_no_models.ChatGPT_API_PY_First_Prompt_Redirect.as_view,  ############ no 11/11/23
+    #      name="chatgpt_api_py_new_prompt_redir"),  ################ NEW 11/11/23
+
     path('chatgpt_api_js/', include("chatgpt_api_js.urls")),
     path('chatgpt_api_py/', include("chatgpt_api_py.urls")),
     #path('dalle_api_js/', include("dalle_api.urls_js")),
