@@ -28,7 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.getenv('AI9SKY_SECRET_KEY')  # python-dotenv 10/28/23
-OPENAI_API_KEY = os.getenv('OPENAI_API_SECRET_KEY')  # 11/5/23
+# DANGER !!! Python module openai REQUIRES .env_ai9sky key name to be OPENAI_API_KEY !!! 11/11/23
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')  # 11/5/23
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
