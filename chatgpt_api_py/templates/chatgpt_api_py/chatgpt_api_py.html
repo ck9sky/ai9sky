@@ -85,10 +85,10 @@
             prompt = "{{ prompt }}";
             message = "{{ message }}";
 // ########### var fresh_page not needed? ##########
-            {% if fresh_page %}
-                fresh_page = true;
+            {% if first_prompt %}
+                first_prompt = true;
             {% else %}
-                fresh_page = false;
+                first_prompt = false;
             {% endif %}
         </script>
 <!-- ############## REMOVE? MODIFY? Not sure if and how this template is used ########### 11/11/23 -->
