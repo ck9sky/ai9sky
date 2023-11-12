@@ -35,22 +35,24 @@ class ChatGPT_API_PY_Test1(generic.FormView):
             else:
                 context['message'] = "Thinking"
 
-            # if 'fresh_page' in self.plus_context:  ################ old?
-            if 'chatgpt_api_py_first_prompt' in self.request.session:  ############ new?
-                context['first_prompt'] = True
-                del self.request.session['chatgpt_api_py_first_prompt']
-                self.request.session.modified = True
-            else:
-                context['first_prompt'] = False
+            # # if 'fresh_page' in self.plus_context:  ################ old? ######## fail
+            # if 'chatgpt_api_py_first_prompt' in self.request.session:  ############ new?
+            #     context['first_prompt'] = True
+            #     del self.request.session['chatgpt_api_py_first_prompt']
+            #     self.request.session.modified = True
+            # else:
+            #     context['first_prompt'] = False
         else:
             context['prompt'] = ""
             context['message'] = "Thinking"
-            if 'chatgpt_api_py_first_prompt' in self.request.session:  ############ new?
-                context['first_prompt'] = True
-                del self.request.session['chatgpt_api_py_first_prompt']
-                self.request.session.modified = True
-            else:
-                context['first_prompt'] = False
+
+            #################################################### fail ###################
+            # if 'chatgpt_api_py_first_prompt' in self.request.session:  ############ new?
+            #     context['first_prompt'] = True
+            #     del self.request.session['chatgpt_api_py_first_prompt']
+            #     self.request.session.modified = True
+            # else:
+            #     context['first_prompt'] = False
         return context
 
     def form_valid(self, form):  ############# experiment
@@ -75,7 +77,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
 
         self.plus_context['prompt'] = question
         self.plus_context['message'] = chat_completion.choices[0].message.content
-        # self.plus_context['fresh_page'] = False  ########### no needed here?
+        # self.plus_context['first_prompt'] = False  ########### no needed here? fail
 
         return super().form_valid(form)
 
