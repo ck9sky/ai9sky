@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% block body_content %}
-	<div class="jumbotron jumbotron-fluid mb-0 pt-0 pb-0" id="skip-link-main-content">
-		<div class="p-0 mx-0 mt-0 text-center text-dark" role="banner">
-			<p class="display-4 pt-2"><span class="font-italic">OpenAI Experiments</span></p>
+	<div class="jumbotron jumbotron-fluid mb-0 pt-0 pb-0" style="min-height: 100vh;"
+            id="skip-link-main-content">
+		<div class="p-0 m-0 text-center text-dark" role="banner">
+			<p class="display-4 py-4"><span class="font-italic">OpenAI Experiments</span></p>
 
 			{% spaceless %}
             {% comment %} As of Oct 2023 ai9sky project does not authenticate users. 10/28/23 {% endcomment %}
@@ -16,7 +17,7 @@
                     onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
                     onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
                     onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">ChatGPT API with (mostly) JS Test</span></a><br>
+                    tabindex="0">ChatGPT: Mostly JavaScript (No Python OpenAI Python Library)</span></a><br>
 
             {% comment %}
                  <a href="{ % url 'chatgpt_api_py:chatgpt_api_py_test1' %}"
@@ -27,7 +28,7 @@
                                 onkeydown="{ % include '_inline_js_hndlr_span_anchor_keydown.html' %}"
                                 onfocus="{ % include '_inline_js_hndlr_span_focus.html' %}"
                                 onblur="{ % include '_inline_js_hndlr_span_blur.html' %}"
-                              tabindex="0">ChatGPT API using Python and openai module Test</span></a><br>
+                              tabindex="0">ChatGPT: Using Python OpenAI Python Library</span></a><br>
             {% endcomment %}
 
             {% comment %}
@@ -47,7 +48,6 @@
 
 		</div>
 	</div>
-	<div class="mission m-0 px-0 py-3">
-	</div>
+
 {% endblock %}
 
