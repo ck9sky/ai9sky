@@ -9,7 +9,7 @@ This project may include other experiments, such as 3rd-party model testing.
 [Online Markdown editor](https://stackedit.io/app#)  
 [Markdown cheatsheet, adam-p/markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  
 [Markdown cheatsheet, markdownguide.org](https://www.markdownguide.org/cheat-sheet/)  
-[Markdown extended syntax, markdownguide.org](https://www.markdownguide.org/extended-syntax/) 
+[Markdown extended syntax, markdownguide.org](https://www.markdownguide.org/extended-syntax/)
 
 ## Query String Cache Busting
 
