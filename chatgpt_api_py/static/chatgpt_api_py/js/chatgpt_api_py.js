@@ -3,9 +3,9 @@
 /* NOTE: Unlike app 'chaptgpt_api_js', this app uses Python openai library. Thus we probably can avoid the
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
-const prompt_form = document.querySelector('#prompt-form');  // ############ don't use "document." NO NO NO
+const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
-var chatLog = document.querySelector('.chat-log');  // ######### no ?! "document." needed here?
+var chatLog = document.querySelector('.chat-log');
 var prompt, message;
 
 $(function(){
@@ -14,7 +14,7 @@ $(function(){
 });
 
 (function(){
-    // This runs faster than calling in ready function / $(function)...
+    // Runs once on page load. This runs faster than calling in ready function / $(function)...
     createMessageInstance();
 })();
 
@@ -27,7 +27,8 @@ function createMessageInstance(){
        In video, he renames local var from 'value' to 'prompt'...
        noinspection HtmlUnknownTarget
      */
-    chatLog.innerHTML +=
+    // chatLog.innerHTML +=   // ******* What I want to do... 11/11/23
+    chatLog.innerHTML =  // ************ What my Django app is stuck with for the moment. 11/11/23
     `
     <div class="message-instance-container">
         <div class="message user-message">
@@ -49,12 +50,13 @@ function createMessageInstance(){
 }
 
 
-prompt_form.addEventListener('submit', e => {
-
+prompt_form.addEventListener('submit', event => {
+    /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
+       does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
+       to backend server. 11/11/23
+     */
     prompt_value = prompt_input.value;
-    // if (prompt_value !== "" && !fresh_page) {  // ####### var fresh_page not needed? ##########
     if (prompt_value !== "") {
         createMessageInstance();
     }
-
 })
