@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'bootstrap4',     # 10/28/23
     'debug_toolbar',  # 10/28/23
     'chatgpt_api_js', # 11/2/23
+    'chatgpt_api_py', # 11/11/23
 ]
 
 MIDDLEWARE = [
