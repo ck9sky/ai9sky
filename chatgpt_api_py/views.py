@@ -16,7 +16,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
     """
     form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"
-    plus_context = dict()    ################################ experiment
+    plus_context = dict()
 
     def get_success_url(self, *args, **kwargs):
         """ Does not leave the page """
@@ -24,7 +24,6 @@ class ChatGPT_API_PY_Test1(generic.FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         if self.plus_context:
             if 'prompt' in self.plus_context:
                 context['prompt'] = self.plus_context['prompt']
@@ -36,25 +35,13 @@ class ChatGPT_API_PY_Test1(generic.FormView):
             else:
                 context['message'] = "Thinking"
         else:
-            ######### stop using 'prompt' context var...
             context['prompt'] = ""
             context['message'] = "Thinking"
-
-        print(f"\n(1) context = {context}\nkwargs = {kwargs}")  ############# test
-
         return context
 
-    ############### test, this is not the real form_valie() ############# 11/11/23
-    # def form_valid(self, form):  ############# experiment
-    #     # We will add code to show this message (or remove this message if not necessary. 11/11/23
-    #     print("\nform_valid() ...\n")  ############### test
-    #     return super().form_valid(form)
-
-
     def form_valid(self, form):  ############# experiment
-        # We will add code to show this message (or remove this message if not necessary. 11/11/23
-
-        print("\nform_valid() ...\n")  ############### test
+        """ We will add code to show this message (or remove this message if not necessary. 11/11/23
+        """
 
         question = form.cleaned_data['prompt']
         if settings.NULL_STR.__eq__(question):
