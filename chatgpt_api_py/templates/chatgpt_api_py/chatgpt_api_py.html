@@ -30,10 +30,12 @@
         </div>
 
 <!-- ############## REMOVE? MODIFY? Not sure if and how this template is used ########### 11/11/23 -->
-{% comment %}
         <div class="chat-log">
             { % comment %} Dynamically rendered by javascript, createMessageInstance() { % endcomment %}
         </div>
+
+
+{% comment %}  <!-- ############ no, we do not need a 'hidden' form now ################## -->
         { % comment %}
             "API key" Form: Securely send my OpenAI API key to chatgpt_api_js.js.
             Hidden form to allow Django to send API key to JavaScript. This form is NOT part of the original
@@ -43,13 +45,16 @@
             { % csrf_token %}
             <input type="submit">
         </form>
+{% endcomment %}
+
+
         { % comment %}
             Prompt Form: Where user enters question for ChatGPT.
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/5/23
         { % endcomment %}
         <div class="new-message" id="prompt-form">
-            <form method="POST">
+            <form method="POST" action="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}">
                 { % csrf_token %}
                 { % comment %} Django form convention: id_prompt { % endcomment %}
                     <!--suppress HtmlFormInputWithoutLabel -->
@@ -59,7 +64,6 @@
         <script>
             iconStr = "{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}";
         </script>
-{% endcomment %}
 <!-- ############## REMOVE? MODIFY? Not sure if and how this template is used ########### 11/11/23 -->
 
 	</div>

@@ -28,6 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.getenv('AI9SKY_SECRET_KEY')  # python-dotenv 10/28/23
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')  # 11/5/23
 """
     DANGER !!! To use Python library "module" openai, your env file MUST name the key OPENAI_API_KEY !!!
     For example: This project uses env file ~/.env_ai9sky, where that file must define the API key with
@@ -36,8 +37,6 @@ SECRET_KEY = os.getenv('AI9SKY_SECRET_KEY')  # python-dotenv 10/28/23
     ASIDE: I'm not talking about the settings.py constant which I also name OPENAI_API_KEY which could be named
     anything else as long as any app using settings.OPENAI_API_KEY_XXX uses the name (OPENAI_API_KEY_XXXX.
 """
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')  # 11/5/23
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

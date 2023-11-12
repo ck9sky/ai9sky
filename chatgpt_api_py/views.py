@@ -10,7 +10,7 @@ from . import forms
 class ChatGPT_API_PY_Test1(generic.FormView):
     """ Just one view used................?......
     """
-    form_class = forms.ChatGPT_API_PY_Test1_Hidden_Form
+    form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"
 
     def get_success_url(self, *args, **kwargs):

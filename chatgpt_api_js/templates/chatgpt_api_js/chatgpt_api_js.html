@@ -50,7 +50,7 @@
         <div class="new-message" id="prompt-form">
             <form method="POST">
                 {% csrf_token %}
-                {% comment %} Django form convention: id_prompt {% endcomment %}
+                {% comment %} Django form convention doesn't apply, but other apps use thius: id_prompt {% endcomment %}
                     <!--suppress HtmlFormInputWithoutLabel -->
                 <input type="text" id="id_prompt" placeholder="Send a message...">
             </form>
