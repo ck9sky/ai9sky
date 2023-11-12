@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views import generic
 
+from openai import OpenAI   ################# NEW 11/11/23
+
 ## from . import models
 from . import forms
 
@@ -36,8 +38,17 @@ class ChatGPT_API_PY_Test1(generic.FormView):
                 "You Must Enter a Question!")
             form.add_error('prompt', True)
             return self.form_invalid(form)
+        """
+            Now we use Python library module openai. 11/11/23
+        """
+        question = form.cleaned_data['prompt']
+        client = OpenAI()
+        chat_completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": question}]
+        )
 
-        self.plus_context['message'] = form.cleaned_data['prompt']
+        self.plus_context['message'] = chat_completion.choices[0].message.content
         return super().form_valid(form)
 
 
