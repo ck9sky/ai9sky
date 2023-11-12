@@ -26,7 +26,7 @@ urlpatterns = [
     path('', views_no_models.HomeRedirects.as_view(), name="home"),  # The About page: Root
     path('noredir/', views_no_models.HomeNoRedirects.as_view(), name="home-no-redirects"),  # The About page: Non-Root
     path('chatgpt_api_js/', include("chatgpt_api_js.urls")),
-    #path('chatgpt_api_py/', include("chatgpt_api_py.urls")),
+    path('chatgpt_api_py/', include("chatgpt_api_py.urls")),
     #path('dalle_api_js/', include("dalle_api.urls_js")),
     
     # robots.txt in sitewide templates folder. Browse to 127.0.0.1:8000/robots.txt (production: ai9sky.com/robots.txt).

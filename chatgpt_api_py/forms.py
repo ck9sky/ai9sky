@@ -4,5 +4,5 @@ from django import forms
 
 
 ###### possibly similar to what may be needed? 11/11/23
-# class ChatGPT_API_PY_Test1_Hidden_Form(forms.Form):
-# 	pass
+class ChatGPT_API_PY_Test1_Hidden_Form(forms.Form):
+	pass
