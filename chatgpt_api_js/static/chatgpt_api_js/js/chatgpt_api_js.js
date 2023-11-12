@@ -4,9 +4,15 @@
    This is a very IMPORTANT security feature.  11/8/23
  */
 const chatgpt_api_url = 'https://api.openai.com/v1/chat/completions';
-const prompt_form = document.querySelector('#prompt-form');
-const prompt_input = document.querySelector('#id_prompt');
-const chatLog = document.querySelector('.chat-log');
+
+// const prompt_form = document.querySelector('#prompt-form');  ######### "document." unnecessary/problematic? ########## 11/11/23
+// const prompt_input = document.querySelector('#id_prompt');
+// const chatLog = document.querySelector('.chat-log');
+
+const prompt_form = querySelector('#prompt-form');
+const prompt_input = querySelector('#id_prompt');
+const chatLog = querySelector('.chat-log');
+
 var iconStr, prompt_value, $id_prompt; // Must be global variable for my logic.
 
 $(function(){
@@ -97,7 +103,10 @@ function updateMessage(message){
     // ************* Study the data "message" obj *****************************************
     // console.log(message);  // *** Excellent study of data "message" object returned by OpenAI ChatGPT API ***
     // ************************************************************************************
-    const p = document.querySelector('.thinking');
+
+    // const p = document.querySelector('.thinking');  // ########## don't use "document."
+    const p = querySelector('.thinking');
+
     // noinspection JSUnresolvedVariable
     p.textContent = message.choices[0].message.content;
     p.classList.remove('thinking');
