@@ -41,7 +41,7 @@ function createMessageInstance(){
                 <div class="message-image">
                     <img src="${iconStr}" alt="">
                 </div>
-                <p class="thinking">${message}</p>
+                <p>${message}</p>
             </div>
         </div>
     </div>    
