@@ -84,6 +84,11 @@
             iconStr = "{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}";
             prompt = "{{ prompt }}";
             message = "{{ message }}";
+            {% if fresh_page %}
+                fresh_page = true;
+            {% else %}
+                fresh_page = false;
+            {% endif %}
         </script>
 <!-- ############## REMOVE? MODIFY? Not sure if and how this template is used ########### 11/11/23 -->
 

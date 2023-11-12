@@ -6,7 +6,7 @@
 const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
-var prompt, message;  // ############# experiment
+var prompt, message, fresh_page;  // ############# experiment
 
 
 $(function(){
@@ -27,7 +27,6 @@ function createMessageInstance(){
         <div class="message user-message">
             <div class="content">
                 <div class="message-image"></div>
-<!--                <p>{{ prompt }}</p>--> <!-- ########## old/cannot use django context var here? -->
                 <p>${prompt}</p>
             </div>
         </div>
@@ -36,7 +35,6 @@ function createMessageInstance(){
                 <div class="message-image">
                     <img src="${iconStr}" alt="">
                 </div>
-<!--                <p class="thinking">{{ message }}</p>--> <!-- ########## old/cannot use django context var here? -->
                 <p class="thinking">${message}</p>
             </div>
         </div>
@@ -48,7 +46,7 @@ function createMessageInstance(){
 prompt_form.addEventListener('submit', e => {
 
     prompt_value = prompt_input.value;
-    if (prompt_value !== "") {
+    if (prompt_value !== "" && !fresh_page) {
         createMessageInstance();
     }
 

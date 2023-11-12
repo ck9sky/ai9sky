@@ -34,9 +34,15 @@ class ChatGPT_API_PY_Test1(generic.FormView):
                 context['message'] = self.plus_context['message']
             else:
                 context['message'] = "Thinking"
+
+            if 'fresh_page' in self.plus_context:
+                context['fresh_page'] = False
+            else:
+                context['fresh_page'] = True
         else:
             context['prompt'] = ""
             context['message'] = "Thinking"
+            context['fresh_page'] = True
         return context
 
     def form_valid(self, form):  ############# experiment
@@ -59,12 +65,9 @@ class ChatGPT_API_PY_Test1(generic.FormView):
             messages=[{"role": "user", "content": question}]
         )
 
-        # kwargs = self.get_form_kwargs()
-        # context = self.get_context_data(**kwargs)
-        # print(f"\n(2) context = {context}\nkwargs = {kwargs}")  ############# test
-
-        self.plus_context['prompt'] = question  ############ 'prompt' no longer a context var...
+        self.plus_context['prompt'] = question
         self.plus_context['message'] = chat_completion.choices[0].message.content
+        self.plus_context['fresh_page'] = False
 
         return super().form_valid(form)
 
