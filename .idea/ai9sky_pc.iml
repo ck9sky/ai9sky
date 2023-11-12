@@ -19,6 +19,8 @@
       <sourceFolder url="file://$MODULE_DIR$/chatgpt_api_js" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chatgpt_api_js/templatetags" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/templatetags" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chatgpt_api_py" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chatgpt_api_py/templatetags" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -28,6 +30,8 @@
       <list>
         <option value="$MODULE_DIR$/chatgpt_api_js/static/chatgpt_api_js" />
         <option value="$MODULE_DIR$/chatgpt_api_js/templates/chatgpt_api_js" />
+        <option value="$MODULE_DIR$/chatgpt_api_py/static/chatgpt_api_py" />
+        <option value="$MODULE_DIR$/chatgpt_api_py/templates/chatgpt_api_py" />
       </list>
     </option>
   </component>
@@ -37,6 +41,7 @@
       <list>
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/chatgpt_api_js/templates" />
+        <option value="$MODULE_DIR$/chatgpt_api_py/templates" />
       </list>
     </option>
   </component>
