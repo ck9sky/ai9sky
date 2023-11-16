@@ -19,9 +19,8 @@
                     onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
                     tabindex="0">ChatGPT: Mostly JavaScript (No Python OpenAI Python Library)</span></a><br>
 
-{#            <a href="{ % url 'chatgpt_api_py:chatgpt_api_py_test1' %}"<!-- ################ no ########## -->#}
             <a href="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}"
-                    class="badge badge-primary mx-0 my-2 p-1 " id="id_chatgpt-api-py-app-btn"
+                    class="badge badge-primary mx-0 my-2 p-1" id="id_chatgpt-api-py-app-btn"
                     tabindex="-1" role="button">
                 <span class="m-0 p-0"
                     onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
@@ -30,21 +29,17 @@
                     onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
                     tabindex="0">ChatGPT: Using Python OpenAI Python Library</span></a><br>
 
-            {% comment %}
-                <a href="{ % url 'dalle_api_js:dalle_api_js_test1' %}"
-                    class="badge badge-primary mx-0 mt-1 mb-3 p-1" id="id_dalle-api-js-app-btn"
+            <a href="{% url 'dalle_api_js:dalle_api_js_test1' %}"
+                    class="badge badge-primary mx-0 my-2 p-1" id="id_dalle-api-js-app-btn"
                     tabindex="-1" role="button">
-                        <span class="m-0 p-0"
-                                onmousedown="{ % include '_inline_js_hndlr_span_mousedown.html' %}"
-                                onkeydown="{ % include '_inline_js_hndlr_span_anchor_keydown.html' %}"
-                                onfocus="{ % include '_inline_js_hndlr_span_focus.html' %}"
-                                onblur="{ % include '_inline_js_hndlr_span_blur.html' %}"
-                              tabindex="0">DALLE API with only JS Test</span></a>
-            {% endcomment %}
+                <span class="m-0 p-0"
+                    onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
+                    onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
+                    onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
+                    tabindex="0">DALLE API with only JS Test</span></a>
 
-            {% comment %}{ % endif % }{% endcomment %}
             {% endspaceless %}
-
 		</div>
 	</div>
 
