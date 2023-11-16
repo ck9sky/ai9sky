@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'debug_toolbar',  # 10/28/23
     'chatgpt_api_js', # 11/2/23
     'chatgpt_api_py', # 11/11/23
+    'dalle_api_js',   # 11/15/23
 ]
 
 MIDDLEWARE = [
