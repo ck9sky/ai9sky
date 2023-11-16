@@ -4,23 +4,16 @@
    This is a very IMPORTANT security feature.  11/8/23
  */
 const chatgpt_api_url = 'https://api.openai.com/v1/chat/completions';
-
-const prompt_form = document.querySelector('#prompt-form');  // ######### must use "document." here?
+const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
 const prompt_input = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
-
-// const prompt_form = querySelector('#prompt-form');  // ########### no no no
-// const prompt_input = querySelector('#id_prompt');  // ########### no no no
-// const chatLog = querySelector('.chat-log');  // ########### no no no
-
-var iconStr, prompt_value, $id_prompt; // Must be global variable for my logic.
+var iconStr, prompt_value; // Must be global variable for my logic.
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
        Trick #1: unbind click event from id_prompt! User can click id_prompt box and nothing happens yet.
      */
-    $id_prompt = $("#id_prompt");
-    $id_prompt.unbind("click");
+    $prompt_input.unbind("click");
 });
 
 prompt_form.addEventListener('submit', e => {
@@ -29,7 +22,7 @@ prompt_form.addEventListener('submit', e => {
     prompt_value = prompt_input.value;
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
-    $id_prompt.on("click", function(){
+    $prompt_input.on("click", function(){
         $.ajax({
             /* I don't believe I have ever used type "GET" for the jQuery ajax(). BUT I need to avoid error 403 problems,
                and I only need to "get" the OpenAI ChatGPT API key and assign to a LOCAL(!) javascipt variable. So using
@@ -52,7 +45,7 @@ prompt_form.addEventListener('submit', e => {
                     askChatGPT(api_key);
                     handleScroll();
                     prompt_input.value = '';  // Reset prompt back to blank
-                    $id_prompt.unbind("click");  // Unbind click event again! (Trick #1)
+                    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }
             }
         });  // .done()
@@ -61,7 +54,7 @@ prompt_form.addEventListener('submit', e => {
        ARE AVAILABLE AND READY TO SEND TO API. Yes, this is not professional code practice. I just want to learn how
         Django can implement "pure" js solution and STILL hide the api key. 11/25/23
      */
-    $id_prompt.click();
+    $prompt_input.click();
 })
 
 function askChatGPT(api_key){
@@ -104,8 +97,7 @@ function updateMessage(message){
     // console.log(message);  // *** Excellent study of data "message" object returned by OpenAI ChatGPT API ***
     // ************************************************************************************
 
-    const p = document.querySelector('.thinking');  // ########## must use "document." here?
-    // const p = querySelector('.thinking');  // ######### no no no
+    const p = document.querySelector('.thinking');
 
     // noinspection JSUnresolvedVariable
     p.textContent = message.choices[0].message.content;

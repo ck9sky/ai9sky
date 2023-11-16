@@ -14,21 +14,18 @@ $(function(){
 });
 
 (function(){
-    // Runs once on page load. This runs faster than calling in ready function / $(function)...
+    /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
+       starts to load, no waiting) */
     createMessageInstance();
 })();
-
-// addEventListener('load',(event) => {  // ******* No help, cannot implement running chatlog as of 11/11/23
-// });
-
 
 function createMessageInstance(){
     /* Replace inner html of our chatlog container
        Unlike app 'chatgpt_api_js', this app currently has problem with "+=" such that I cannot create a running
        chatlog--instead, for now, we just replace the old prompt/message with the latest prompt/message. 11/11/23
      */
-    // chatLog.innerHTML +=   // ******* What I want to do... 11/11/23
-    chatLog.innerHTML =  // ************ What my Django app is stuck with for the moment. 11/11/23
+ // chatLog.innerHTML +=   // ************ What I want to do... 11/11/23
+    chatLog.innerHTML =    // ************ What my Django app is stuck with for the moment. 11/11/23
     `
     <div class="message-instance-container">
         <div class="message user-message">
@@ -48,7 +45,6 @@ function createMessageInstance(){
     </div>    
     `
 }
-
 
 prompt_form.addEventListener('submit', event => {
     /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
