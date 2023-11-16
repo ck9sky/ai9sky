@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views import generic
 
-from openai import OpenAI   ################# NEW 11/11/23
+from openai import OpenAI   # The openai Python library. 11/11/23
 
 ## from . import models
 from . import forms
