@@ -50,10 +50,6 @@ prompt_form.addEventListener('submit', e => {
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
                     generateImage(api_key);  // prompt_input = inputPrompt (video) ############
-
-                    prompt_input.value = '';  // Reset prompt back to blank
-                    prompt_form.classList.add('disabled');  // Allow form to send another image request
-                    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }
             }
         });  // .done()
@@ -121,6 +117,11 @@ function handleImage(img, prmt){
         `<p><span>${prmt}</span></p>
          <img src="${img}" alt="Generated image of ${prmt}">`;
 
+    prompt_input.value = '';  // Reset prompt back to blank
+    prompt_form.classList.add('disabled');  // Allow form to send another image request
+    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
+    handleRecents(img, prmt);
+
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
     // // $(main).remove();
@@ -128,6 +129,11 @@ function handleImage(img, prmt){
     // //        <p><span>${pval}</span></p>
     // //        <img src="${img}" alt="Generated image of ${pval}">
     // //    </main>`).insertAfter(".recents");
+}
+
+function handleRecents(img, prmt){
+    /* Recents section: Add our current image */
+    recents.style.display = 'block';  // Was none/hidden
 }
 
 function handleError(msg){
