@@ -87,12 +87,12 @@ function askChatGPT(api_key){
             ],
             max_tokens: 200,  // How long of response from AI (from ChatGPT API)
         })
-    })
-    /* res and data and variables returned by fetch()
-       res = response of fetch()
-       data = data obj returned by fetch()
-     */
-    .then(res => res.json())  // convert response back into json format
+    })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
+           Note per fetch() documentation:
+              res = response: The response of fetch() (either spelling res/response)
+              data = data obj: The data obj returned by fetch()
+        */
+    .then(res => res.json())  // convert response back into json format (a json obj)
     .then(data => updateMessage(data))  // data "message" obj contains response message--update our UI
 }
 

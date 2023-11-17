@@ -101,5 +101,12 @@ function generateImage(api_key){
             size: '512x512',
             "response_format": 'url',
         })
-    });
+    })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
+           Note per fetch() documentation:
+              res = response: The response of fetch() (either spelling res/response)
+              data = data obj: The data obj returned by fetch()
+        */
+    .then(res => res.json())  // convert response back into json format (a json obj)
+    .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
+    .catch(error => handleError(error))
 }
