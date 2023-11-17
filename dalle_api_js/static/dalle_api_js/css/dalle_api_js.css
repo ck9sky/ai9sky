@@ -136,6 +136,5 @@ form button {
 }
 form.disabled {
   pointer-events: none;
-  /*opacity: 0.25;*/ /* ###### make invisible for a moment ############### */
-  opacity: 0;
+  opacity: 0; /* Make invisible for a moment (display none looks bad) */
 }
