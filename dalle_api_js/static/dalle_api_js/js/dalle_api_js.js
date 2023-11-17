@@ -132,8 +132,21 @@ function handleImage(img, prmt){
 }
 
 function handleRecents(img, prmt){
-    /* Recents section: Add our current image */
+    /* Recents section: Add our current image. Then add img/prmt to IMG array, target _blank to open in a new
+       browser tab. 11/17/23
+     */
     recents.style.display = 'block';  // Was none/hidden
+    recentImages.push({image: img, prompt: prmt});// Store each prompt for each image
+    recentImages.forEach(RECENT => {
+       recentsUL.innerHTML +=
+       `
+       <li>
+            <a href="${RECENT.image}" target="_blank" title="${RECENT.prompt}">
+                <img src="${RECENT.image}" alt="Generated image for ${RECENT.prompt}">
+            </a>
+        </li>
+       `
+    });
 }
 
 function handleError(msg){
