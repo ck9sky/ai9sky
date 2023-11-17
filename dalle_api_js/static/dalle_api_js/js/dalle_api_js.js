@@ -104,7 +104,7 @@ function generateImage(api_key){
             // model: "image-alpha-001",  // ########### OLD
             "model": "dalle-e-3",   // ############### NEW?
             // "model": "dalle-e-2",   // ############### NEW
-            prompt: prompt_value,
+            "prompt": prompt_value,
             // num_images: 1,  // ######## no
             "n": 1,
             "size": "512x512",

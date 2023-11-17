@@ -39,19 +39,11 @@ I'm not sure social login account (with Google) will enable me to get ChatGPT AP
    Click on ChatGPT button.
 2. DANGER: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.
    BUT, to access Personal settings, YOU MAY NEED TO LOGIN "AGAIN" (even if it seems unnecessary?)
-3. TWO TABS NOW OPEN: Go to (or browse to) OpenAI.com
-   Menu: API|Overview: https://openai.com/product
-4. NEXT PAGE: ...
-   Button: Get Started
-5. NEXT PAGE: https://auth0.openai.com/u/signup/identifier?state=...
-   Already have an account? Log in (click the "Log in" link). i.e. Login "again"?
-   Continue with Google...
-6. YOUR PROFILE PAGE!
-   GET TO THIS URL: https://platform.openai.com/overview
-   (You may need to verify with google app on iphone...)
-   Top of page, upper right, (my google account image), click "Personal"
-   Menu expands down: click "View API Keys"
-7. YOU API KEYS PAGE: https://platform.openai.com/account/api-keys
+3. Browse to here: https://platform.openai.com/api-keys  <-- Or else try your Personal icon picture ... "View API Keys"
+   WARNING: Sometimes, you API key gets "deleted"?
+   Maybe during debug, too many errors, OpenAIcom deletes it?
+   If the key is missing, or you don't see any keys listed, MAKE A NEW ONE.
+4. YOU API KEYS PAGE: https://platform.openai.com/account/api-keys
    TO CREATE NEW API KEY:
    Click "+Create new secret key"
    Popup...
