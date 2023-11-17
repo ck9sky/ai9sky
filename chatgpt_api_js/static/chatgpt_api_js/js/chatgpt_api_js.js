@@ -117,24 +117,22 @@ function createMessageInstance(){
     // In video, he renames local var from 'value' to 'prompt'...
     // noinspection HtmlUnknownTarget
     chatLog.innerHTML +=
-    `
-    <div class="message-instance-container">
-        <div class="message user-message">
-            <div class="content">
-                <div class="message-image"></div>
-                <p>${prompt_value}</p>
-            </div>
-        </div>
-        <div class="message ai-message">
-            <div class="content">
-                <div class="message-image">
-                    <img src="${iconStr}" alt="">
+        `<div class="message-instance-container">
+            <div class="message user-message">
+                <div class="content">
+                    <div class="message-image"></div>
+                    <p>${prompt_value}</p>
                 </div>
-                <p class="thinking">Thinking</p>
             </div>
-        </div>
-    </div>    
-    `
+            <div class="message ai-message">
+                <div class="content">
+                    <div class="message-image">
+                        <img src="${iconStr}" alt="">
+                    </div>
+                    <p class="thinking">Thinking</p>
+                </div>
+            </div>
+        </div>`;
 }
 
 // Scrolls the chatlog to the bottom

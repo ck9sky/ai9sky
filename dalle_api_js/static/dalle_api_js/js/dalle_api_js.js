@@ -135,8 +135,5 @@ function handleImage(img, prmt){
 
 function handleError(msg){
     main.style.display = 'block';
-    main.innerHTML =
-    `
-    <p class="error">There was an error with your request: <br><span>${msg}</span></p>
-    `
+    main.innerHTML = `<p class="error">There was an error with your request: <br><span>${msg}</span></p>`;
 }

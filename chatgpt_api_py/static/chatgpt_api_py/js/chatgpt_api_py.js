@@ -26,24 +26,22 @@ function createMessageInstance(){
      */
  // chatLog.innerHTML +=   // ************ What I want to do... 11/11/23
     chatLog.innerHTML =    // ************ What my Django app is stuck with for the moment. 11/11/23
-    `
-    <div class="message-instance-container">
-        <div class="message user-message">
-            <div class="content">
-                <div class="message-image"></div>
-                <p>${prompt}</p>
-            </div>
-        </div>
-        <div class="message ai-message">
-            <div class="content">
-                <div class="message-image">
-                    <img src="${iconStr}" alt="">
+        `<div class="message-instance-container">
+            <div class="message user-message">
+                <div class="content">
+                    <div class="message-image"></div>
+                    <p>${prompt}</p>
                 </div>
-                <p>${message}</p>
             </div>
-        </div>
-    </div>    
-    `
+            <div class="message ai-message">
+                <div class="content">
+                    <div class="message-image">
+                        <img src="${iconStr}" alt="">
+                    </div>
+                    <p>${message}</p>
+                </div>
+            </div>
+        </div>`;
 }
 
 prompt_form.addEventListener('submit', event => {
