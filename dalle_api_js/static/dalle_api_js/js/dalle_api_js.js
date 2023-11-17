@@ -113,12 +113,45 @@ function generateImage(api_key){
               data = data obj: The data obj returned by fetch()
         */
     .then(res => res.json())  // convert response back into json format (a json obj)
-    .then(data => handleImage(data.data[0].url))  // data "message" obj contains response image--update our UI
+    .then(data => handleImage(data.data[0].url, prompt_value))  // data "message" obj contains response image--update our UI
     .catch(error => handleError(error))
 }
 
-function handleImage(img){
-    console.log(img);
+function handleImage(img, pval){
+
+    // alert("handleImage() ...");  // ######### test
+    // console.log(img);  // To study data obj, or url, uncomment.
+
+
+    // main.style.display = 'block';
+
+
+    // main.innerHTML = "";   // ########## test/debug
+    // main.innterHTML = "<p>Test: Chris</p>";
+
+    $(main).remove();
+    // $("<main></main>").insertAfter(".recents");
+    $(`<main style="display: block;">
+           <p><span>${pval}</span></p>
+           <img src="${img}" alt="Generated image of $ {pval}">
+       </main>`).insertAfter(".recents");
+
+
+    // $(".recents").append(
+    //     `<main>
+    //         <p><span>${pval}</span></p>
+    //         <img src="${img}" alt="Generated image of $ {pval}">
+    //      </main>`);
+
+
+
+    // `
+    // <p><span>${pval}</span></p>
+    // `
+
+//    <img src="$ { img}" alt="Generated image of $ { pval}">
+//    <img src="/Users/ckom9/ai9sky/assets/img/icon/chatgpt-icon-150x150.png" alt="Generated image of $ { pval}">
+
 }
 
 function handleError(msg){
@@ -127,5 +160,4 @@ function handleError(msg){
     `
     <p class="error">There was an error with your request: <br><span>${msg}</span></p>
     `
-
 }
