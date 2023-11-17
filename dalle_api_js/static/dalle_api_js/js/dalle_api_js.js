@@ -118,7 +118,7 @@ function generateImage(api_key){
 }
 
 function handleImage(img, prmt){
-
+    /* Replace innerHTML of main tag with the image. 11/17/23 */
     main.style.display = 'block';
     main.innerHTML =
         `<p><span>${prmt}</span></p>

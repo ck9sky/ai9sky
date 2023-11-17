@@ -20,7 +20,7 @@ $(function(){
 })();
 
 function createMessageInstance(){
-    /* Replace inner html of our chatlog container
+    /* Replace inner html of our chatlog container--THE "ADD ON" TRICK "+=" DOES NOT WORK (due to page loads).
        Unlike app 'chatgpt_api_js', this app currently has problem with "+=" such that I cannot create a running
        chatlog--instead, for now, we just replace the old prompt/message with the latest prompt/message. 11/11/23
      */

@@ -113,8 +113,10 @@ function updateMessage(message){
 }
 
 function createMessageInstance(){
-    // Replace inner html of our chatlog container
-    // In video, he renames local var from 'value' to 'prompt'...
+    /* ADD ON to inner html of our chatlog container.
+       THIS IS SOMETHING GOOD ABOUT "PURE" JAVASCRIPT: Never any page loads, so "+=" trick works.
+       In video, he renames local var from 'value' to 'prompt'...
+     */
     // noinspection HtmlUnknownTarget
     chatLog.innerHTML +=
         `<div class="message-instance-container">
