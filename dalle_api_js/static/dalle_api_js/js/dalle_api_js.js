@@ -59,8 +59,8 @@ prompt_form.addEventListener('submit', e => {
 
                     generateImage(api_key);  // prompt_input = inputPrompt (video) ############
 
-                    prompt_input.value = '';  // Reset prompt back to blank
-                    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
+                    // prompt_input.value = '';  // Reset prompt back to blank  ######### probably required later???
+                    // $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)  ######### probably required later???
                 }
             }
         });  // .done()
@@ -101,14 +101,14 @@ function generateImage(api_key){
             "Authorization": `Bearer ${api_key}`
         },
         body: JSON.stringify({ // convert to json string
-            // model: "image-alpha-001",  // ########### OLD
-            "model": "dalle-e-3",   // ############### NEW?
-            // "model": "dalle-e-2",   // ############### NEW
-            "prompt": prompt_value,
+            // model: 'image-alpha-001',  // ########### OLD
+            // model: 'dalle-e-3',   // ############### NEW? NO, JUST DON'T USE IT: "model argument must be left blank" (inspector)
+            // model: 'dalle-e-2',   // ############### NEW
+            prompt: prompt_value,
             // num_images: 1,  // ######## no
-            "n": 1,
-            "size": "512x512",
-            "response_format": "url",   // ########### test, put back ???!!
+            n: 1,
+            size: '512x512',
+            response_format: 'url',   // ########### test, put back ???!!
         })
     })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
            Note per fetch() documentation:
