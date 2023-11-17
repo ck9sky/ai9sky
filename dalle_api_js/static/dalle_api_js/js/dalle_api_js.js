@@ -49,15 +49,11 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-
-                    // // createMessageInstance();  // ############## ?
-                    // // askChatGPT(api_key);  // ############## ?
-                    // // handleScroll();  // ############## ?
-
                     generateImage(api_key);  // prompt_input = inputPrompt (video) ############
 
-                    // prompt_input.value = '';  // Reset prompt back to blank  ######### probably required later???
-                    // $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)  ######### probably required later???
+                    prompt_input.value = '';  // Reset prompt back to blank
+                    prompt_form.classList.add('disabled');  // Allow form to send another image request
+                    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }
             }
         });  // .done()

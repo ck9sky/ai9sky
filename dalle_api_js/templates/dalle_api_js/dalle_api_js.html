@@ -57,11 +57,11 @@
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/16/23
         {% endcomment %}
-        <form id="prompt-form">
+        <form id="prompt-form" class="mt-1">
             {% csrf_token %}
             {% comment %} Django form convention doesn't apply, but other apps use this: id_prompt {% endcomment %}
             <!--suppress HtmlFormInputWithoutLabel -->
-            <input type="text" id="id_prompt" placeholder="Generate an image with AI">
+            <input type="text" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
             <button>generate</button>
         </form>
 
