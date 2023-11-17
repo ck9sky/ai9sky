@@ -54,7 +54,7 @@ prompt_form.addEventListener('submit', e => {
                     // askChatGPT(api_key);  // ############## ?
                     // handleScroll();  // ############## ?
 
-                    generateImage(prompt_value);  // prompt_input = inputPrompt (video) ############
+                    generateImage();  // prompt_input = inputPrompt (video) ############
 
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
@@ -69,7 +69,7 @@ prompt_form.addEventListener('submit', e => {
     $prompt_input.click();
 })
 
-function generateImage(prompt){
+function generateImage(){
     /* Add 'disabled' class to form. Disable our form from working once 1st prompt is sent: Do not allow a 2nd prompt
        to be sent until getting a response back from our 1st prompt (when 'disabled' class is removed).
      */
@@ -77,4 +77,6 @@ function generateImage(prompt){
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
      */
     main.style.display = 'block';
+    /* Add html to main element */
+    main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
 }
