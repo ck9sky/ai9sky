@@ -3,7 +3,7 @@
 /* DANGER: api_key MUST BE a LOCAL VAR, NOT A GLOBAL VAR !!! A global var is easy to see in a browser!
    This is a very IMPORTANT security feature.  11/16/23
  */
-const dalle_api_url = 'https://api.openai.com/v1/chat/completions';
+const dalle_api_url = 'https://api.openai.com/v1/images/generations';
 const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
 const prompt_input = document.querySelector('#id_prompt');
 // const chatLog = document.querySelector('.chat-log');  // ############## ?
