@@ -49,9 +49,13 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['chatgpt_api_key'];
                 if (prompt_value !== '') {
+
                     // createMessageInstance();  // ############## ?
                     // askChatGPT(api_key);  // ############## ?
                     // handleScroll();  // ############## ?
+
+                    generateImage(prompt_input.value);  // prompt_input = inputPrompt (video) ############
+
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }
@@ -64,3 +68,7 @@ prompt_form.addEventListener('submit', e => {
      */
     $prompt_input.click();
 })
+
+function generateImage(prompt){
+    console.log(prompt);
+}
