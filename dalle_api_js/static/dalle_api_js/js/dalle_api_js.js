@@ -97,17 +97,17 @@ function generateImage(api_key){
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "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"   // `Bearer ${api_key}`
+            "Authorization": "Bearer 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"   // `Bearer ${api_key}`
         },
         body: JSON.stringify({ // convert to json string
-            // model: 'image-alpha-001',  // ########### OLD
-            'model': 'dalle-e-3',   // ############### NEW?
-            // model: 'dalle-e-2',   // ############### NEW
-            'prompt': prompt_value,
+            // model: "image-alpha-001",  // ########### OLD
+            "model": "dalle-e-3",   // ############### NEW?
+            // "model": "dalle-e-2",   // ############### NEW
+            prompt: prompt_value,
             // num_images: 1,  // ######## no
-            'n': 1,
-            'size': '512x512',
-            // response_format: 'url',   // ########### test, put back ???!!
+            "n": 1,
+            "size": "512x512",
+            "response_format": "url",   // ########### test, put back ???!!
         })
     })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
            Note per fetch() documentation:
