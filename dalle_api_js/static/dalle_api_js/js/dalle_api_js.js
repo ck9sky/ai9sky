@@ -4,13 +4,8 @@
    This is a very IMPORTANT security feature.  11/16/23
  */
 const dalle_api_url = 'https://api.openai.com/v1/images/generations';
-
-// prompt_form = form (video) ##########
 const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
-
-// prompt_input = inputPrompt (video) ############
 const prompt_input = document.querySelector('#id_prompt');
-
 const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
@@ -49,7 +44,7 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-                    generateImage(api_key);  // prompt_input = inputPrompt (video) ############
+                    generateImage(api_key);
                 }
             }
         });  // .done()
@@ -141,13 +136,11 @@ function handleRecents(img, prmt){
     recentsUL.innerHTML = "";
     recentImages.reverse().forEach(RECENT => {
        recentsUL.innerHTML +=
-       `
-       <li>
-            <a href="${RECENT.image}" target="_blank" title="${RECENT.prompt}">
-                <img src="${RECENT.image}" alt="Generated image for ${RECENT.prompt}">
-            </a>
-        </li>
-       `
+            `<li>
+                 <a href="${RECENT.image}" target="_blank" title="${RECENT.prompt}">
+                     <img src="${RECENT.image}" alt="Generated image for ${RECENT.prompt}">
+                 </a>
+             </li>`;
     });
 }
 

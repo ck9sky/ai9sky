@@ -115,16 +115,6 @@ form input {
   color: white;
 }
 
-/* ########### Remove? ############# */
-/*form input::-moz-placeholder {*/
-/*  color: rgba(255, 255, 255, 0.5);*/
-/*}*/
-
-/* ########### Remove? ############# */
-/*form input::placeholder {*/
-/*  color: rgba(255, 255, 255, 0.5);*/
-/*}*/
-
 form button {
   font-size: 1.2rem;
   border-radius: 2rem;
