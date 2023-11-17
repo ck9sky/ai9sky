@@ -117,41 +117,20 @@ function generateImage(api_key){
     .catch(error => handleError(error))
 }
 
-function handleImage(img, pval){
+function handleImage(img, prmt){
 
-    // alert("handleImage() ...");  // ######### test
-    // console.log(img);  // To study data obj, or url, uncomment.
+    main.style.display = 'block';
+    main.innerHTML =
+        `<p><span>${prmt}</span></p>
+         <img src="${img}" alt="Generated image of ${prmt}">`;
 
-
-    // main.style.display = 'block';
-
-
-    // main.innerHTML = "";   // ########## test/debug
-    // main.innterHTML = "<p>Test: Chris</p>";
-
-    $(main).remove();
-    // $("<main></main>").insertAfter(".recents");
-    $(`<main style="display: block;">
-           <p><span>${pval}</span></p>
-           <img src="${img}" alt="Generated image of $ {pval}">
-       </main>`).insertAfter(".recents");
-
-
-    // $(".recents").append(
-    //     `<main>
-    //         <p><span>${pval}</span></p>
-    //         <img src="${img}" alt="Generated image of $ {pval}">
-    //      </main>`);
-
-
-
-    // `
-    // <p><span>${pval}</span></p>
-    // `
-
-//    <img src="$ { img}" alt="Generated image of $ { pval}">
-//    <img src="/Users/ckom9/ai9sky/assets/img/icon/chatgpt-icon-150x150.png" alt="Generated image of $ { pval}">
-
+    // // // ------------------------------------------------------------------------------------------------
+    // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
+    // // $(main).remove();
+    // // $(`<main style="display: block;">
+    // //        <p><span>${pval}</span></p>
+    // //        <img src="${img}" alt="Generated image of ${pval}">
+    // //    </main>`).insertAfter(".recents");
 }
 
 function handleError(msg){
