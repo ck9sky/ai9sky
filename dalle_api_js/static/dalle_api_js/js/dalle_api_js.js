@@ -50,14 +50,14 @@ prompt_form.addEventListener('submit', e => {
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
 
-                    // createMessageInstance();  // ############## ?
-                    // askChatGPT(api_key);  // ############## ?
-                    // handleScroll();  // ############## ?
+                    // // createMessageInstance();  // ############## ?
+                    // // askChatGPT(api_key);  // ############## ?
+                    // // handleScroll();  // ############## ?
 
                     generateImage(api_key);  // prompt_input = inputPrompt (video) ############
 
-                    prompt_input.value = '';  // Reset prompt back to blank
-                    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
+                    // prompt_input.value = '';  // Reset prompt back to blank
+                    // $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }
             }
         });  // .done()
@@ -83,36 +83,36 @@ function generateImage(api_key){
     prompt_form.classList.add('disabled');
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
      */
-    main.style.display = 'block';
-    /* Echo prompt back by adding html to main element */
-    main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
-
-    fetch(dalle_api_url, {
-        method: 'POST',
-        header: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${api_key}`
-        },
-        body: JSON.stringify({ // convert to json string
-            // model: 'image-alpha-001',  // ########### OLD
-            model: 'dalle-e-3',   // ############### NEW
-            prompt: prompt_value,
-            "num_images": 1,
-            size: '512x512',
-            "response_format": 'url',
-        })
-    })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
-           Note per fetch() documentation:
-              res = response: The response of fetch() (either spelling res/response)
-              data = data obj: The data obj returned by fetch()
-        */
-    .then(res => res.json())  // convert response back into json format (a json obj)
-    .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
-    .catch(error => handleError(error))
+    // main.style.display = 'block';
+    // /* Echo prompt back by adding html to main element */
+    // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
+    //
+    // fetch(dalle_api_url, {
+    //     method: 'POST',
+    //     header: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer ${api_key}`
+    //     },
+    //     body: JSON.stringify({ // convert to json string
+    //         // model: 'image-alpha-001',  // ########### OLD
+    //         model: 'dalle-e-3',   // ############### NEW
+    //         prompt: prompt_value,
+    //         "num_images": 1,
+    //         size: '512x512',
+    //         "response_format": 'url',
+    //     })
+    // })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
+    //        Note per fetch() documentation:
+    //           res = response: The response of fetch() (either spelling res/response)
+    //           data = data obj: The data obj returned by fetch()
+    //     */
+    // .then(res => res.json())  // convert response back into json format (a json obj)
+    // .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
+    // .catch(error => handleError(error))
 }
 
-function handleImage(){
-
+function handleImage(img){
+    console.log(img);
 }
 
 function handleError(msg){
