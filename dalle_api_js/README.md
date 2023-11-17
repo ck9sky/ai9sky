@@ -19,3 +19,11 @@ if I am to use the Django framework. BUT THIS APP IS PROBABLY HIGHLY USEFUL IN S
 IT TAKES TO DIRECTLY INTERFACE WITH OPENAI API (in this case, the DALLE API).
 
 ALSO be aware: DALLE version used in this app may be deprecated in future (2024+)
+
+### OPENAI DOCS FOR DALLE API
+ 
+-- openai.com (may need to login, browse back to openai.com)  
+-- API | Docs (menu)  
+-- API reference (tab)  
+-- ENDPOINTS | Images (side bar)  
+-- Create image ... etc.  

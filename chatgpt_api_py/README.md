@@ -18,3 +18,11 @@ should not have to spend debug time on.
 SOLUTION: Since I would want to store these running chatlogs in the Django database, anyway, I will create table(s) 
 and extra complexity to achieve running chatlog. Not really a problem, would do it anyway, but sort of bugs me that I 
 am unable to do this as simply as the other app (chatgpt_api_js). 11/11/23
+
+### OPENAI DOCS FOR CHATGPT (not as useful given this app use Python 'openai' Library)
+
+-- openai.com (may need to login, browse back to openai.com)  
+-- API | Docs (menu)  
+-- API reference (tab)  
+-- ENDPOINTS | Chat (sidebar)  
+-- Create chat completion ... etc.  

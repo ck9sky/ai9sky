@@ -13,3 +13,11 @@ IT TAKES TO DIRECTLY INTERFACE WITH OPENAI API (in this case, the ChatGPT API).
 
 ALSO be aware: ChatGPT 3.5 turbo will be deprecated ~2024. You may need to use a different,
 updated API in the future. 11/5/23 cdk
+
+### OPENAI DOCS FOR CHATGPT
+
+-- openai.com (may need to login, browse back to openai.com)  
+-- API | Docs (menu)  
+-- API reference (tab)  
+-- ENDPOINTS | Chat (sidebar)  
+-- Create chat completion ... etc.  
