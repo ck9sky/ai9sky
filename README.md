@@ -35,19 +35,20 @@ IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL L
 
 1. DANGER: SOMETIMES, WITH NO WARNING, MY OPENAI API KEY SEEMS TO BE AUTOMATICALLY DELETED BY OPENAI.  
    I think it may be related to debugging, where an API experiences too may errors (by me!).  
-2. Social login w/ Google cdk_______@_____.com (or should I open a password account w/ OpenAI?)  
-   Click on ChatGPT button.  
-3. DANGER: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.  
+   I HAVE HAD TO CREATE new API key several times (then update ~/.env_ai9sky & restart Terminal).
+2. Social login w/ Google cdk_______@_____.com seems to work ok for me, but I get confused by OpenAI 
+   site browsing. As below, you may need to copy/paste the api keys url to see your api key(s).  
+3. WARNING: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.  
    BUT, to access Personal settings, YOU MAY NEED TO LOGIN "AGAIN" (even if it seems unnecessary?)
-4. Browse to here: https://platform.openai.com/api-keys  <-- Or else try your Personal icon picture ... "View API Keys"  
-   WARNING: Sometimes, you API key gets "deleted"?  
-   Maybe during debug, too many errors, OpenAIcom deletes it?  
-   If the key is missing, or you don't see any keys listed, MAKE A NEW ONE.  
-5. YOUR API KEYS PAGE: https://platform.openai.com/account/api-keys  
+4. BROWSE TO YOUR API KEYS PAGE:  
+   Maybe this: [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) (worked 11/17/23)  
+   Maybe this: [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) (Personal icon picture | View API Keys)  
+   DANGER: As noted above, SOMETIMES YOUR API KEY VANISHES, probably due to debugging errors. If so, you will need to 
+   create a new API key (you can use a single API key for all APIs).  
    TO CREATE NEW API KEY:  
    Click "+Create new secret key"  
    Popup...  
-   Name: ChatGPT API - ai9sky.com  
+   Name: "API key" (I would like to know why some people use multiple keys...)  
    Button: Create secret key  
    DANGER: Copy the ENTIRE key to safe location (DO NOT ALLOW IT TO BE WRITTEN TO GITHUB!)  
    (OpenAI will never let you know what this key is again!)  
