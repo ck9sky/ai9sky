@@ -48,6 +48,9 @@ prompt_form.addEventListener('submit', e => {
                    the case if api_key was a javascript global variable. 11/5/23, 11/8/23
                  */
                 let api_key = data['dalle_api_key'];
+
+                // console.log(`(1)api_key: ${api_key}`);   // ################## test/remove !!!!!!! (GOOD)
+
                 if (prompt_value !== '') {
 
                     // // createMessageInstance();  // ############## ?
@@ -56,8 +59,8 @@ prompt_form.addEventListener('submit', e => {
 
                     generateImage(api_key);  // prompt_input = inputPrompt (video) ############
 
-                    // prompt_input.value = '';  // Reset prompt back to blank
-                    // $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
+                    prompt_input.value = '';  // Reset prompt back to blank
+                    $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }
             }
         });  // .done()
@@ -80,35 +83,40 @@ function generateImage(api_key){
        -- ENDPOINTS | Images (side bar)
        -- Create image ... etc.
      */
+
+    // console.log(`(2)api_key: ${api_key}`);   // ################## test/remove !!!!!!! (GOOD)
+
     prompt_form.classList.add('disabled');
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
      */
-    // main.style.display = 'block';
-    // /* Echo prompt back by adding html to main element */
-    // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
-    //
-    // fetch(dalle_api_url, {
-    //     method: 'POST',
-    //     header: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${api_key}`
-    //     },
-    //     body: JSON.stringify({ // convert to json string
-    //         // model: 'image-alpha-001',  // ########### OLD
-    //         model: 'dalle-e-3',   // ############### NEW
-    //         prompt: prompt_value,
-    //         "num_images": 1,
-    //         size: '512x512',
-    //         "response_format": 'url',
-    //     })
-    // })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
-    //        Note per fetch() documentation:
-    //           res = response: The response of fetch() (either spelling res/response)
-    //           data = data obj: The data obj returned by fetch()
-    //     */
-    // .then(res => res.json())  // convert response back into json format (a json obj)
-    // .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
-    // .catch(error => handleError(error))
+    main.style.display = 'block';
+    /* Echo prompt back by adding html to main element */
+    main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
+
+    fetch(dalle_api_url, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "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"   // `Bearer ${api_key}`
+        },
+        body: JSON.stringify({ // convert to json string
+            // model: 'image-alpha-001',  // ########### OLD
+            'model': 'dalle-e-3',   // ############### NEW?
+            // model: 'dalle-e-2',   // ############### NEW
+            'prompt': prompt_value,
+            // num_images: 1,  // ######## no
+            'n': 1,
+            'size': '512x512',
+            // response_format: 'url',   // ########### test, put back ???!!
+        })
+    })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
+           Note per fetch() documentation:
+              res = response: The response of fetch() (either spelling res/response)
+              data = data obj: The data obj returned by fetch()
+        */
+    .then(res => res.json())  // convert response back into json format (a json obj)
+    .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
+    .catch(error => handleError(error))
 }
 
 function handleImage(img){
