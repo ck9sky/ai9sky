@@ -63,6 +63,13 @@ function askChatGPT(api_key){
 
     use promise .then() to format and update ChatGPT message. 11/8/23
        IMPORTANT: api_key is still a LOCAL javascript variable! Still hides api key from bad guys. 11/8/23
+       ------------------------------------------------------------------------------------------------------------
+       OPENAI DOCS FOR CHATGPT:
+       -- openai.com (may need to login, browse back to openai.com)
+       -- API | Docs (menu)
+       -- API reference (tab)
+       -- ENDPOINTS | Chat (side bar)
+       -- Create chat completion ... etc.
      */
     fetch(chatgpt_api_url, {
         method: 'POST',

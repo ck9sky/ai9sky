@@ -13,6 +13,13 @@ from . import forms
 class ChatGPT_API_PY_Test1(generic.FormView):
     """ Just one view used................?......
         https://stackoverflow.com/questions/6907388/updating-context-data-in-formview-form-valid-method
+       ------------------------------------------------------------------------------------------------------------
+       OPENAI DOCS FOR CHATGPT (Not as crucial to read docs given we use Python openai Library?):
+       -- openai.com (may need to login, browse back to openai.com)
+       -- API | Docs (menu)
+       -- API reference (tab)
+       -- ENDPOINTS | Chat (side bar)
+       -- Create chat completion ... etc.
     """
     form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"
