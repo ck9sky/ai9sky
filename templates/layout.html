@@ -51,88 +51,19 @@
 		{% endblock %}
 	</head>
 	<body>
-
-        {% comment %} Bootstrap navbar is flex box, hence d-flex class is not used {% endcomment %}
-        {% comment %} As of Oct 2023, ai9sky project does not use a navbar. 10/28/23 {% endcomment %}
-
-        {% comment %} Suppress navbar for now. {% endcomment %}
-{#	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justify-content-around">#}
-{#		<div class="container">#}
-{#			{ % if request.user.is_authenticated %}#}
-{#                 {% nav_items_auth taghouse tagscene %}#}
-{#				{ % else %}#}
-{#					{% nav_items_no_auth %}#}
-{#				{ % endif %}#}
-{#            </div>#}
-{#        </nav>#}
-
-		{% comment %}
-            NOTE ALSO: Django default message(s) can be overridden in views.py (see communites/views.py).
-			NOTE ALSO: The default jumbotron does is not flush with the navbar, there is too big a white space, and
-			I note a very tiny space at bottom with footer. I find that '<span>&nbsp;</span>' above message container,
-			pt-3, mt-4 on message container, and mb-2 on jumbotron make even white space (given white background)
-			surrounding jumbotron. But this is odd, may need to troubleshoot. Note you want a space between message
-			and navbar when message pops up, easier for user to see, so may not actually want jumbotron flush with
-			navbar anyway.
-		{% endcomment %}
-
-        {% comment %} As of Oct 2023, ai9sky "openai" project does not use a jumbotron/large image. 10/28/23{% endcomment %}
-		{% comment %}<span>&nbsp;</span>{% endcomment %}{% comment %} css alternative to < span > &nbsp; < /span >? 9/14/19 {% endcomment %}
-
-        {% comment %} ----- Suppress Django messages for now ----- {% endcomment %}
-{#        <div class="container-fluid pt-3 mt-3 px-0 {% block wrapper_class %}{% endblock %}">#}
-{#			{% if messages %}#}
-{#				<div>#}
-                    {% comment %}
-                        (1) django.contrib.messages (settings.py) to display error message(s) for all field
-                            error(s) all at once (where best practice is to display error(s) at top of page (here).
-                            NOTE: use of {{ form }}, {% bootstrap_form form %}, or custom form does not matter.
-                        (2) form_valid()
-                        (3) messages.*(request,'Error message!')
-                        (4) form.add_error('fieldname', True)
-                        (5) return form_invalid()
-                    {% endcomment %}
-{#					{ % for message in messages %}#}
-{#					<div class="alert {{ message.tags }} alert-dismissible mb-0" role="alert">#}
-{#						<button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
-{#							<span aria-hidden="true">&times;</span>#}
-{#						</button>#}
-{#						<div class="container text-center">#}
-{#							<p class="text-dark mb-0">{{ message|safe }}</p>#}
-{#						</div>#}
-{#					</div>#}
-{#					{ % endfor %}#}
-{#				</div>#}
-{#			{% endif %}#}
-
-			{% comment %}
-				DANGER: Only assign AI9SKY1_IndexPageCSRF if request user is not authenticated!
-				DANGER: AI9SKY1_IndexPageCSRF is needed by ai9sky.js [0-tb] and Django view
-				AnonymousUserAuthAjax, in order to send the saved localStorage value of session_key
-				back to Django so that AnonymousUserAuthAjax can know if the session_key changed.
-				VERY SENSITIVE PLACEMENT of AI9SKY_IndexPageCSRF assignment below, cannot use
-				{ % block % } tag as is normally the case for this trick. 10/28/23
-			{% endcomment %}
-
-            {% comment %} As of Oct 2023, ai9sky project does not have anonymous user objs. 10/28/23{% endcomment %}
-            {% comment %}
-			{ % if not request.user.is_authenticated %}
-				<script>
-    				AI9SKY1_IndexPageCSRF = "{{ csrf_token }}";
-				</script>
-			{ % endif %}
-            {% endcomment %}
-{#		</div>#}
-        {% comment %} ----- Suppress Django messages for now ----- {% endcomment %}
+        {% comment %}
+            Bootstrap navbar is flex box, hence d-flex class is not used
+            As of Oct 2023, ai9sky project does not use a navbar. 10/28/23
+        {% endcomment %}
 
 		{% block body_content %}
 			{% comment %} - - - - - - - OPENAI EXPERIMENTAL WEB PAGES HERE! - - - - - - - - - - {% endcomment %}
 		{% endblock %}
 
         {% comment %} As of Oct 2023, ai9sky project does not authenticate users. 10/28/23{% endcomment %}
-{#		{% if request.user.is_authenticated %}#}
+{#		{ % if request.user.is_authenticated %}#}
 {#            {% logout_modal %}#}
-{#		{% endif %}#}
+{#		{ % endif %}#}
 
 {% comment %} As long as app uses flex container, footer is pointless. 10/28/23 {% endcomment %}
 {#		<footer class="footer bg-dark text-light text-center m-0 p-2" style="flex-basis: 50px; padding: 15px 0;">test</footer>#}
