@@ -32,4 +32,4 @@ ALSO be aware: DALLE version used in this app may be deprecated in future (2024+
 
 [https://labs.openai.com](https://labs.openai.com)
 
-Again, OpenAI.com is very confusing site to navigate!
+Again, OpenAI.com is very confusing site to navigate!  

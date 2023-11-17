@@ -26,7 +26,7 @@ css/js files will be loaded into their web browser, or (2) the website/developer
 busting strategy" so user won't have to clear history. WITHOUT CACHE BUSTING IN (1) OR (2), CHANGES YOU MAKE TO CSS, JS,
 IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL LIKELY BE BADLY BROKEN. 
 
-### Reference:
+## References:
 
 ~/ai9sky/ai9sky/settings.py, version_cache_bust = 'v=W.XYZ'
 ~/ai9sky/templatetags/site_wide_template_tags.py, cacheBusterFileNames()
@@ -55,4 +55,11 @@ IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL L
    Done  
    WARNING: You may need to use API key at least once within several hours or it will be revoked?!  
 11/5/23 cdk  
+   
+### OpenAI Dalle URL for AI images AND to Buy Credits for More Images
+
+[https://labs.openai.com](https://labs.openai.com)  
+
+Again, OpenAI.com is very confusing site to navigate!  
+
 
