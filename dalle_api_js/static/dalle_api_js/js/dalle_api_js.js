@@ -110,3 +110,16 @@ function generateImage(api_key){
     .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
     .catch(error => handleError(error))
 }
+
+function handleImage(){
+
+}
+
+function handleError(msg){
+    main.style.display = 'block';
+    main.innerHTML =
+    `
+    <p class="error">There was an error with your request: <br><span>${msg}</span></p>
+    `
+
+}
