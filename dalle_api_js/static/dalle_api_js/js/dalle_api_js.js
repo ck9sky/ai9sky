@@ -70,6 +70,8 @@ prompt_form.addEventListener('submit', e => {
 })
 
 function generateImage(prompt){
-    // Disable our form from working once a prompt is sent, add disabled class to form
+    /* Add 'disabled' class to form. Disable our form from working once 1st prompt is sent: Do not allow a 2nd prompt
+       to be sent until getting a response back from our 1st prompt.
+     */
     prompt_form.classList.add('disabled');
 }
