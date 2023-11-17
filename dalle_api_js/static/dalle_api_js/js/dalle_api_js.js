@@ -118,7 +118,7 @@ function handleImage(img, prmt){
          <img src="${img}" alt="Generated image of ${prmt}">`;
 
     prompt_input.value = '';  // Reset prompt back to blank
-    prompt_form.classList.add('disabled');  // Allow form to send another image request
+    prompt_form.classList.remove('disabled');  // Allow form to send another image request
     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
     handleRecents(img, prmt);
 
