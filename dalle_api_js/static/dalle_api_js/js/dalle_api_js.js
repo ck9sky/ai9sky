@@ -48,9 +48,6 @@ prompt_form.addEventListener('submit', e => {
                    the case if api_key was a javascript global variable. 11/5/23, 11/8/23
                  */
                 let api_key = data['dalle_api_key'];
-
-                // console.log(`(1)api_key: ${api_key}`);   // ################## test/remove !!!!!!! (GOOD)
-
                 if (prompt_value !== '') {
 
                     // // createMessageInstance();  // ############## ?
@@ -83,9 +80,6 @@ function generateImage(api_key){
        -- ENDPOINTS | Images (side bar)
        -- Create image ... etc.
      */
-
-    // console.log(`(2)api_key: ${api_key}`);   // ################## test/remove !!!!!!! (GOOD)
-
     prompt_form.classList.add('disabled');
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
      */
@@ -97,18 +91,21 @@ function generateImage(api_key){
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
-            // "Authorization": "Bearer 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"   // `Bearer ${api_key}`
             "Authorization": `Bearer ${api_key}`
         },
         body: JSON.stringify({ // convert to json string
-            // model: 'image-alpha-001',  // ########### OLD
-            // model: 'dalle-e-3',   // ############### NEW? NO, JUST DON'T USE IT: "model argument must be left blank" (inspector)
-            // model: 'dalle-e-2',   // ############### NEW
+            /*
+                Buggy API? As of Nov 2023 (11/17/23), it seems you must NOT include the model argument, even if you may
+                be specifying the correct/allowed value. Literally had Safari inspector say "model argument must be left
+                blank". Odd. 11/17/23
+             */
+            // No! // model: 'image-alpha-001',  // Deprecated? At any rate, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
+            // No! // model: 'dalle-e-2',        // Deprecated? At any rate, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
+            // No! // model: 'dalle-e-3',        // Not allowed? Like above, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
             prompt: prompt_value,
-            // num_images: 1,  // ######## no
-            n: 1,
+            n: 1,  // In video, this was 'num_images', but dalle-2 (?) uses 'n' instead.
             size: '512x512',
-            response_format: 'url',   // ########### test, put back ???!!
+            response_format: 'url',
         })
     })  /* fetch() is promised-based, we "chain-on" 2 .then() methods.
            Note per fetch() documentation:

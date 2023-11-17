@@ -3,6 +3,12 @@
 [https://teamtreehouse.com/library/build-your-own-ai-image-generator
 ](https://teamtreehouse.com/library/build-your-own-ai-image-generator)
 
+DANGER: For javascript fetch(), I found the 'model' argument must not be used!
+I am pretty sure model is dalle-2 or dalle-3 (in video, one of 'n' argument used to be 'num_images').
+
+DANGER: AS NOTED BEFORE, MY OPENAI API KEY SEEMS TO AUTOMATICALLY DELETED IF, WHILE
+DEBUGGING, TOO MANY ERRORS HAPPEN? RATHER CONFUSING.
+
 This app (dalle_api_js) is a "pure" JavaScript solution to access OpenAI.com DALLE API.
 I will probably never use this method, but I should experiment with it.
 But the Python openai module is (probably) the better solution (e.g. ChatGPT similar app

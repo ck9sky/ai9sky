@@ -33,25 +33,25 @@ IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL L
 
 ## Notes on getting API Key from OpenAI.com
 
-I'm not sure social login account (with Google) will enable me to get ChatGPT API key?
-
-1. Social login w/ Google cdk_______@_____.com (or should I open a password account w/ OpenAI?)
-   Click on ChatGPT button.
-2. DANGER: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.
+1. DANGER: SOMETIMES, WITH NO WARNING, MY OPENAI API KEY SEEMS TO BE AUTOMATICALLY DELETED BY OPENAI.  
+   I think it may be related to debugging, where an API experiences too may errors (by me!).  
+2. Social login w/ Google cdk_______@_____.com (or should I open a password account w/ OpenAI?)  
+   Click on ChatGPT button.  
+3. DANGER: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.  
    BUT, to access Personal settings, YOU MAY NEED TO LOGIN "AGAIN" (even if it seems unnecessary?)
-3. Browse to here: https://platform.openai.com/api-keys  <-- Or else try your Personal icon picture ... "View API Keys"
-   WARNING: Sometimes, you API key gets "deleted"?
-   Maybe during debug, too many errors, OpenAIcom deletes it?
-   If the key is missing, or you don't see any keys listed, MAKE A NEW ONE.
-4. YOU API KEYS PAGE: https://platform.openai.com/account/api-keys
-   TO CREATE NEW API KEY:
-   Click "+Create new secret key"
-   Popup...
-   Name: ChatGPT API - ai9sky.com
-   Button: Create secret key
-   DANGER: Copy the ENTIRE key to safe location (DO NOT ALLOW IT TO BE WRITTEN TO GITHUB!)
-   (OpenAI will never let you know what this key is again!)
-   Done
-   WARNING: You may need to use API key at least once within several hours or it will be revoked?!
-11/5/23 cdk
+4. Browse to here: https://platform.openai.com/api-keys  <-- Or else try your Personal icon picture ... "View API Keys"  
+   WARNING: Sometimes, you API key gets "deleted"?  
+   Maybe during debug, too many errors, OpenAIcom deletes it?  
+   If the key is missing, or you don't see any keys listed, MAKE A NEW ONE.  
+5. YOUR API KEYS PAGE: https://platform.openai.com/account/api-keys  
+   TO CREATE NEW API KEY:  
+   Click "+Create new secret key"  
+   Popup...  
+   Name: ChatGPT API - ai9sky.com  
+   Button: Create secret key  
+   DANGER: Copy the ENTIRE key to safe location (DO NOT ALLOW IT TO BE WRITTEN TO GITHUB!)  
+   (OpenAI will never let you know what this key is again!)  
+   Done  
+   WARNING: You may need to use API key at least once within several hours or it will be revoked?!  
+11/5/23 cdk  
 

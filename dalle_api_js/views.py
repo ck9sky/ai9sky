@@ -22,6 +22,5 @@ class DALLE_API_JS_Test1(generic.FormView):
         """ The form for this view never posts anything, and is just used to deliver api key to javascript. 11/15/23 """
         response = super().get(request, *args, **kwargs)
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            # print(f"settings.OPENAI_API_KEY: {settings.OPENAI_API_KEY}")  ############# test/remove !!!! (GOOD)
             return JsonResponse({'dalle_api_key': settings.OPENAI_API_KEY})
         return response
