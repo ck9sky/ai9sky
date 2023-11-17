@@ -71,7 +71,10 @@ prompt_form.addEventListener('submit', e => {
 
 function generateImage(prompt){
     /* Add 'disabled' class to form. Disable our form from working once 1st prompt is sent: Do not allow a 2nd prompt
-       to be sent until getting a response back from our 1st prompt.
+       to be sent until getting a response back from our 1st prompt (when 'disabled' class is removed).
      */
     prompt_form.classList.add('disabled');
+    /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
+     */
+    main.style.display = 'block';
 }
