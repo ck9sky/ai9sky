@@ -27,3 +27,9 @@ ALSO be aware: DALLE version used in this app may be deprecated in future (2024+
 -- API reference (tab)  
 -- ENDPOINTS | Images (side bar)  
 -- Create image ... etc.  
+
+### OpenAI Dalle URL for AI images AND to Buy Credits for More Images
+
+[https://labs.openai.com](https://labs.openai.com)
+
+Again, OpenAI.com is very confusing site to navigate!

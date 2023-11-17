@@ -100,7 +100,7 @@ function generateImage(api_key){
                 blank". Odd. 11/17/23
              */
             // No! // model: 'image-alpha-001',  // Deprecated? At any rate, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
-            // No! // model: 'dalle-e-2',        // Deprecated? At any rate, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
+            // No! // model: 'dalle-e-2',        // Not allowed? Like above, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
             // No! // model: 'dalle-e-3',        // Not allowed? Like above, DO NOT USE MODEL ARGUMENT (as of Nov 2023?)
             prompt: prompt_value,
             n: 1,  // In video, this was 'num_images', but dalle-2 (?) uses 'n' instead.
@@ -113,7 +113,7 @@ function generateImage(api_key){
               data = data obj: The data obj returned by fetch()
         */
     .then(res => res.json())  // convert response back into json format (a json obj)
-    .then(data => handleImage(data))  // data "message" obj contains response image--update our UI
+    .then(data => handleImage(data.data[0].url))  // data "message" obj contains response image--update our UI
     .catch(error => handleError(error))
 }
 

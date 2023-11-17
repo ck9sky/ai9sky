@@ -19,7 +19,7 @@
 
 {% block chatgpt_api_content %}
 	<div class="chat-container">
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center my-2">
             <a href="{% url 'home-no-redirects' %}"
                     class="badge badge-primary mx-0 my-2 p-2"
                     tabindex="-1" role="button">
@@ -53,7 +53,7 @@
         </form>
 
         {% comment %}
-            Prompt Form(????????????????: Where user enters prompt for DALLE(?) AI image generator
+            Prompt Form: Where user enters prompt for DALLE(?) AI image generator
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/16/23
         {% endcomment %}
