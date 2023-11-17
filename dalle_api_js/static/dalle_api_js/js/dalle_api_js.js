@@ -42,19 +42,19 @@ prompt_form.addEventListener('submit', e => {
             data: {},
         })  // ajax()
         .done(function(data){
-            if (typeof (data['chatgpt_api_key']) !== "undefined"){
+            if (typeof (data['dalle_api_key']) !== "undefined"){
                 /* DANGER! Assign api key to a LOCAL javascript variable!!! The "api_key" local variable will only
                    exist for a few milliseconds, then be deleted SUCH THAT ITS VALUE CANNOT BE EASILY FOUND, unlike
                    the case if api_key was a javascript global variable. 11/5/23, 11/8/23
                  */
-                let api_key = data['chatgpt_api_key'];
+                let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
 
                     // createMessageInstance();  // ############## ?
                     // askChatGPT(api_key);  // ############## ?
                     // handleScroll();  // ############## ?
 
-                    generateImage();  // prompt_input = inputPrompt (video) ############
+                    generateImage(api_key);  // prompt_input = inputPrompt (video) ############
 
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
@@ -69,14 +69,37 @@ prompt_form.addEventListener('submit', e => {
     $prompt_input.click();
 })
 
-function generateImage(){
+function generateImage(api_key){
     /* Add 'disabled' class to form. Disable our form from working once 1st prompt is sent: Do not allow a 2nd prompt
        to be sent until getting a response back from our 1st prompt (when 'disabled' class is removed).
+       ------------------------------------------------------------------------------------------------------------
+       OPENAI DOCS FOR DALLE / IMAGE GENERATION:
+       -- openai.com (may need to login, browse back to openai.com)
+       -- API | Docs (menu)
+       -- API reference (tab)
+       -- ENDPOINTS | Images (side bar)
+       -- Create image ... etc.
      */
     prompt_form.classList.add('disabled');
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
      */
     main.style.display = 'block';
-    /* Add html to main element */
+    /* Echo prompt back by adding html to main element */
     main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
+
+    fetch(dalle_api_url, {
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${api_key}`
+        },
+        body: JSON.stringify({ // convert to json string
+            // model: 'image-alpha-001',  // ########### OLD
+            model: 'dalle-e-3',   // ############### NEW
+            prompt: prompt_value,
+            "num_images": 1,
+            size: '512x512',
+            "response_format": 'url',
+        })
+    });
 }
