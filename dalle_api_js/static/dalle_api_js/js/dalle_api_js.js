@@ -97,7 +97,8 @@ function generateImage(api_key){
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer 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"   // `Bearer ${api_key}`
+            // "Authorization": "Bearer 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"   // `Bearer ${api_key}`
+            "Authorization": `Bearer ${api_key}`
         },
         body: JSON.stringify({ // convert to json string
             // model: "image-alpha-001",  // ########### OLD
