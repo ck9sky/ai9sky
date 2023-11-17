@@ -21,6 +21,8 @@
       <sourceFolder url="file://$MODULE_DIR$/templatetags" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chatgpt_api_py" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chatgpt_api_py/templatetags" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/dalle_api_js" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/dalle_api_js/templatetags" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -32,6 +34,7 @@
         <option value="$MODULE_DIR$/chatgpt_api_js/templates/chatgpt_api_js" />
         <option value="$MODULE_DIR$/chatgpt_api_py/static/chatgpt_api_py" />
         <option value="$MODULE_DIR$/chatgpt_api_py/templates/chatgpt_api_py" />
+        <option value="$MODULE_DIR$/dalle_api_js/static/dalle_api_js" />
       </list>
     </option>
   </component>
@@ -42,6 +45,7 @@
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/chatgpt_api_js/templates" />
         <option value="$MODULE_DIR$/chatgpt_api_py/templates" />
+        <option value="$MODULE_DIR$/dalle_api_js/templates" />
       </list>
     </option>
   </component>

@@ -12,6 +12,9 @@
             <path value="file://$PROJECT_DIR$/chatgpt_api_js/static/chatgpt_api_js/js" />
             <path value="file://$PROJECT_DIR$/chatgpt_api_py/static/chatgpt_api_py/css" />
             <path value="file://$PROJECT_DIR$/chatgpt_api_py/static/chatgpt_api_py/js" />
+            <path value="file://$PROJECT_DIR$/assets/img" />
+            <path value="file://$PROJECT_DIR$/dalle_api_js/static/dalle_api_js/css" />
+            <path value="file://$PROJECT_DIR$/dalle_api_js/static/dalle_api_js/js" />
           </resourceRoots>
         </entryData>
       </entry>
