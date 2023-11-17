@@ -42,6 +42,21 @@
 
         <main></main>
 
+        {% comment %}
+            "API key" Form: Securely send my OpenAI API key to dalle_api_js.js.
+            Hidden form to allow Django to send API key to JavaScript. This form is NOT part of the original
+            Treehouse example video. It is security trick to hide API key (in LOCAL js variable). 11/16/23
+        {% endcomment %}
+        <form method="POST" action="{% url 'dalle_api_js:dalle_api_js_test1' %}" style="display: none;">
+            {% csrf_token %}
+            <input type="submit">
+        </form>
+
+        {% comment %}
+            Prompt Form(????????????????: Where user enters prompt for DALLE(?) AI image generator
+            THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
+            Django view and form and csrf token in order to not crash to browser. 11/16/23
+        {% endcomment %}
         <form>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input type="text" id="prompt" placeholder="Generate an image with AI">
