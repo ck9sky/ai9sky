@@ -70,5 +70,6 @@ prompt_form.addEventListener('submit', e => {
 })
 
 function generateImage(prompt){
-    console.log(prompt);
+    // Disable our form from working once a prompt is sent, add disabled class to form
+    prompt_form.classList.add('disabled');
 }
