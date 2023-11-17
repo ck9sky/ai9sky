@@ -132,7 +132,7 @@ function createMessageInstance(){
                     <p class="thinking">Thinking</p>
                 </div>
             </div>
-        </div>`;
+         </div>`;
 }
 
 // Scrolls the chatlog to the bottom

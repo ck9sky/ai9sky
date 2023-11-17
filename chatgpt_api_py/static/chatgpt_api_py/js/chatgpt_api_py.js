@@ -41,7 +41,7 @@ function createMessageInstance(){
                     <p>${message}</p>
                 </div>
             </div>
-        </div>`;
+         </div>`;
 }
 
 prompt_form.addEventListener('submit', event => {
