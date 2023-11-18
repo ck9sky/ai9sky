@@ -36,6 +36,9 @@ class DALLE_API_PY_Test1(generic.FormView):
         return reverse_lazy("dalle_api_py:dalle_api_py_test1")
 
     def get_context_data(self, **kwargs):
+
+        print("DALLE_API_PY_Test1, get_context_data() ...")  ############ test (GOOD)
+
         context = super().get_context_data(**kwargs)
         if self.plus_context:
             if 'prompt' in self.plus_context:
@@ -56,7 +59,7 @@ class DALLE_API_PY_Test1(generic.FormView):
         """ We will add code to show this message (or remove this message if not necessary. 11/11/23
         """
 
-        print("\n(1)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test
+        print("\n(1)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test (BAD)
 
         img_request = form.cleaned_data['prompt']
         if settings.NULL_STR.__eq__(img_request):
@@ -75,21 +78,22 @@ class DALLE_API_PY_Test1(generic.FormView):
 
         print("\n(2)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test
 
-        client = OpenAI()
-        image_completion = client.images.generate(
-            # model='dalle-api-2',  # NO?! Python openai Library for DALLE API does NOT want a model properyt?! 11/18/23
-            prompt=img_request,
-            n=1,
-            size='512x512',
-            quality='standard',   ################ ???
-            # response_format='url',  ############ ???
-        )
-
-        self.plus_context['prompt'] = img_request
-        self.plus_context['image_url'] = image_completion.data[0].url
-
-        print(f"image_completion.data[0].url: {image_completion.data[0].url}")  ############## test
-        # print(f"image_completion: {image_completion}")  ############## test
+        ##################### test, put back !!!
+        # client = OpenAI()
+        # image_completion = client.images.generate(
+        #     # model='dalle-api-2',  # NO?! Python openai Library for DALLE API does NOT want a model properyt?! 11/18/23
+        #     prompt=img_request,
+        #     n=1,
+        #     size='512x512',
+        #     quality='standard',   ################ ???
+        #     # response_format='url',  ############ ???
+        # )
+        #
+        # self.plus_context['prompt'] = img_request
+        # self.plus_context['image_url'] = image_completion.data[0].url
+        #
+        # print(f"image_completion.data[0].url: {image_completion.data[0].url}")  ############## test
+        # # print(f"image_completion: {image_completion}")  ############## test
 
         return super().form_valid(form)
 
