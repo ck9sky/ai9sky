@@ -107,7 +107,7 @@ main img {
 }
 
 form {
-  margin: auto 2rem 2rem;
+  /*margin: auto 2rem 2rem;*/  /* ######### maybe not??????? */
   position: fixed;  /* ########## new/test */
   bottom: 0;  /* ########## new/test */
   width: 100%;  /* ########## new/test */
@@ -117,6 +117,10 @@ form {
   background-color: #3D4354;
   /*padding: 0.5rem;*/    /* ########## new/test */
   border-radius: 2rem;
+  padding-left: 20px;    /* ########## new/test */
+  padding-right: 20px;    /* ########## new/test */
+  padding-top: 5px;      /* ########## new/test */
+  padding-bottom: 5px;     /* ########## new/test */
 }
 form input {
   display: inline;  /* ########## new/test */
@@ -125,12 +129,13 @@ form input {
   font-size: 1.2rem;
   border-radius: 5px;
   /*width: 100%;  !* ########## new/test *!*/
-  width: calc(100vw - 300px);  /* ########## new/test */
+  width: calc(100vw - 270px);  /* ########## new/test */
   background-color: Black;
   border: none;
   outline: none;
   margin-left: 0.5rem;
   color: white;
+  margin-right: 10px;     /* ########## new/test */
 }
 
 form button {
