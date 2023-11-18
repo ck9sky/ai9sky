@@ -42,7 +42,8 @@ header h1 {
 
 section.recents {
   display: none;
-  padding: 1rem 2rem 0;
+  /*padding: 1rem 2rem 0;*/  /* ########### experiment new */
+  margin: 10px 30px -30px 40px;  /* ########### experiment new */
 }
 section.recents h2 {
   font-size: 0.9rem;
@@ -80,12 +81,13 @@ section.recents ul li img {
 
 main {
   display: none;
-  padding: 2rem;
-  margin-bottom: 50px;  /* ########### experiment new */
+  /*padding: 2rem;*/  /* ########### experiment old? */
+  padding: 5px 30px 60px 30px;  /* ########### experiment new */
   background-color: #242935;
 }
 main p {
   font-size: 1.1rem;
+  margin: 10px 30px 10px 10px;  /* ########### experiment new */
 }
 main p.error {
   color: #FF8080;
@@ -117,12 +119,8 @@ form {
   /*align-items: center;*/
   background-color: #3D4354;
   /*padding: 0.5rem;*/    /* ########## new/test */
-  border-radius: 2rem;
-  /*padding-left: 20px;    !* ########## new/test *!*/
-  /*padding-right: 20px;    !* ########## new/test *!*/
-  /*padding-top: 5px;      !* ########## new/test *!*/
-  /*padding-bottom: 5px;     !* ########## new/test *!*/
-  padding: 5px 20px 5px 20px;
+  border-radius: 1rem;
+  padding: 5px 20px 5px 20px;  /* ########## new/test */
 }
 form input {
   display: inline;  /* ########## new/test */
