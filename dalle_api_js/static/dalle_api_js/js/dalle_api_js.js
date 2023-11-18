@@ -115,7 +115,7 @@ function handleImage(img_url, prompt_value){  // ################## NEW
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
     main.innerHTML =
-        `<p><span>${prmt}</span></p>
+        `<p><span>${prompt_value}</span></p>
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
 
     prompt_input.value = '';  // Reset prompt back to blank
@@ -137,9 +137,9 @@ function handleImage(img_url, prompt_value){  // ################## NEW
 function handleRecents(img_url, prompt_value){  // ########### NEW
     /* Recents section: Save user's latest image to RECENTS array. We will show the user a <ul> list of their most
        "recent" images (thumb sized), <ul> left-to-right, the leftmost is most recent. User can click one of the
-       thumb sized images and it opens in a new browser tab. 11/17/23
+       thumb sized images and it opens in a new browser tab (target=_blank). 11/17/23
      */
-    recents.style.display = 'block';  // Was none/hidden
+    recents.style.display = 'block';  // Default of recents is hidden, here make visible (display 'block')
     recentImages.reverse();  // Before push, reverse array, newest will be first (after 2nd reverse below)
     // recentImages.push({image: img, prompt: prmt});// Store each prompt for each image ############# OLD
     recentImages.push({IMG_URL: img_url, PROMPT_VALUE: prompt_value});// Store each prompt for each image ############ NEW
@@ -167,7 +167,14 @@ function handleRecents(img_url, prompt_value){  // ########### NEW
 
 }
 
-function handleError(msg){
+// // ############################ OLD
+// function handleError(msg){
+//     main.style.display = 'block';
+//     main.innerHTML = `<p class="error">There was an error with your request: <br><span>${msg}</span></p>`;
+// }
+
+// ########################## NEW
+function handleError(message){
     main.style.display = 'block';
-    main.innerHTML = `<p class="error">There was an error with your request: <br><span>${msg}</span></p>`;
+    main.innerHTML = `<p class="error">There was an error with your request: <br><span>${message}</span></p>`;
 }
