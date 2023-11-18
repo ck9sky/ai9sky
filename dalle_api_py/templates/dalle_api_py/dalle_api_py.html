@@ -16,14 +16,45 @@
 {% endcomment %}
 
 {% block chatgpt_api_content %}
-    <div>
+    <div class="chat-container">
+        <div class="d-flex justify-content-center my-2">
+            <a href="{% url 'home-no-redirects' %}"
+                    class="badge badge-primary mx-0 my-2 p-2"
+                    tabindex="-1" role="button">
+                <span class="m-0 p-0"
+                    onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
+                    onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
+                    onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
+                    tabindex="0">Back to Main Page</span></a><br>
+        </div>
 
+        <header>
+            <h1>AI Image Generator</h1>
+        </header>
 
+        <section class="recents">
+            <h2>R E C E N T</h2>
+            {% comment %} Dynamically rendered by javascript, handleRecents() {% endcomment %}
+            <ul></ul>
+        </section>
 
+        <main>
+            {% comment %} Dynamically rendered by javascript, handleImage() {% endcomment %}
+        </main>
 
-
-
-
+        {% comment %}
+            Prompt Form: Where user enters prompt for DALLE AI image generator.
+            THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
+            Django view and form and csrf token in order to not crash to browser. 11/18/23
+        {% endcomment %}
+        <form id="prompt-form" class="mt-1">
+            {% csrf_token %}
+            {% comment %} Django form convention doesn't apply, but other apps use this: id_prompt {% endcomment %}
+            <!--suppress HtmlFormInputWithoutLabel -->
+            <input type="text" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
+            <button>generate</button>
+        </form>
         <script>
             prompt_value = "{{ prompt }}";
             img_url = "{{ image_url }}";
