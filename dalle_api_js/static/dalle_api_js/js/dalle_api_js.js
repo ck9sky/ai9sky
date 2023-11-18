@@ -147,7 +147,6 @@ function handleRecents(img_url, prompt_value){
                  </a>
              </li>`;
     });
-
 }
 
 function handleError(message){

@@ -50,22 +50,22 @@
         {% endcomment %}
 
 
-        <div>  <!-- ################### new div: SHOULD(NO??!!) id="prompt-form" go here instead ????? -->
+{#        <div id="prompt-form">  <!-- ################### new div: SHOULD(NO??!!) id="prompt-form" go here instead ????? -->#}
 
-{#        <form id="prompt-form"  action="{ % url 'dalle_api_py:dalle_api_py_test1' % }" class="mt-1">#}<!-- ######### move id prompt-form -->
-        <form method="POST" id="prompt-form" action="{% url 'dalle_api_py:dalle_api_py_test1' %}" class="mt-1">
+        <form method="POST" id="prompt-form"  action="{% url 'dalle_api_py:dalle_api_py_test1' %}" class="mt-1"><!-- ######### move id prompt-form -->
+{#        <form method="POST" action="{ % url 'dalle_api_py:dalle_api_py_test1' % }" class="mt-1">#}
             {% csrf_token %}
             {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
             <!--suppress HtmlFormInputWithoutLabel -->
             <input type="text" name="prompt" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
-{#            <button>generate</button>#}  <!-- ########## DEBUG, TEMP REMOVE THIS BUTTON -->
+            <button>generate</button>
         </form>
 
-        </div>
+{#        </div>#}
 
 
         <script>
-            prompt_value = "{{ prompt }}";
+            {#prompt_value = "{{ prompt }}";   // ############## NO, WASTEFUL? REMOVE etc. #############}
             img_url = "{{ image_url }}";
         </script>
     </div>

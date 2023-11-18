@@ -18,12 +18,12 @@ $(function(){
      */
 });
 
-// // ################## unnecessary? remove!
-// (function(){
-//     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
-//        starts to load, no waiting) */
-//     handleImage();
-// })();
+// ################## unnecessary? remove!
+(function(){
+    /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
+       starts to load, no waiting) */
+    handleImage();
+})();
 
 prompt_form.addEventListener('submit', () => {
     /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
@@ -31,7 +31,8 @@ prompt_form.addEventListener('submit', () => {
        to backend server. 11/11/23
      */
     let prompt_value = prompt_input.value;
-    if (prompt_value !== "") {
+    if (prompt_value !== "") {   // ########################## (KEEP!)
+    // if (prompt_value !== "" && img_url !== "") {  // ############## not helpful...
         handleImage();   // ############### DEBUG, TEMP REMOVAL
     }
 })
@@ -41,8 +42,8 @@ function handleImage(){
        seems smoother than css display none/block. 11/17/23
      */
 
-    // console.log(`handleImage() ...`);  // ############### test
-    alert(`handleImage() ...`);  // ############### test
+    console.log(`handleImage(), img_url: ${img_url}`);  // ############### test
+    // alert(`handleImage() ...`);  // ############### test
 
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
@@ -54,6 +55,7 @@ function handleImage(){
     prompt_form.classList.remove('disabled');  // Allow form to send another image request
     $prompt_input.unbind("click");              // Unbind click event again! (Trick #1)
     // // handleScroll();  // Unnecessary? Not used. 11/18/23
+
     handleRecents(img_url, prompt_value);
 
     // // // ------------------------------------------------------------------------------------------------
@@ -82,7 +84,6 @@ function handleRecents(img_url, prompt_value){
                  </a>
              </li>`;
     });
-
 }
 
 function handleError(message){

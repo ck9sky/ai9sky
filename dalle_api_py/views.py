@@ -37,7 +37,7 @@ class DALLE_API_PY_Test1(generic.FormView):
 
     def get_context_data(self, **kwargs):
 
-        # print("DALLE_API_PY_Test1, get_context_data() ...")  ############ test (GOOD)
+        print("DALLE_API_PY_Test1, get_context_data() ...")  ############ test (GOOD)
 
         context = super().get_context_data(**kwargs)
         if self.plus_context:
@@ -59,7 +59,7 @@ class DALLE_API_PY_Test1(generic.FormView):
         """ We will add code to show this message (or remove this message if not necessary. 11/11/23
         """
 
-        # print("\n(1)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test (BAD)
+        print("\n(1)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test (BAD)
 
         img_request = form.cleaned_data['prompt']
         if settings.NULL_STR.__eq__(img_request):
@@ -76,7 +76,7 @@ class DALLE_API_PY_Test1(generic.FormView):
             https://github.com/openai/openai-python
         """
 
-        # print("\n(2)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test
+        print("\n(2)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test
 
         client = OpenAI()
         image_completion = client.images.generate(
