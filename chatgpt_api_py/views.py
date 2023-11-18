@@ -26,7 +26,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
     """
     form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"
-    plus_context = dict()
+    plus_context = dict()  # Special trick: plus_context custom attrb, but maybe there is better way to "NOT" use a Django db?
 
     def get_success_url(self, *args, **kwargs):
         """ Does not leave the page """
@@ -56,7 +56,7 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         if settings.NULL_STR.__eq__(question):
             messages.error(
                 self.request,
-                "You Must Enter a Question!")
+                "You Must Enter a Question!")  # BUT as of Nov 2023, this site does not display Django messages (FYI). 11/17/23
             form.add_error('prompt', True)
             return self.form_invalid(form)
         """
