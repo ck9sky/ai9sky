@@ -7,7 +7,8 @@ const chatgpt_api_url = 'https://api.openai.com/v1/chat/completions';
 const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
 const prompt_input = document.querySelector('#id_prompt');
 const chatLog = document.querySelector('.chat-log');
-var iconStr, prompt_value; // Must be global variable for my logic.
+// var iconStr, prompt_value; // ################ OLD
+var iconStr; // ############################### NEW
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
@@ -19,7 +20,8 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    prompt_value = prompt_input.value;
+    // prompt_value = prompt_input.value;  // ############ OLD
+    let prompt_value = prompt_input.value;  // ############ NEW
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $prompt_input.on("click", function(){
@@ -41,8 +43,10 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['chatgpt_api_key'];
                 if (prompt_value !== '') {
-                    createMessageInstance();
-                    askChatGPT(api_key);
+                    // createMessageInstance();   // #################### OLD
+                    createMessageInstance(prompt_value);  // ############# NEW
+                    // askChatGPT(api_key);   // #################### OLD
+                    askChatGPT(api_key, prompt_value);  // ############# NEW
                     handleScroll();
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
@@ -57,7 +61,8 @@ prompt_form.addEventListener('submit', e => {
     $prompt_input.click();
 })
 
-function askChatGPT(api_key){
+// function askChatGPT(api_key){      // #################### OLD
+function askChatGPT(api_key, prompt_value){  // ############# NEW
     /* Ping the API and get a response with fetch(). Since fetch() is promise-based, we use .then() to format the
        response message, and then call
 
@@ -112,7 +117,8 @@ function updateMessage(message){
     handleScroll();
 }
 
-function createMessageInstance(){
+// function createMessageInstance(){  // ############## OLD
+function createMessageInstance(prompt_value){  // ############## NEW
     /* ADD ON to inner html of our chatlog container.
        THIS IS SOMETHING GOOD ABOUT "PURE" JAVASCRIPT: Never any page loads, so "+=" trick works.
        In video, he renames local var from 'value' to 'prompt'...

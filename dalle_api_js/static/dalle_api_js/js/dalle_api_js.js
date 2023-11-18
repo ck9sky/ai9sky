@@ -10,7 +10,7 @@ const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
 const recentImages = [];
-var iconStr, prompt_value; // Must be global variable for my logic.
+var iconStr, prompt_value; // DANGER: prompt_value Must be global variable for this app (chatgpt_api_js)!
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
@@ -22,7 +22,7 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    prompt_value = prompt_input.value;
+    prompt_value = prompt_input.value;  // Initialize global var prompt_value here.
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $prompt_input.on("click", function(){
