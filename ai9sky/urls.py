@@ -28,7 +28,8 @@ urlpatterns = [
     path('chatgpt_api_js/', include("chatgpt_api_js.urls")),
     path('chatgpt_api_py/', include("chatgpt_api_py.urls")),
     path('dalle_api_js/', include("dalle_api_js.urls")),
-    
+    path('dalle_api_py/', include("dalle_api_py.urls")),
+
     # robots.txt in sitewide templates folder. Browse to 127.0.0.1:8000/robots.txt (production: ai9sky.com/robots.txt).
     # Documentation and info: https://www.robotstxt.org/robotstxt.html + https://adamj.eu/tech/2020/02/10/robots-txt/
     path(
