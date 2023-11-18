@@ -36,9 +36,6 @@ class DALLE_API_PY_Test1(generic.FormView):
         return reverse_lazy("dalle_api_py:dalle_api_py_test1")
 
     def get_context_data(self, **kwargs):
-
-        print("DALLE_API_PY_Test1, get_context_data() ...")  ############ test (GOOD)
-
         context = super().get_context_data(**kwargs)
         if self.plus_context:
             if 'prompt' in self.plus_context:
@@ -78,8 +75,8 @@ class DALLE_API_PY_Test1(generic.FormView):
             prompt=img_request,
             n=1,
             size='512x512',
-            quality='standard',   ################ ???
-            # response_format='url',  ############ ???
+            quality='standard',        # OpenAI DALLE API docs show 'quality' property used.
+            ## response_format='url',  # But app 'dalle_api_js' uses 'response_format'... 11/18/23
         )
 
         self.plus_context['prompt'] = img_request
