@@ -72,7 +72,7 @@ class DALLE_API_PY_Test1(generic.FormView):
 
         client = OpenAI()
         image_completion = client.images.generate(
-            model='dalle-api-2',  ############ Maybe will also not want to include model?
+            model='dalle-api-3',  ############ Maybe will also not want to include model?
             prompt=img_request,
             n=1,
             size='512x512',
@@ -83,7 +83,8 @@ class DALLE_API_PY_Test1(generic.FormView):
         self.plus_context['prompt'] = img_request
         self.plus_context['image_url'] = image_completion.data[0].url
 
-        print(f"image_completion.data[0].url: {image_completion.data[0].url}")  ############## test
-        
+        # print(f"image_completion.data[0].url: {image_completion.data[0].url}")  ############## test
+        print(f"image_completion: {image_completion}")  ############## test
+
         return super().form_valid(form)
 

@@ -41,7 +41,8 @@ function handleImage(){
        seems smoother than css display none/block. 11/17/23
      */
 
-    console.log(`handleImage() ...`);  // ############### test
+    // console.log(`handleImage() ...`);  // ############### test
+    alert(`handleImage() ...`);  // ############### test
 
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
