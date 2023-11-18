@@ -18,7 +18,7 @@ $(function(){
      */
 });
 
-// // ################## unnecessary?
+// // ################## unnecessary? remove!
 // (function(){
 //     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
 //        starts to load, no waiting) */
@@ -32,7 +32,7 @@ prompt_form.addEventListener('submit', () => {
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
-        // handleImage();   // ############### DEBUG, TEMP REMOVAL
+        handleImage();   // ############### DEBUG, TEMP REMOVAL
     }
 })
 
