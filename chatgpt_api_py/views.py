@@ -56,11 +56,15 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         if settings.NULL_STR.__eq__(question):
             messages.error(
                 self.request,
-                "You Must Enter a Question!")  # BUT as of Nov 2023, this site does not display Django messages (FYI). 11/17/23
+                "You Must Enter a Question!")  # BUT as of Nov 2023, site does not display Django messages (11/17/23
             form.add_error('prompt', True)
             return self.form_invalid(form)
         """
             Now we use Python library module openai. 11/11/23
+            -----------------------------------------------------------------
+            https://platform.openai.com/docs/libraries 
+            https://platform.openai.com/docs/api-reference?lang=python  
+            https://github.com/openai/openai-python
         """
         client = OpenAI()
         chat_completion = client.chat.completions.create(

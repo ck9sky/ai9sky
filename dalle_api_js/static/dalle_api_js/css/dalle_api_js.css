@@ -54,6 +54,7 @@ section.recents ul {
 section.recents ul::-webkit-scrollbar {
   height: 0;
 }
+
 section.recents ul li {
   list-style: none;
   height: 86px;
