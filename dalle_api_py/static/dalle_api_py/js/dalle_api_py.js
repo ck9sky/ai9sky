@@ -4,12 +4,15 @@
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
 
-/* ######## DEBUG: Below is copy of chatgpt_api_py.js (THIS APP'S JS SIMILAR?) ######################### */
-
-const prompt_form = document.querySelector('#prompt-form');
+const dalle_api_url = 'https://api.openai.com/v1/images/generations';
+const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
 const prompt_input = document.querySelector('#id_prompt');
-var chatLog = document.querySelector('.chat-log');
-var prompt, message;
+const recents = document.querySelector('section.recents');
+const recentsUL = recents.querySelector('ul');
+const main = document.querySelector('main');
+const recentImages = [];
+var iconStr;
+var prompt, image_url;
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
@@ -27,7 +30,7 @@ prompt_form.addEventListener('submit', () => {
        does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
        to backend server. 11/11/23
      */
-    let prompt_value = prompt_input.value;  // in 'chatgpt_api_py', prompt_value does not have to be a global var.
+    let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
         createMessageInstance();
     }

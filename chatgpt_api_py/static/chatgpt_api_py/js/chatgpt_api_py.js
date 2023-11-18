@@ -20,11 +20,11 @@ $(function(){
 })();
 
 prompt_form.addEventListener('submit', () => {
-    /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
-       does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
-       to backend server. 11/11/23
+    /* Best I can do with using database. Each prompt/message overwrites the previous prompt/image request,
+       does not look good (the app 'dalle_api_j' can do it, I think because it never "submits" form
+       to backend server. 11/18/23
      */
-    let prompt_value = prompt_input.value;  // in 'chatgpt_api_py', prompt_value does not have to be a global var.
+    let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
         createMessageInstance();
     }

@@ -16,107 +16,19 @@
 {% endcomment %}
 
 {% block chatgpt_api_content %}
+    <div>
 
-    <div class="chat-container">
-        <div class="d-flex justify-content-center my-2">
-            <a href="{% url 'home-no-redirects' %}"
-                    class="badge badge-primary mx-0 my-2 p-2"
-                    tabindex="-1" role="button">
-                <span class="m-0 p-0"
-                    onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
-                    onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
-                    onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
-                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">Back to Main Page</span></a><br>
-        </div>
 
-        <header>
-            <h1>AI Image Generator</h1>
-        </header>
 
-        <section class="recents">
-            <h2>R E C E N T</h2>
-            <ul></ul>
-        </section>
 
-        <main></main>
 
-        {% comment %}
-            "API key" Form: Securely send my OpenAI API key to dalle_api_js.js.
-            Hidden form to allow Django to send API key to JavaScript. This form is NOT part of the original
-            Treehouse example video. It is security trick to hide API key (in LOCAL js variable). 11/16/23
-        {% endcomment %}
-        <form method="POST" action="{% url 'dalle_api_js:dalle_api_js_test1' %}" style="display: none;">
-            {% csrf_token %}
-            <input type="submit">
-        </form>
 
-        {% comment %}
-            Prompt Form: Where user enters prompt for DALLE(?) AI image generator
-            THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
-            Django view and form and csrf token in order to not crash to browser. 11/16/23
-        {% endcomment %}
 
-{% comment %}
-<!--
-        <form id="prompt-form" class="mt-1">
-            { % csrf_token %}
-            { % comment %} Django form convention doesn't apply, but other apps use this: id_prompt { % endcomment %}
--->
-            <!--suppress HtmlFormInputWithoutLabel -->
-<!--
-            <input type="text" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
-            <button>generate</button>
-        </form>
--->
-{% endcomment %}
-    </div>
-
-<!-- ####################### DO NOT USE/WRONG APP ############### -->
-
-{% comment %}
-<!--
-	<div class="chat-container">
-        <div class="d-flex justify-content-center">
-            <a href="{ % url 'home-no-redirects' %}"
-                    class="badge badge-primary mx-0 my-2 p-2"
-                    tabindex="-1" role="button">
-                <span class="m-0 p-0"
-                    onmousedown="{ % include '_inline_js_hndlr_span_mousedown.html' %}"
-                    onkeydown="{ % include '_inline_js_hndlr_span_anchor_keydown.html' %}"
-                    onfocus="{ % include '_inline_js_hndlr_span_focus.html' %}"
-                    onblur="{ % include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">Back to Main Page</span></a><br>
-        </div>
-
-        <div class="chat-log">
-        </div>
-        { % comment %}
-            Prompt Form: Where user enters question for ChatGPT.
-            THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
-            Django view and form and csrf token in order to not crash to browser. 11/5/23
-        { % endcomment %}
-        <div class="new-message" id="prompt-form">
-            <form method="POST" action="{ % url 'chatgpt_api_py:chatgpt_api_py_test1' %}">
-                { % csrf_token %}
-                { % comment %} Django form convention: name="prompt", id="id_prompt" { % endcomment %}
--->
-
-                    <!--suppress HtmlFormInputWithoutLabel -->
-<!--
-                <input type="text" name="prompt" id="id_prompt" placeholder="Send a message...">
-            </form>
-        </div>
         <script>
-            iconStr = "{ { staticTag }}img/icon/chatgpt-icon-150x150.png{ { QM }}{ { VERSION_CACHE_BUST }}";
-            prompt = "{ { prompt }}";
-            message = "{ { message }}";
+            prompt = "{{ prompt }}";
+            image_url = "{{ image_url }}";
         </script>
-	</div>
--->
-{% endcomment %}
-<!-- ####################### DO NOT USE/WRONG APP ############### -->
-
+    </div>
 {% endblock %}
 
 {% block javascript %}
