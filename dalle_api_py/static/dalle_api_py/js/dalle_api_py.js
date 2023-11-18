@@ -3,6 +3,9 @@
 /* NOTE: Unlike app 'chaptgpt_api_js', this app uses Python openai library. Thus we probably can avoid the
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
+
+/* ######## DEBUG: Below is copy of chatgpt_api_py.js (THIS APP'S JS SIMILAR?) ######################### */
+
 const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
 var chatLog = document.querySelector('.chat-log');
