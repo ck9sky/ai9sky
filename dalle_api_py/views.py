@@ -37,32 +37,29 @@ class DALLE_API_PY_Test1(generic.FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if self.plus_context:
+            if 'prompt' in self.plus_context:
+                context['prompt'] = self.plus_context['prompt']
+            else:
+                context['prompt'] = ""
 
-        ################## Not sure if plus_context "trick" will be used, but it would not have these context var names ##########
-        # if self.plus_context:
-        #     if 'prompt' in self.plus_context:
-        #         context['prompt'] = self.plus_context['prompt']
-        #     else:
-        #         context['prompt'] = ""
-
-        #     if 'message' in self.plus_context:
-        #         context['message'] = self.plus_context['message']
-        #     else:
-        #         context['message'] = "Thinking"
-        # else:
-        #     context['prompt'] = ""
-        #     context['message'] = "Thinking"
-        
+            if 'image' in self.plus_context:
+                context['image'] = self.plus_context['image']
+            else:
+                context['image'] = "Thinking"
+        else:
+            context['prompt'] = ""
+            context['image'] = "Thinking"
         return context
 
     def form_valid(self, form):
         """ We will add code to show this message (or remove this message if not necessary. 11/11/23
         """
-        question = form.cleaned_data['prompt']
-        if settings.NULL_STR.__eq__(question):
+        img_request = form.cleaned_data['prompt']
+        if settings.NULL_STR.__eq__(img_request):
             messages.error(
                 self.request,
-                "You Must Enter a Question!")  # BUT as of Nov 2023, site does not display Django messages. 11/17/23
+                "You Must Enter Image Request!")  # BUT as of Nov 2023, site does not display Django messages. 11/17/23
             form.add_error('prompt', True)
             return self.form_invalid(form)
         """
@@ -74,13 +71,16 @@ class DALLE_API_PY_Test1(generic.FormView):
         """
 
         client = OpenAI()
-        image_completion = client.chat.completions.create(
-            model="dalle-api-2",
-            messages=[{"role": "user", "content": question}]
+        image_completion = client.images.generate(
+            model='dalle-api-2',  ############ Maybe will also not want to include model?
+            prompt=img_request,
+            n=1,
+            size='512x512',
+            response_format='url'
         )
 
-        self.plus_context['prompt'] = question
-        self.plus_context['message'] = chat_completion.choices[0].message.content
+        self.plus_context['prompt'] = img_request
+        self.plus_context['image'] = image_completion.data[0].url
         
         return super().form_valid(form)
 
