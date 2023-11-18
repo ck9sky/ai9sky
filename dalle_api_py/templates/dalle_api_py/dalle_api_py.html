@@ -55,9 +55,9 @@
 {#        <form id="prompt-form"  action="{ % url 'dalle_api_py:dalle_api_py_test1' % }" class="mt-1">#}<!-- ######### move id prompt-form -->
         <form method="POST" id="prompt-form" action="{% url 'dalle_api_py:dalle_api_py_test1' %}" class="mt-1">
             {% csrf_token %}
-            {% comment %} Django form convention doesn't apply, but other apps use this: id_prompt {% endcomment %}
+            {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
             <!--suppress HtmlFormInputWithoutLabel -->
-            <input type="text" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
+            <input type="text" name="prompt" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
 {#            <button>generate</button>#}  <!-- ########## DEBUG, TEMP REMOVE THIS BUTTON -->
         </form>
 

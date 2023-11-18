@@ -62,9 +62,9 @@
         {% endcomment %}
         <form id="prompt-form" class="mt-1">
             {% csrf_token %}
-            {% comment %} Django form convention doesn't apply, but other apps use this: id_prompt {% endcomment %}
-            <!--suppress HtmlFormInputWithoutLabel -->
-            <input type="text" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
+            {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
+                <!--suppress HtmlFormInputWithoutLabel -->
+            <input type="text" name="prompt" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
             <button>generate</button>
         </form>
 	</div>
