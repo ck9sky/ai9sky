@@ -16,13 +16,8 @@ body {
   color: #ffffff;
   background-color: #1B202D;
   min-height: 100vh;
-  /* ############# REMOVE NEXT 3 PROPERTIES????????? ########## */
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*justify-content: flex-start;*/
 }
 
-/* ################ NEW/EXPERIMENT ##################  */
 /* .chat-container display flex, column, is what forces prompt input box
    to always be in bottom of window (even at page load/no message content. 11/18/23 */
 .chat-container {
@@ -42,8 +37,7 @@ header h1 {
 
 section.recents {
   display: none;
-  /*padding: 1rem 2rem 0;*/  /* ########### experiment new */
-  margin: 10px 30px -30px 40px;  /* ########### experiment new */
+  margin: 10px 30px -30px 40px;
 }
 section.recents h2 {
   font-size: 0.9rem;
@@ -81,13 +75,12 @@ section.recents ul li img {
 
 main {
   display: none;
-  /*padding: 2rem;*/  /* ########### experiment old? */
-  padding: 5px 30px 60px 30px;  /* ########### experiment new */
+  padding: 5px 30px 60px 30px;
   background-color: #242935;
 }
 main p {
   font-size: 1.1rem;
-  margin: 10px 30px 10px 10px;  /* ########### experiment new */
+  margin: 10px 30px 10px 10px;
 }
 main p.error {
   color: #FF8080;
@@ -102,7 +95,6 @@ main p span {
   font-weight: 500;
 }
 main img {
-  /*position: sticky;   !* ################# TEST ONLY!/no/remove! ############# *!*/
   margin-top: 1rem;
   border-radius: 1rem;
   width: 100%;
@@ -110,37 +102,30 @@ main img {
 }
 
 form {
-  /*margin: auto 2rem 2rem;*/  /* ######### maybe not??????? */
-  position: fixed;  /* ########## new/test */
-  bottom: 0;  /* ########## new/test */
-  width: 100%;  /* ########## new/test */
-  /*display: flex;*/    /* ########## new/test */
-  /*justify-content: space-between;*/
-  /*align-items: center;*/
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: #3D4354;
-  /*padding: 0.5rem;*/    /* ########## new/test */
   border-radius: 1rem;
-  padding: 5px 20px 5px 20px;  /* ########## new/test */
+  padding: 5px 20px 5px 20px;
 }
 form input {
-  display: inline;  /* ########## new/test */
-  position: static;  /* ########## new/test */
-  /*bottom: 0;  !* ########## new/test *!*/
+  display: inline;
+  position: static;
   font-size: 1.2rem;
   border-radius: 5px;
-  /*width: 100%;  !* ########## new/test *!*/
-  width: calc(100vw - 290px);  /* ########## new/test */
+  width: calc(100vw - 290px);
   background-color: Black;
   border: none;
   outline: none;
   margin-left: 0.5rem;
   color: white;
-  margin-right: 10px;     /* ########## new/test */
+  margin-right: 10px;
 }
 
 form button {
-  display: inline;  /* ########## new/test */
-  width: 200px;  /* ########## new/test */
+  display: inline;
+  width: 200px;
   font-size: 1.2rem;
   border-radius: 2rem;
   padding: 0.5rem;

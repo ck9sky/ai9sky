@@ -110,14 +110,7 @@ function handleImage(img_url, prompt_value){
        seems smoother than css display none/block. 11/17/23
      */
     prompt_form.style.opacity = 1.0;
-
-    // main.style.height = '100%';   // ############### NEW? EXPERIMENT? ######## fail
-
     main.style.display = 'block';
-    // main.style.display = 'flex';  // ############ NEW? fail
-
-    // main.style.flexDirection = 'column';   // ############### NEW? EXPERIMENT? ######## fail
-
     main.innerHTML =
         `<p><span>${prompt_value}</span></p>
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
@@ -125,8 +118,7 @@ function handleImage(img_url, prompt_value){
     prompt_input.value = '';  // Reset prompt back to blank
     prompt_form.classList.remove('disabled');  // Allow form to send another image request
     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
-    // handleRecents(img, prmt);  // ############ OLD
-    handleScroll();  // ################## NEW / EXPERIMENT 11/18/23
+    handleScroll();  // ################### ???
     handleRecents(img_url, prompt_value);
 
     // // // ------------------------------------------------------------------------------------------------
@@ -138,29 +130,15 @@ function handleImage(img_url, prompt_value){
     // //    </main>`).insertAfter(".recents");
 }
 
-// function handleRecents(img, prmt){  // ############# OLD
-function handleRecents(img_url, prompt_value){  // ########### NEW
+function handleRecents(img_url, prompt_value){
     /* Recents section: Save user's latest image to RECENTS array. We will show the user a <ul> list of their most
        "recent" images (thumb sized), <ul> left-to-right, the leftmost is most recent. User can click one of the
        thumb sized images and it opens in a new browser tab (target=_blank). 11/17/23
      */
     recents.style.display = 'block';  // Default of recents is hidden, here make visible (display 'block')
-    recentImages.reverse();  // Before push, reverse array, newest will be first (after 2nd reverse below)
-    // recentImages.push({image: img, prompt: prmt});// Store each prompt for each image ############# OLD
-    recentImages.push({IMG_URL: img_url, PROMPT_VALUE: prompt_value});// Store each prompt for each image ############ NEW
+    recentImages.reverse();           // Before push, reverse array, newest will be first (after 2nd reverse below)
+    recentImages.push({IMG_URL: img_url, PROMPT_VALUE: prompt_value});  // Store each image/prompt pair for RECENTs
     recentsUL.innerHTML = "";
-
-    // // ############################ OLD
-    // recentImages.reverse().forEach(RECENT => {
-    //    recentsUL.innerHTML +=
-    //         `<li>
-    //              <a href="${RECENT.image}" target="_blank" title="${RECENT.prompt}">
-    //                  <img src="${RECENT.image}" alt="Generated image for ${RECENT.prompt}">
-    //              </a>
-    //          </li>`;
-    // });
-
-    // ############################# NEW (in a moment...)
     recentImages.reverse().forEach(RECENT => {
        recentsUL.innerHTML +=
             `<li>
