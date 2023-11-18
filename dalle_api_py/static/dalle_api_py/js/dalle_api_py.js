@@ -14,7 +14,7 @@ can use template (chatgpt_api_py.html) to obtain their values from context varia
 11/18/23 */
 
 /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded"). */
-// // $(function(){});
+/* $(function(){}); */
 
 // ################## Necessary ?!
 (function(){

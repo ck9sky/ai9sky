@@ -10,7 +10,7 @@ var prompt, message; /* App 'chatgpt_api_py' requires prompt/message to be globa
 template (chatgpt_api_py.html) to obtain their values from context variables returned by Django framework. 11/18/23 */
 
 /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded"). */
-// // $(function(){});
+/* $(function(){}); */
 
 (function(){
     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
