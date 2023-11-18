@@ -32,6 +32,8 @@ body {
     color: var(--primary-text);
 }
 
+/* .chat-container display flex, column, is what forces prompt input box
+   to always be in bottom of window (even at page load/no message content. 11/18/23 */
 .chat-container {
     height: 100%;
     display: flex;

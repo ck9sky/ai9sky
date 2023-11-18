@@ -5,21 +5,21 @@
    Still not fixed, note Tagbirds uses Bootstrap CDN i.e. I am using most recent release of Bootstrap 4.  10/28/23 */
 
 
-/*.display-2{*/
-/*    font-size: 2.75rem;*/
-/*    font-weight: 300;*/
-/*    line-height: 1.0;*/
-/*}*/
-/*.display-3{*/
-/*    font-size: 2.25rem;*/
-/*    font-weight: 300;*/
-/*    line-height: 1.0;*/
-/*}*/
-/*.display-4{*/
-/*    font-size: 1.75rem;*/
-/*    font-weight: 300;*/
-/*    line-height: 1.0;*/
-/*}*/
+.display-2{
+    font-size: 2.75rem;
+    font-weight: 300;
+    line-height: 1.0;
+}
+.display-3{
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.0;
+}
+.display-4{
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1.0;
+}
 
 
 /* -------------- EXTRA LARGE DEVICE: device size > md=1200px (desktop PC/mac)---------------- */
@@ -30,21 +30,21 @@
 */
 
 
-/*@media screen and (min-width: 1200px){*/
+@media screen and (min-width: 1200px){
 
-/*    .display-2{*/
-/*        font-size: 5.00rem;*/
-/*        font-weight: 300;*/
-/*        line-height: 1.0;*/
-/*    }*/
-/*    .display-3{*/
-/*        font-size: 4.25rem;*/
-/*        font-weight: 300;*/
-/*        line-height: 1.0;*/
-/*    }*/
-/*    .display-4{*/
-/*        font-size: 3.75rem;*/
-/*        font-weight: 300;*/
-/*        line-height: 1.0;*/
-/*    }*/
-/*}*/
+    .display-2{
+        font-size: 5.00rem;
+        font-weight: 300;
+        line-height: 1.0;
+    }
+    .display-3{
+        font-size: 4.25rem;
+        font-weight: 300;
+        line-height: 1.0;
+    }
+    .display-4{
+        font-size: 3.75rem;
+        font-weight: 300;
+        line-height: 1.0;
+    }
+}
