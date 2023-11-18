@@ -1,7 +1,8 @@
 // noinspection ES6ConvertVarToLetConst,LocalVariableNamingConventionJS
 //
-/* DANGER: api_key MUST BE a LOCAL VAR, NOT A GLOBAL VAR !!! A global var is easy to see in a browser!
-   This is a very IMPORTANT security feature.  11/16/23
+/* DANGER: api_key MUST NOT BE A GLOBAL VARIABLE !!! Security issue. When api_key is a local variable,
+   it exists for a tiny fraction of a second, so it (I would hope!) cannot be viewed merely by using
+   your browser inspector. 11/8/23, 11/18/23
  */
 const dalle_api_url = 'https://api.openai.com/v1/images/generations';
 const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
@@ -10,7 +11,8 @@ const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
 const recentImages = [];
-var iconStr, prompt_value; // DANGER: prompt_value Must be global variable for this app (chatgpt_api_js)!
+// var iconStr, prompt_value; // ################ OLD
+var iconStr; // ############################## NEW
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
@@ -22,7 +24,8 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    prompt_value = prompt_input.value;  // Initialize global var prompt_value here.
+    // prompt_value = prompt_input.value;  // ################# OLD
+    let prompt_value = prompt_input.value;  // ############## NEW
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $prompt_input.on("click", function(){
@@ -44,7 +47,8 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-                    generateImage(api_key);
+                    // generateImage(api_key);  // ###################### OLD
+                    generateImage(api_key, prompt_value);  // ############ NEW
                 }
             }
         });  // .done()
@@ -56,7 +60,8 @@ prompt_form.addEventListener('submit', e => {
     $prompt_input.click();
 })
 
-function generateImage(api_key){
+// function generateImage(api_key){  // ###################### OLD
+function generateImage(api_key, prompt_value){  // ############ NEW
     /* Add 'disabled' class to form. Disable our form from working once 1st prompt is sent: Do not allow a 2nd prompt
        to be sent until getting a response back from our 1st prompt (when 'disabled' class is removed).
        ------------------------------------------------------------------------------------------------------------
@@ -104,18 +109,20 @@ function generateImage(api_key){
     .catch(error => handleError(error))
 }
 
-function handleImage(img, prmt){
+// function handleImage(img, prmt){  // ################# OLD
+function handleImage(img_url, prompt_value){  // ################## NEW
     /* Replace innerHTML of main tag with the image. 11/17/23 */
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
     main.innerHTML =
         `<p><span>${prmt}</span></p>
-         <img src="${img}" alt="Generated image of ${prmt}">`;
+         <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
 
     prompt_input.value = '';  // Reset prompt back to blank
     prompt_form.classList.remove('disabled');  // Allow form to send another image request
     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
-    handleRecents(img, prmt);
+    // handleRecents(img, prmt);  // ############ OLD
+    handleRecents(img_url, prompt_value);
 
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
@@ -126,14 +133,28 @@ function handleImage(img, prmt){
     // //    </main>`).insertAfter(".recents");
 }
 
-function handleRecents(img, prmt){
+// function handleRecents(img, prmt){  // ############# OLD
+function handleRecents(img_url, prompt_value){  // ########### NEW
     /* Recents section: Add our current image. Then add img/prmt to IMG array, target _blank to open in a new
        browser tab. 11/17/23
      */
     recents.style.display = 'block';  // Was none/hidden
     recentImages.reverse();  // Before push, reverse array, newest will be first (after 2nd reverse below)
-    recentImages.push({image: img, prompt: prmt});// Store each prompt for each image
+    // recentImages.push({image: img, prompt: prmt});// Store each prompt for each image ############# OLD
+    recentImages.push({image: img_url, prompt: prompt_value});// Store each prompt for each image ############ NEW
     recentsUL.innerHTML = "";
+
+    // // ############################ OLD
+    // recentImages.reverse().forEach(RECENT => {
+    //    recentsUL.innerHTML +=
+    //         `<li>
+    //              <a href="${RECENT.image}" target="_blank" title="${RECENT.prompt}">
+    //                  <img src="${RECENT.image}" alt="Generated image for ${RECENT.prompt}">
+    //              </a>
+    //          </li>`;
+    // });
+
+    // ############################# NEW (in a moment...)
     recentImages.reverse().forEach(RECENT => {
        recentsUL.innerHTML +=
             `<li>
@@ -142,6 +163,7 @@ function handleRecents(img, prmt){
                  </a>
              </li>`;
     });
+
 }
 
 function handleError(msg){
