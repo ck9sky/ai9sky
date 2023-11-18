@@ -66,6 +66,8 @@ def cacheBusterFileNames():
         "chatgpt_api_py_js": f"chatgpt_api_py/js/chatgpt_api_py.js{urlQueryString}",
         "dalle_api_js_css": f"dalle_api_js/css/dalle_api_js.css{urlQueryString}",
         "dalle_api_js_js": f"dalle_api_js/js/dalle_api_js.js{urlQueryString}",
+        "dalle_api_py_css": f"dalle_api_py/css/dalle_api_py.css{urlQueryString}",
+        "dalle_api_py_js": f"dalle_api_py/js/dalle_api_py.js{urlQueryString}",
     }
     return CB
 
