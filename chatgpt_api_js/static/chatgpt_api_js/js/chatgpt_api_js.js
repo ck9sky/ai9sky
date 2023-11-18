@@ -109,7 +109,7 @@ function updateMessage(message){
     // noinspection JSUnresolvedVariable
     p.textContent = message.choices[0].message.content;
     p.classList.remove('thinking');
-    // handleScroll();  // ############################### DEBUG, PUT THIS BACK !!!!!!!!!!!!!!! 11/18/23
+    // // handleScroll();  // Unnecessary? Removed 11/18/23
 }
 
 function createMessageInstance(prompt_value){
@@ -137,7 +137,8 @@ function createMessageInstance(prompt_value){
          </div>`;
 }
 
-function handleScroll(){
-    // Scrolls the chatlog to the bottom
-    chatLog.scrollTop = chatLog.scrollHeight;
-}
+// // // Unnecessary? 11/18/23
+// // function handleScroll(){
+// //    // Scrolls the chatlog to the bottom
+// //    chatLog.scrollTop = chatLog.scrollHeight;
+// //}
