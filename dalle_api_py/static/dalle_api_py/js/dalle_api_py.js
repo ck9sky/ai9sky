@@ -40,6 +40,9 @@ function handleImage(){
     /* Replace innerHTML of main tag with the image. Changing opacity of prompt_form 0/1 is like hide/show, but it
        seems smoother than css display none/block. 11/17/23
      */
+
+    console.log(`handleImage() ...`);  // ############### test
+
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
     main.innerHTML =

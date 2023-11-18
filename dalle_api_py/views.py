@@ -82,6 +82,8 @@ class DALLE_API_PY_Test1(generic.FormView):
 
         self.plus_context['prompt'] = img_request
         self.plus_context['image_url'] = image_completion.data[0].url
+
+        print(f"image_completion.data[0].url: {image_completion.data[0].url}")  ############## test
         
         return super().form_valid(form)
 
