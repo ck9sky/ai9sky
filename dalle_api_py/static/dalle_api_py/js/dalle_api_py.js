@@ -13,17 +13,14 @@ var prompt_value, img_url; /* App 'dalle_api_py' requires prompt/image_url to be
 can use template (chatgpt_api_py.html) to obtain their values from context variables returned by Django framework.
 11/18/23 */
 
-$(function(){
-    /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
-     */
-    handleImage();
-});
+/* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded"). */
+// // $(function(){});
 
 // ################## Necessary ?!
 (function(){
     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
-       starts to load, no waiting) */
-    // handleImageInit();  // ################## Init is not helpful ##################
+       starts to load, no waiting). I MUST CALL THIS ONCE ON PAGE LOAD, IT "INITIALIZES" THE PAGE(?) */
+    handleImage();
 })();
 
 prompt_form.addEventListener('submit', () => {
@@ -31,28 +28,10 @@ prompt_form.addEventListener('submit', () => {
        does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
        to backend server. 11/11/23
      */
-
-    // if (img_url === ""){
-    //     $("#id_prompt_btn").css("color", "red").click();   // ############ this? no
-    //     // $(prompt_form).trigger('submit');
-    // }
-
     let prompt_value = prompt_input.value;
-
-    // ################### OLD?(no) ########### 11/18/23
     if (prompt_value !== "") {
         handleImage();
     }
-
-    // // ################### NEW?(no) ########### 11/18/23
-    // if (prompt_value !== "") {
-    //     if (img_url !== "") {
-    //         handleImage();
-    //     }
-    //     else{
-    //         $(prompt_form).trigger('submit');
-    //     }
-    // }
 })
 
 function handleImage(){
