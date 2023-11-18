@@ -45,8 +45,7 @@
             </form>
         </div>
         <script>
-            // ##################### REMOVE iconStr ################# 11/18/23
-            {#iconStr = "{ { staticTag }}img/icon/chatgpt-icon-150x150.png{ { QM }}{ { VERSION_CACHE_BUST }}";#}
+            iconStr = "{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}";
             prompt = "{{ prompt }}";
             message = "{{ message }}";
         </script>
