@@ -10,16 +10,18 @@ from openai import OpenAI   # The openai Python library. 11/11/23
 from . import forms
 
 
-class ChatGPT_API_PY_Test1(generic.FormView):
-    """ Just one view used................?......
-        https://stackoverflow.com/questions/6907388/updating-context-data-in-formview-form-valid-method
-       ------------------------------------------------------------------------------------------------------------
-       OPENAI DOCS FOR CHATGPT (Not as crucial to read docs given we use Python openai Library?):
-       -- openai.com (may need to login, browse back to openai.com)
-       -- API | Docs (menu)
-       -- API reference (tab)
-       -- ENDPOINTS | Chat (side bar)
-       -- Create chat completion ... etc.
+class DALLE_API_PY_Test1(generic.FormView):
+    """ This app (dalle_api_py) is more like a "traditional" Django app because Python openai Library is used (instead of relying
+        mostly on JavaScript to use DALLE API). HOWEVER, if you ever want this app (as of Nov 2023), to have identical features as
+        app 'dalle_api_js' ("mostly JS"), you will need to overcome the advantage 'dalle_api_js', which is that (I think) it uses
+        no page reloads due to GET/POST to remote database. 11/17/23
+        -------------------------------------------------------------------------------------------------------------------------
+        OPENAI DOCS FOR DALLE API 
+        -- openai.com (may need to login, browse back to openai.com)  
+        -- API | Docs (menu)  
+        -- API reference (tab)  
+        -- ENDPOINTS | Images (side bar)  
+        -- Create image ... etc.  
     """
     form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"

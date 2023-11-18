@@ -9,7 +9,9 @@ from . import forms
 
 class ChatGPT_API_JS_Test1(generic.FormView):
     """ Just one view used, no redirect view, only way to ensure api key is available to javascript when needed.
-        11/8/23
+        Apps 'chatgpt_api_js' and 'dalle_api_js' MUST use ONE view for this--I may have preferred to use 2 views,
+        one a redirect, but was able squeeze everything into this one view SO THAT API KEY IS HIDDEN (and never
+        assigned to JavaScript GLOBAL variable). 11/8/23
        ------------------------------------------------------------------------------------------------------------
        OPENAI DOCS FOR CHATGPT:
        -- openai.com (may need to login, browse back to openai.com)

@@ -9,7 +9,16 @@ from . import forms
 
 class DALLE_API_JS_Test1(generic.FormView):
     """ Just one view used, no redirect view, only way to ensure api key is available to javascript when needed.
-        11/15/23
+        Apps 'chatgpt_api_js' and 'dalle_api_js' MUST use ONE view for this--I may have preferred to use 2 views,
+        one a redirect, but was able squeeze everything into this one view SO THAT API KEY IS HIDDEN (and never
+        assigned to JavaScript GLOBAL variable). 11/15/23
+       ------------------------------------------------------------------------------------------------------------
+        OPENAI DOCS FOR DALLE API 
+        -- openai.com (may need to login, browse back to openai.com)  
+        -- API | Docs (menu)  
+        -- API reference (tab)  
+        -- ENDPOINTS | Images (side bar)  
+        -- Create image ... etc.  
     """
     form_class = forms.DALLE_API_JS_Test1_Hidden_Form
     template_name = "dalle_api_js/dalle_api_js.html"
