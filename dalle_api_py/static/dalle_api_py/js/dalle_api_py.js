@@ -22,6 +22,17 @@ $(function(){
     createMessageInstance();
 })();
 
+prompt_form.addEventListener('submit', () => {
+    /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
+       does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
+       to backend server. 11/11/23
+     */
+    let prompt_value = prompt_input.value;  // in 'chatgpt_api_py', prompt_value does not have to be a global var.
+    if (prompt_value !== "") {
+        createMessageInstance();
+    }
+})
+
 function createMessageInstance(){
     /* Replace inner html of our chatlog container--THE "ADD ON" TRICK "+=" DOES NOT WORK (due to page loads).
        Unlike app 'chatgpt_api_js', this app currently has problem with "+=" such that I cannot create a running
@@ -46,14 +57,3 @@ function createMessageInstance(){
             </div>
          </div>`;
 }
-
-prompt_form.addEventListener('submit', () => {
-    /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
-       does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
-       to backend server. 11/11/23
-     */
-    let prompt_value = prompt_input.value;  // in 'chatgpt_api_py', prompt_value does not have to be a global var.
-    if (prompt_value !== "") {
-        createMessageInstance();
-    }
-})
