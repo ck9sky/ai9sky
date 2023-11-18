@@ -15,6 +15,8 @@
             <path value="file://$PROJECT_DIR$/assets/img" />
             <path value="file://$PROJECT_DIR$/dalle_api_js/static/dalle_api_js/css" />
             <path value="file://$PROJECT_DIR$/dalle_api_js/static/dalle_api_js/js" />
+            <path value="file://$PROJECT_DIR$/dalle_api_py/static/dalle_api_py/css" />
+            <path value="file://$PROJECT_DIR$/dalle_api_py/static/dalle_api_py/js" />
           </resourceRoots>
         </entryData>
       </entry>
