@@ -115,7 +115,7 @@ function updateMessage(message){
     // noinspection JSUnresolvedVariable
     p.textContent = message.choices[0].message.content;
     p.classList.remove('thinking');
-    handleScroll();
+    // handleScroll();  // ############################### DEBUG, PUT THIS BACK !!!!!!!!!!!!!!! 11/18/23
 }
 
 // function createMessageInstance(){  // ############## OLD

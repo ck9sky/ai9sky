@@ -74,7 +74,7 @@ body {
 
 .message.user-message {
     background-color: var(--user-message-bg);
-    position: sticky;
+    position: sticky;  /* Cool: For long response, can scroll, and message "sticks" to top (remains visible) */
     top: 0;
 }
 

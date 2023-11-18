@@ -89,6 +89,7 @@ main p span {
   font-weight: 500;
 }
 main img {
+  position: sticky;   /* ################# TEST ONLY! ############# */
   margin-top: 1rem;
   border-radius: 1rem;
   width: 100%;

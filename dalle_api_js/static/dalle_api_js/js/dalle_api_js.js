@@ -177,7 +177,7 @@ function handleError(message){
     main.innerHTML = `<p class="error">There was an error with your request: <br><span>${message}</span></p>`;
 }
 
-function handleScroll(){  // ################# NEW / EXPERIMET 11/18/23
+function handleScroll(){  // ################# NEW / EXPERIMENT 11/18/23
     // Scrolls the main/image to the bottom
     main.scrollTop = main.scrollHeight;
 }
