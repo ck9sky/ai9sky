@@ -49,7 +49,6 @@
             Django view and form and csrf token in order to not crash to browser. 11/18/23
         {% endcomment %}
 
-
 {#        <div id="prompt-form">  <!-- ################### new div: SHOULD(NO??!!) id="prompt-form" go here instead ????? -->#}
         <!-- ######### move id prompt-form -->
         <form method="POST" id="prompt-form"  action="{% url 'dalle_api_py:dalle_api_py_test1' %}" class="mt-1">
@@ -58,9 +57,7 @@
             {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
             <!--suppress HtmlFormInputWithoutLabel -->
             <input type="text" name="prompt" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
-{#            <button>generate</button>#}  <!-- ########################## OLD -->
-{#            <button id="id_prompt_btn">generate</button>  <!-- ############ NEW(no) -->#}
-            <button type="submit" id="id_prompt_btn">generate</button>  <!-- ############ NEW(yes) -->
+            <button type="submit" id="id_prompt_btn">generate</button>
         </form>
 
 {#        </div>#}
