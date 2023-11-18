@@ -63,9 +63,9 @@
 
 {#        </div>#}
 
-
         <script>
-            {#prompt_value = "{{ prompt }}";   // ############## NO, WASTEFUL? REMOVE etc. #############}
+            // DANGER: You also need to refresh js global var prompt!
+            prompt_value = "{{ prompt }}";
             img_url = "{{ image_url }}";
         </script>
     </div>

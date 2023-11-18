@@ -46,7 +46,8 @@
         </div>
         <script>
             iconStr = "{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}";
-            {#prompt = "{{ prompt }}";   // ########### no, wasteful, you already know what this is, REMOVE etc. ##############}
+            // DANGER: You also need to refresh js global var prompt!
+            prompt = "{{ prompt }}";
             message = "{{ message }}";
         </script>
 	</div>
