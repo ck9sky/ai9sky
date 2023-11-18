@@ -46,10 +46,10 @@ class DALLE_API_PY_Test1(generic.FormView):
             if 'image_url' in self.plus_context:
                 context['image_url'] = self.plus_context['image_url']
             else:
-                context['image_url'] = "Thinking"
+                context['image_url'] = ""
         else:
             context['prompt'] = ""
-            context['image_url'] = "Thinking"
+            context['image_url'] = ""
         return context
 
     def form_valid(self, form):
