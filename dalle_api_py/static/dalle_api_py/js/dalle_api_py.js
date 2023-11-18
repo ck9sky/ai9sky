@@ -3,8 +3,8 @@
 /* NOTE: Unlike app 'chaptgpt_api_js', this app uses Python openai library. Thus we probably can avoid the
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
-const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
-const prompt_input = document.querySelector('#id_prompt');
+const prompt_form = document.querySelector('#prompt-form');
+const prompt_input = document.querySelector('#id_prompt'), $prompt_input = $("#id_prompt");;
 const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
@@ -32,7 +32,7 @@ prompt_form.addEventListener('submit', () => {
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
-        handleImage();
+        // handleImage();   // ############### DEBUG, TEMP REMOVAL
     }
 })
 

@@ -70,9 +70,12 @@ class DALLE_API_PY_Test1(generic.FormView):
             https://github.com/openai/openai-python
         """
 
+        print("\nDALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test
+
+        ###################### DEBUG/TEST REMOVAL ############### 11/18/23
         client = OpenAI()
         image_completion = client.images.generate(
-            model='dalle-api-3',  ############ Maybe will also not want to include model?
+            # model='dalle-api-2',  # NO?! Python openai Library for DALLE API does NOT want a model properyt?! 11/18/23
             prompt=img_request,
             n=1,
             size='512x512',
