@@ -16,7 +16,7 @@ import os
 
 """ Version Cache Bust: "v=W.XYZ" per given master branch version "vW.XYZ. Used for query string cache busting.
     Do not insert "?". Must include "=" or query string will fail. 10/13/23 """
-VERSION_CACHE_BUST = "v=0.321"
+VERSION_CACHE_BUST = "v=0.322"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -20,7 +20,10 @@
 
         <title>{% block title_tag %}OpenAI Experiments{% endblock %}</title>
 
-		<link rel="shortcut icon" type="image/png" href="{% static 'img/icons/favicon.ico'%}{{ QM }}{{ VERSION_CACHE_BUST }}"/>
+<!-- ################### DEBUG/TEMP REMOVE ############################ -->
+    {% comment %}
+		<link rel="shortcut icon" type="image/png" href="{ % static 'img/icons/favicon.ico'%}{ { QM }}{ { VERSION_CACHE_BUST }}"/>
+    {% endcomment %}
 
         {% comment %}
             Mobile phone, tablet bookmark icons 4/2/21. https://manytools.org/http-html-text/apple-touch-icon-generator/go/
