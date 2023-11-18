@@ -16,9 +16,19 @@ body {
   color: #ffffff;
   background-color: #1B202D;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  /* ############# REMOVE NEXT 3 PROPERTIES????????? ########## */
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*justify-content: flex-start;*/
+}
+
+/* ################ NEW/EXPERIMENT ##################  */
+/* .chat-container display flex, column, is what forces prompt input box
+   to always be in bottom of window (even at page load/no message content. 11/18/23 */
+.chat-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -89,7 +99,7 @@ main p span {
   font-weight: 500;
 }
 main img {
-  position: sticky;   /* ################# TEST ONLY! ############# */
+  /*position: sticky;   !* ################# TEST ONLY!/no/remove! ############# *!*/
   margin-top: 1rem;
   border-radius: 1rem;
   width: 100%;
@@ -98,17 +108,24 @@ main img {
 
 form {
   margin: auto 2rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: fixed;  /* ########## new/test */
+  bottom: 0;  /* ########## new/test */
+  width: 100%;  /* ########## new/test */
+  /*display: flex;*/    /* ########## new/test */
+  /*justify-content: space-between;*/
+  /*align-items: center;*/
   background-color: #3D4354;
-  padding: 0.5rem;
+  /*padding: 0.5rem;*/    /* ########## new/test */
   border-radius: 2rem;
 }
 form input {
+  display: inline;  /* ########## new/test */
+  position: static;  /* ########## new/test */
+  /*bottom: 0;  !* ########## new/test *!*/
   font-size: 1.2rem;
   border-radius: 5px;
-  width: 100%;
+  /*width: 100%;  !* ########## new/test *!*/
+  width: calc(100vw - 300px);  /* ########## new/test */
   background-color: Black;
   border: none;
   outline: none;
@@ -117,6 +134,8 @@ form input {
 }
 
 form button {
+  display: inline;  /* ########## new/test */
+  width: 200px;  /* ########## new/test */
   font-size: 1.2rem;
   border-radius: 2rem;
   padding: 0.5rem;

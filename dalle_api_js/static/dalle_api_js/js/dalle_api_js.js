@@ -110,7 +110,14 @@ function handleImage(img_url, prompt_value){
        seems smoother than css display none/block. 11/17/23
      */
     prompt_form.style.opacity = 1.0;
+
+    // main.style.height = '100%';   // ############### NEW? EXPERIMENT? ######## fail
+
     main.style.display = 'block';
+    // main.style.display = 'flex';  // ############ NEW? fail
+
+    // main.style.flexDirection = 'column';   // ############### NEW? EXPERIMENT? ######## fail
+
     main.innerHTML =
         `<p><span>${prompt_value}</span></p>
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
