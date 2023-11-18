@@ -16,7 +16,6 @@ can use template (chatgpt_api_py.html) to obtain their values from context varia
 /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded"). */
 /* $(function(){}); */
 
-// ################## Necessary ?!
 (function(){
     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
        starts to load, no waiting). I MUST CALL THIS ONCE ON PAGE LOAD, IT "INITIALIZES" THE PAGE(?) */
@@ -38,7 +37,7 @@ function handleImage(){
     /* Replace innerHTML of main tag with the image. Changing opacity of prompt_form 0/1 is like hide/show, but it
        seems smoother than css display none/block. 11/17/23
      */
-    prompt_form.style.opacity = 1.0;   // ############# DEBUG, PUT THIS BACK ???!!!
+    prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
     main.innerHTML =
         `<p><span>${prompt_value}</span></p>

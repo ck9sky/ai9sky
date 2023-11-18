@@ -58,9 +58,6 @@ class DALLE_API_PY_Test1(generic.FormView):
     def form_valid(self, form):
         """ We will add code to show this message (or remove this message if not necessary. 11/11/23
         """
-
-        print("\n(1)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test (BAD)
-
         img_request = form.cleaned_data['prompt']
         if settings.NULL_STR.__eq__(img_request):
             messages.error(
@@ -75,9 +72,6 @@ class DALLE_API_PY_Test1(generic.FormView):
             https://platform.openai.com/docs/api-reference?lang=python  
             https://github.com/openai/openai-python
         """
-
-        print("\n(2)DALLE_API_PY_Test1, form_valid(): client = OpenAI()...\n")  ########## test
-
         client = OpenAI()
         image_completion = client.images.generate(
             # model='dalle-api-2',  # NO?! Python openai Library for DALLE API does NOT want a model properyt?! 11/18/23
@@ -90,9 +84,4 @@ class DALLE_API_PY_Test1(generic.FormView):
 
         self.plus_context['prompt'] = img_request
         self.plus_context['image_url'] = image_completion.data[0].url
-
-        print(f"image_completion.data[0].url: {image_completion.data[0].url}")  ############## test
-        # print(f"image_completion: {image_completion}")  ############## test
-
         return super().form_valid(form)
-
