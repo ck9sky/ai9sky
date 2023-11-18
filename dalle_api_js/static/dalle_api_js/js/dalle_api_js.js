@@ -135,13 +135,14 @@ function handleImage(img_url, prompt_value){  // ################## NEW
 
 // function handleRecents(img, prmt){  // ############# OLD
 function handleRecents(img_url, prompt_value){  // ########### NEW
-    /* Recents section: Add our current image. Then add img/prmt to IMG array, target _blank to open in a new
-       browser tab. 11/17/23
+    /* Recents section: Save user's latest image to RECENTS array. We will show the user a <ul> list of their most
+       "recent" images (thumb sized), <ul> left-to-right, the leftmost is most recent. User can click one of the
+       thumb sized images and it opens in a new browser tab. 11/17/23
      */
     recents.style.display = 'block';  // Was none/hidden
     recentImages.reverse();  // Before push, reverse array, newest will be first (after 2nd reverse below)
     // recentImages.push({image: img, prompt: prmt});// Store each prompt for each image ############# OLD
-    recentImages.push({image: img_url, prompt: prompt_value});// Store each prompt for each image ############ NEW
+    recentImages.push({IMG_URL: img_url, PROMPT_VALUE: prompt_value});// Store each prompt for each image ############ NEW
     recentsUL.innerHTML = "";
 
     // // ############################ OLD
@@ -158,8 +159,8 @@ function handleRecents(img_url, prompt_value){  // ########### NEW
     recentImages.reverse().forEach(RECENT => {
        recentsUL.innerHTML +=
             `<li>
-                 <a href="${RECENT.image}" target="_blank" title="${RECENT.prompt}">
-                     <img src="${RECENT.image}" alt="Generated image for ${RECENT.prompt}">
+                 <a href="${RECENT.IMG_URL}" target="_blank" title="${RECENT.PROMPT_VALUE}">
+                     <img src="${RECENT.IMG_URL}" alt="Generated image for ${RECENT.PROMPT_VALUE}">
                  </a>
              </li>`;
     });
