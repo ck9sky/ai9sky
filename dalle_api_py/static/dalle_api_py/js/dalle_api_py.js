@@ -22,7 +22,7 @@ $(function(){
 (function(){
     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
        starts to load, no waiting) */
-    handleImageInit();
+    // handleImageInit();  // ################## Init is not helpful ##################
 })();
 
 prompt_form.addEventListener('submit', () => {
@@ -45,41 +45,55 @@ function handleImage(){
     console.log(`handleImage(), img_url: ${img_url}`);  // ############### test
     // alert(`handleImage() ...`);  // ############### test
 
+    prompt_form.classList.add('disabled');
+
     prompt_form.style.opacity = 1.0;
+
+    // ################ use this block if possible
     main.style.display = 'block';
     main.innerHTML =
         `<p><span>${prompt_value}</span></p>
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
 
+    // // ######### else this...
+    // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
+    // $(main).remove();
+    // $(`<main style="display: block;">
+    //        <p><span>${prompt_value}</span></p>
+    //        <img src="${img_url}" alt="Generated image of ${prompt_value}">
+    //    </main>`).insertAfter(".recents");
+
+
     prompt_input.value = '';  // Reset prompt back to blank
     prompt_form.classList.remove('disabled');  // Allow form to send another image request
-    $prompt_input.unbind("click");              // Unbind click event again! (Trick #1)
+
     // // handleScroll();  // Unnecessary? Not used. 11/18/23
 
-    handleRecents(img_url, prompt_value);
+
+    // handleRecents(img_url, prompt_value);   // ############# DEBUG: PUT BACK !!!!!!!!!! ############
+
 
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
     // // $(main).remove();
     // // $(`<main style="display: block;">
-    // //        <p><span>${pval}</span></p>
-    // //        <img src="${img}" alt="Generated image of ${pval}">
+    // //        <p><span>${prompt_value}</span></p>
+    // //        <img src="${img_url}" alt="Generated image of ${prompt_value}">
     // //    </main>`).insertAfter(".recents");
 }
 
-function handleImageInit() {
-    /* Initialize image presentation area
-     */
-    prompt_form.style.opacity = 1.0;
-    main.style.display = 'block';
-    main.innerHTML =
-        `<p><span>Ready</span></p>
-         <img src="" alt="Ready!" style="display: none;">`;
-
-    prompt_input.value = '';  // Reset prompt back to blank
-    prompt_form.classList.remove('disabled');  // Allow form to send another image request
-    $prompt_input.unbind("click");
-}
+// // ################## Init is not helpful ##################
+// function handleImageInit() {
+//     /* Initialize image presentation area
+//      */
+//     prompt_form.style.opacity = 1.0;
+//     main.style.display = 'block';
+//     /* Echo prompt back by adding html to main element */
+//     main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
+//
+//     prompt_input.value = '';  // Reset prompt back to blank
+//     prompt_form.classList.remove('disabled');  // Allow form to send image request
+// }
 
 function handleRecents(img_url, prompt_value){
     /* Recents section: Save user's latest image to RECENTS array. We will show the user a <ul> list of their most
