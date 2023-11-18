@@ -76,7 +76,8 @@ class DALLE_API_PY_Test1(generic.FormView):
             prompt=img_request,
             n=1,
             size='512x512',
-            response_format='url'
+            quality='standard',   ################ ???
+            # response_format='url',  ############ ???
         )
 
         self.plus_context['prompt'] = img_request
