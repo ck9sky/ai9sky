@@ -129,7 +129,7 @@ form input {
   font-size: 1.2rem;
   border-radius: 5px;
   /*width: 100%;  !* ########## new/test *!*/
-  width: calc(100vw - 270px);  /* ########## new/test */
+  width: calc(100vw - 290px);  /* ########## new/test */
   background-color: Black;
   border: none;
   outline: none;
