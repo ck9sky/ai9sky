@@ -38,38 +38,12 @@ function handleImage(){
     /* Replace innerHTML of main tag with the image. Changing opacity of prompt_form 0/1 is like hide/show, but it
        seems smoother than css display none/block. 11/17/23
      */
-
-    console.log(`handleImage(), img_url: ${img_url}`);  // ############### test
-    // alert(`handleImage() ...`);  // ############### test
-
-    // prompt_form.classList.add('disabled');  // ######### no need?
-
-    // prompt_form.style.opacity = 1.0;   // ############# DEBUG, PUT THIS BACK ???!!!
-
-    // ################ use this block if possible
+    prompt_form.style.opacity = 1.0;   // ############# DEBUG, PUT THIS BACK ???!!!
     main.style.display = 'block';
     main.innerHTML =
         `<p><span>${prompt_value}</span></p>
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
-
-    // // ######### else this...
-    // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
-    // $(main).remove();
-    // $(`<main style="display: block;">
-    //        <p><span>${prompt_value}</span></p>
-    //        <img src="${img_url}" alt="Generated image of ${prompt_value}">
-    //    </main>`).insertAfter(".recents");
-
-
-    // prompt_input.value = '';  // Reset prompt back to blank  ####### no no no
-
-    // prompt_form.classList.remove('disabled');  // Allow form to send another image request ######## no need?
-
-    // // handleScroll();  // Unnecessary? Not used. 11/18/23
-
-
-    handleRecents(img_url, prompt_value);   // ############# DEBUG: PUT BACK !!!!!!!!!! ############
-
+    handleRecents(img_url, prompt_value);
 
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
@@ -79,20 +53,6 @@ function handleImage(){
     // //        <img src="${img_url}" alt="Generated image of ${prompt_value}">
     // //    </main>`).insertAfter(".recents");
 }
-
-// // ################## Init is not helpful ##################
-// function handleImageInit() {
-//     /* Initialize image presentation area
-//      */
-//     prompt_form.style.opacity = 1.0;
-//     main.style.display = 'block';
-//     /* Echo prompt back by adding html to main element */
-//     main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
-//
-//     prompt_input.value = '';  // Reset prompt back to blank
-//     prompt_form.classList.remove('disabled');  // Allow form to send image request
-// }
-
 function handleRecents(img_url, prompt_value){
     /* Recents section: Save user's latest image to RECENTS array. We will show the user a <ul> list of their most
        "recent" images (thumb sized), <ul> left-to-right, the leftmost is most recent. User can click one of the
@@ -110,9 +70,4 @@ function handleRecents(img_url, prompt_value){
                  </a>
              </li>`;
     });
-}
-
-function handleError(message){
-    main.style.display = 'block';
-    main.innerHTML = `<p class="error">There was an error with your request: <br><span>${message}</span></p>`;
 }

@@ -69,8 +69,7 @@ function generateImage(api_key, prompt_value){
        -- Create image ... etc.
      */
     prompt_form.classList.add('disabled');
-    /* Add css display 'block' to main element so it's no longer hidden (w/ display none).
-     */
+    /* Add css display 'block' to main element so it's no longer hidden (w/ display none). */
     main.style.display = 'block';
     /* Echo prompt back by adding html to main element */
     main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
