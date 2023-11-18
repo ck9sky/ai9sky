@@ -44,7 +44,7 @@ function createMessageInstance(){
          </div>`;
 }
 
-prompt_form.addEventListener('submit', event => {
+prompt_form.addEventListener('submit', () => {
     /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
        does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
        to backend server. 11/11/23
