@@ -81,6 +81,7 @@ section.recents ul li img {
 main {
   display: none;
   padding: 2rem;
+  margin-bottom: 50px;  /* ########### experiment new */
   background-color: #242935;
 }
 main p {
@@ -117,10 +118,11 @@ form {
   background-color: #3D4354;
   /*padding: 0.5rem;*/    /* ########## new/test */
   border-radius: 2rem;
-  padding-left: 20px;    /* ########## new/test */
-  padding-right: 20px;    /* ########## new/test */
-  padding-top: 5px;      /* ########## new/test */
-  padding-bottom: 5px;     /* ########## new/test */
+  /*padding-left: 20px;    !* ########## new/test *!*/
+  /*padding-right: 20px;    !* ########## new/test *!*/
+  /*padding-top: 5px;      !* ########## new/test *!*/
+  /*padding-bottom: 5px;     !* ########## new/test *!*/
+  padding: 5px 20px 5px 20px;
 }
 form input {
   display: inline;  /* ########## new/test */
