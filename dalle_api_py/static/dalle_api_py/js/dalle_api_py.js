@@ -73,7 +73,8 @@ function handleImageInit() {
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
     main.innerHTML =
-        `<p><span>Ready!</span></p>`;
+        `<p><span>Ready</span></p>
+         <img src="" alt="Ready!" style="display: none;">`;
 
     prompt_input.value = '';  // Reset prompt back to blank
     prompt_form.classList.remove('disabled');  // Allow form to send another image request
