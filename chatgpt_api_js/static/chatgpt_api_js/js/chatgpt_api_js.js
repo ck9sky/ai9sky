@@ -48,7 +48,7 @@ prompt_form.addEventListener('submit', e => {
                     createMessageInstance(prompt_value);  // ############# NEW
                     // askChatGPT(api_key);   // #################### OLD
                     askChatGPT(api_key, prompt_value);  // ############# NEW
-                    handleScroll();
+                    // handleScroll();  // ########### remove/wasteful, don't call a 2nd time ###########
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
                 }

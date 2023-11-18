@@ -11,8 +11,7 @@ const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
 const recentImages = [];
-// var iconStr, prompt_value; // ################ OLD
-var iconStr; // ############################## NEW
+var iconStr;
 
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
@@ -24,8 +23,7 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
     e.preventDefault();
-    // prompt_value = prompt_input.value;  // ################# OLD
-    let prompt_value = prompt_input.value;  // ############## NEW
+    let prompt_value = prompt_input.value;
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
     $prompt_input.on("click", function(){
@@ -47,8 +45,7 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-                    // generateImage(api_key);  // ###################### OLD
-                    generateImage(api_key, prompt_value);  // ############ NEW
+                    generateImage(api_key, prompt_value);
                 }
             }
         });  // .done()
@@ -60,8 +57,7 @@ prompt_form.addEventListener('submit', e => {
     $prompt_input.click();
 })
 
-// function generateImage(api_key){  // ###################### OLD
-function generateImage(api_key, prompt_value){  // ############ NEW
+function generateImage(api_key, prompt_value){
     /* Add 'disabled' class to form. Disable our form from working once 1st prompt is sent: Do not allow a 2nd prompt
        to be sent until getting a response back from our 1st prompt (when 'disabled' class is removed).
        ------------------------------------------------------------------------------------------------------------
@@ -109,9 +105,10 @@ function generateImage(api_key, prompt_value){  // ############ NEW
     .catch(error => handleError(error))
 }
 
-// function handleImage(img, prmt){  // ################# OLD
-function handleImage(img_url, prompt_value){  // ################## NEW
-    /* Replace innerHTML of main tag with the image. 11/17/23 */
+function handleImage(img_url, prompt_value){
+    /* Replace innerHTML of main tag with the image. Changing opacity of prompt_form 0/1 is like hide/show, but it
+       seems smoother than css display none/block. 11/17/23
+     */
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
     main.innerHTML =
