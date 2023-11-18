@@ -6,11 +6,11 @@
 const prompt_form = document.querySelector('#prompt-form');
 const prompt_input = document.querySelector('#id_prompt');
 var chatLog = document.querySelector('.chat-log');
-var prompt, message;
+var prompt, message; /* App 'chatgpt_api_py' requires prompt/message to be global JavaScript variables so we can use
+template (chatgpt_api_py.html) to obtain their values from context variables returned by Django framework. 11/18/23 */
 
 $(function(){
-    /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
-     */
+    /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded"). */
 });
 
 (function(){
