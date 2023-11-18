@@ -49,7 +49,7 @@ prompt_form.addEventListener('submit', event => {
        does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
        to backend server. 11/11/23
      */
-    prompt_value = prompt_input.value;
+    let prompt_value = prompt_input.value;  // in 'chatgpt_api_py', prompt_value does not have to be a global var.
     if (prompt_value !== "") {
         createMessageInstance();
     }
