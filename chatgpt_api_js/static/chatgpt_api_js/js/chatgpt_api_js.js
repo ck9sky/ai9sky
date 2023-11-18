@@ -144,7 +144,7 @@ function createMessageInstance(prompt_value){  // ############## NEW
          </div>`;
 }
 
-// Scrolls the chatlog to the bottom
 function handleScroll(){
+    // Scrolls the chatlog to the bottom
     chatLog.scrollTop = chatLog.scrollHeight;
 }

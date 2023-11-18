@@ -122,6 +122,7 @@ function handleImage(img_url, prompt_value){  // ################## NEW
     prompt_form.classList.remove('disabled');  // Allow form to send another image request
     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
     // handleRecents(img, prmt);  // ############ OLD
+    handleScroll();  // ################## NEW / EXPERIMENT 11/18/23
     handleRecents(img_url, prompt_value);
 
     // // // ------------------------------------------------------------------------------------------------
@@ -178,3 +179,9 @@ function handleError(message){
     main.style.display = 'block';
     main.innerHTML = `<p class="error">There was an error with your request: <br><span>${message}</span></p>`;
 }
+
+function handleScroll(){  // ################# NEW / EXPERIMET 11/18/23
+    // Scrolls the main/image to the bottom
+    main.scrollTop = main.scrollHeight;
+}
+
