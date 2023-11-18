@@ -13,9 +13,9 @@ from . import forms
 class ChatGPT_API_PY_Test1(generic.FormView):
     """ This app (chatgpt_api_py) is more like a "traditional" Django app because Python openai Library is used (instead of relying
         mostly on JavaScript to use CHATGPT API). HOWEVER, if you ever want this app (as of Nov 2023), to have identical features as
-        chatgpt_api_js' (the "mostly JS" app for ChatGPT API access), you will need to replicate the advantage 'chatgpt_api_js'
-        has, where 'chatgpt_api_js' uses no page reloads because of GET/POST's to remote "Django" database: THIS APP CURRENTLY
-        CANNOT SHOW A TRUE CHATLOG: PRIOR CHATGPT PROMPT/RESPONSE SESSION IS "THROWN AWAY" WITH EVERY PAGE RELOAD. 11/17/23
+        chatgpt_api_js' (the "mostly JS" app for ChatGPT API access), you will need to replicate the advantage 'chatgpt_api_js' has,
+        where 'chatgpt_api_js' uses no page reloads because of GET/POST's to remote "Django" database: THIS APP CURRENTLY CANNOT
+        SHOW A TRUE CHATLOG: PRIOR CHATGPT PROMPT/RESPONSE SESSION IS "THROWN AWAY" WITH NEXT PAGE RELOAD. 11/17/23
         -------------------------------------------------------------------------------------------------------------------------
        OPENAI DOCS FOR CHATGPT API (Not as crucial to read docs given we use Python openai Library?):
        -- openai.com (may need to login, browse back to openai.com)

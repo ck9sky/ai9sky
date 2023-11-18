@@ -13,8 +13,9 @@ from . import forms
 class DALLE_API_PY_Test1(generic.FormView):
     """ This app (dalle_api_py) is more like a "traditional" Django app because Python openai Library is used (instead of relying
         mostly on JavaScript to use DALLE API). HOWEVER, if you ever want this app (as of Nov 2023), to have identical features as
-        app 'dalle_api_js' ("mostly JS"), you will need to overcome the advantage 'dalle_api_js', which is that (I think) it uses
-        no page reloads due to GET/POST to remote database. 11/17/23
+        dalle_api_js' (the "mostly JS" app for DALLE API access), you will need to replicate the advantage 'dalle_api_js' has,
+        where 'dalle_api_js' uses no page reloads because of GET/POST's to remote "Django" database: THIS APP CURRENTLY CANNOT
+        SHOW A TRUE "RECENTS" IMAGE LOG: PRIOR DALLE PROMPT/RESPONSE SESSION IS "THROWN AWAY" WITH NEXT PAGE RELOAD. 11/17/23
         -------------------------------------------------------------------------------------------------------------------------
         OPENAI DOCS FOR DALLE API 
         -- openai.com (may need to login, browse back to openai.com)  
