@@ -11,7 +11,7 @@ const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
 const recentImages = [];
-var iconStr, prompt, image_url; /* App 'dalle_api_py' requires prompt/image_url to be global JavaScript variables so we
+var iconStr, prompt_value, img_url; /* App 'dalle_api_py' requires prompt/image_url to be global JavaScript variables so we
 can use template (chatgpt_api_py.html) to obtain their values from context variables returned by Django framework.
 11/18/23 */
 
@@ -20,11 +20,12 @@ $(function(){
      */
 });
 
-(function(){
-    /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
-       starts to load, no waiting) */
-    createMessageInstance();
-})();
+// // ################## unnecessary?
+// (function(){
+//     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
+//        starts to load, no waiting) */
+//     handleImage();
+// })();
 
 prompt_form.addEventListener('submit', () => {
     /* Best I can do with using database. Each prompt/message overwrites the previous prompt/message,
