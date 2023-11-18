@@ -18,11 +18,11 @@ $(function(){
      */
 });
 
-// ################## unnecessary? remove!
+// ################## Necessary ?!
 (function(){
     /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
        starts to load, no waiting) */
-    handleImage();
+    handleImageInit();
 })();
 
 prompt_form.addEventListener('submit', () => {
@@ -65,6 +65,19 @@ function handleImage(){
     // //        <p><span>${pval}</span></p>
     // //        <img src="${img}" alt="Generated image of ${pval}">
     // //    </main>`).insertAfter(".recents");
+}
+
+function handleImageInit() {
+    /* Initialize image presentation area
+     */
+    prompt_form.style.opacity = 1.0;
+    main.style.display = 'block';
+    main.innerHTML =
+        `<p><span>Ready!</span></p>`;
+
+    prompt_input.value = '';  // Reset prompt back to blank
+    prompt_form.classList.remove('disabled');  // Allow form to send another image request
+    $prompt_input.unbind("click");
 }
 
 function handleRecents(img_url, prompt_value){
