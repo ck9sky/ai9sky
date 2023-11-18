@@ -16,6 +16,7 @@ can use template (chatgpt_api_py.html) to obtain their values from context varia
 $(function(){
     /* NOTE: $(function()) is the jQuery ready function, equivalent to addEventListener("DOMContentLoaded").
      */
+    handleImage();
 });
 
 // ################## Necessary ?!
@@ -30,11 +31,28 @@ prompt_form.addEventListener('submit', () => {
        does not look good (the app 'chatgpt_api_j' can do it, I think because it never "submits" form
        to backend server. 11/11/23
      */
+
+    // if (img_url === ""){
+    //     $("#id_prompt_btn").css("color", "red").click();   // ############ this? no
+    //     // $(prompt_form).trigger('submit');
+    // }
+
     let prompt_value = prompt_input.value;
-    if (prompt_value !== "") {   // ########################## (KEEP!)
-    // if (prompt_value !== "" && img_url !== "") {  // ############## not helpful...
-        handleImage();   // ############### DEBUG, TEMP REMOVAL
+
+    // ################### OLD?(no) ########### 11/18/23
+    if (prompt_value !== "") {
+        handleImage();
     }
+
+    // // ################### NEW?(no) ########### 11/18/23
+    // if (prompt_value !== "") {
+    //     if (img_url !== "") {
+    //         handleImage();
+    //     }
+    //     else{
+    //         $(prompt_form).trigger('submit');
+    //     }
+    // }
 })
 
 function handleImage(){
@@ -45,9 +63,9 @@ function handleImage(){
     console.log(`handleImage(), img_url: ${img_url}`);  // ############### test
     // alert(`handleImage() ...`);  // ############### test
 
-    prompt_form.classList.add('disabled');
+    // prompt_form.classList.add('disabled');  // ######### no need?
 
-    prompt_form.style.opacity = 1.0;
+    // prompt_form.style.opacity = 1.0;   // ############# DEBUG, PUT THIS BACK ???!!!
 
     // ################ use this block if possible
     main.style.display = 'block';
@@ -64,13 +82,14 @@ function handleImage(){
     //    </main>`).insertAfter(".recents");
 
 
-    prompt_input.value = '';  // Reset prompt back to blank
-    prompt_form.classList.remove('disabled');  // Allow form to send another image request
+    // prompt_input.value = '';  // Reset prompt back to blank  ####### no no no
+
+    // prompt_form.classList.remove('disabled');  // Allow form to send another image request ######## no need?
 
     // // handleScroll();  // Unnecessary? Not used. 11/18/23
 
 
-    // handleRecents(img_url, prompt_value);   // ############# DEBUG: PUT BACK !!!!!!!!!! ############
+    handleRecents(img_url, prompt_value);   // ############# DEBUG: PUT BACK !!!!!!!!!! ############
 
 
     // // // ------------------------------------------------------------------------------------------------
