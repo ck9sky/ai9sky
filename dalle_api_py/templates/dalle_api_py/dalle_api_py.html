@@ -1,0 +1,57 @@
+{% extends "chatgpt_api_py/layout.html" %}
+{% settings_VERSION_CACHE_BUST as VERSION_CACHE_BUST %}
+{% assign "?" as QM %}{% comment %} suppress url percent encoding "?" to "%3F" {% endcomment %}
+{% load static %}
+{% static "" as staticTag %}
+{% cacheBusterFileNames as CB %}
+{% load bootstrap4 %}
+{% load chatgpt_api_py_tags %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ staticTag }}{{ CB.chatgpt_api_py_css }}">
+{% endblock %}
+
+{% comment %}
+    ChatGPT API accessed using Python library module openai.
+{% endcomment %}
+
+{% block chatgpt_api_content %}
+	<div class="chat-container">
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'home-no-redirects' %}"
+                    class="badge badge-primary mx-0 my-2 p-2"
+                    tabindex="-1" role="button">
+                <span class="m-0 p-0"
+                    onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
+                    onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
+                    onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
+                    tabindex="0">Back to Main Page</span></a><br>
+        </div>
+
+        <div class="chat-log">
+        </div>
+        {% comment %}
+            Prompt Form: Where user enters question for ChatGPT.
+            THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
+            Django view and form and csrf token in order to not crash to browser. 11/5/23
+        {% endcomment %}
+        <div class="new-message" id="prompt-form">
+            <form method="POST" action="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}">
+                {% csrf_token %}
+                {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
+                    <!--suppress HtmlFormInputWithoutLabel -->
+                <input type="text" name="prompt" id="id_prompt" placeholder="Send a message...">
+            </form>
+        </div>
+        <script>
+            iconStr = "{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}";
+            prompt = "{{ prompt }}";
+            message = "{{ message }}";
+        </script>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{ staticTag }}{{ CB.chatgpt_api_py_js }}" defer></script>
+{% endblock %}
