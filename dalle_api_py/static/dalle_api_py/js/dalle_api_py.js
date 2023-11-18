@@ -3,15 +3,13 @@
 /* NOTE: Unlike app 'chaptgpt_api_js', this app uses Python openai library. Thus we probably can avoid the
    complications of securely "sending" the api key to Javascript (local variable, etc.)  11/11/23
  */
-
-const dalle_api_url = 'https://api.openai.com/v1/images/generations';
 const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
 const prompt_input = document.querySelector('#id_prompt');
 const recents = document.querySelector('section.recents');
 const recentsUL = recents.querySelector('ul');
 const main = document.querySelector('main');
 const recentImages = [];
-var iconStr, prompt_value, img_url; /* App 'dalle_api_py' requires prompt/image_url to be global JavaScript variables so we
+var prompt_value, img_url; /* App 'dalle_api_py' requires prompt/image_url to be global JavaScript variables so we
 can use template (chatgpt_api_py.html) to obtain their values from context variables returned by Django framework.
 11/18/23 */
 
