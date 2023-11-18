@@ -3,6 +3,10 @@
 /* DANGER: api_key MUST BE a LOCAL VAR, NOT A GLOBAL VAR !!! A global var is easy to see in a browser!
    This is a very IMPORTANT security feature.  11/16/23
  */
+
+
+/* ######## DEBUG: Below is copy of chatgpt_api_py.js (THIS APP'S JS SIMILAR?) ######################### */
+
 const dalle_api_url = 'https://api.openai.com/v1/images/generations';
 const prompt_form = document.querySelector('#prompt-form'), $prompt_input = $("#id_prompt");
 const prompt_input = document.querySelector('#id_prompt');
