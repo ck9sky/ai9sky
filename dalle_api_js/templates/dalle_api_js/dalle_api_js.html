@@ -60,7 +60,7 @@
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/16/23
         {% endcomment %}
-        <form id="prompt-form" class="mt-1">
+        <form class="mt-1" id="prompt-form">
             {% csrf_token %}
             {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
                 <!--suppress HtmlFormInputWithoutLabel -->
