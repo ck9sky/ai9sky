@@ -42,56 +42,14 @@ prompt_form.addEventListener('submit', () => {
     }
 })
 
-// // ############ fail
-// prompt_input.addEventListener('', () => {   // ################ NEW? EXPERIMENT?
-//
-//     console.log("NUMBER 1");  // ##########
-//     if (img_url !== "") {
-//
-//         console.log("NUMBER 2");  // ##########
-//
-//         // main.style.display = 'block';
-//         // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  // ######### new?
-//
-//         // ########## NEW use jquery ########################### 11/18/23
-//         $(main).remove();
-//         $(`<main style="display: block;">
-//             <p>Generating image for <span>${prompt_value}</span>...</p>
-//         </main>`).insertAfter(".recents");
-//     }
-//
-// })
-
-
-// prompt_input.addEventListener('keypress', function (e) {
-//     if (e.key === 'Enter') {
-//       alert("Enter pressed");
-//     }
-// });
-
-
-// document.querySelector('#id_prompt_btn').addEventListener('click', function (e) {
-//     /* Trick: implicit form submission for prompt_input means when user hits, Enter, this click event also fires. */
-//
-//     if (img_url !== "") {
-//
-//         console.log("WAITING FOR IMAGE ...");  // ##########
-//
-//         // // main.style.display = 'block';
-//         // // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  // ######### new?
-//         //
-//         // // ########## NEW use jquery ########################### 11/18/23
-//         // $(main).remove();
-//         // $(`<main style="display: block;">
-//         //     <p>Generating image for <span>${prompt_value}</span>...</p>
-//         // </main>`).insertAfter(".recents");
-//
-//         $(`<p>Generating image for <span>${prompt_value}</span>...</p>`).insertAfter(".recents");
-//
-//     }
-//
-// });
-
+// // document.querySelector('#id_prompt_btn').addEventListener('click', function (e) {
+// //     /* THIS DOES NOT WORK CORRECTLY. A "GENERATING IMAGE" MESSAGE NEVER DISPLAYS.
+// //        An aside: implicit form submission for prompt_input means when user hits Enter, this click event also fires. */
+// //     if (prompt_value !=="" && img_url !== "") {
+// //         main.style.display = 'block';
+// //         main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  // ######### new?
+// //     }
+// // });
 
 function handleImage(){
     /* Replace innerHTML of main tag with the image. Changing opacity of prompt_form 0/1 is like hide/show, but it
@@ -112,23 +70,19 @@ function handleImage(){
         main.innerHTML =
             `<p><span>${prompt_value}</span></p>
             <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
-
-        // // ############# NEW? use jquery ########## 11/18/23
-        // $(main).remove();
-        // $(`<main style="display: block;">
-        //     <p><span>${prompt_value}</span></p>
-        //     <img src="${img_url}" alt="Generated image of ${prompt_value}">
-        // </main>`).insertAfter(".recents");
-
-
         handleRecents(img_url, prompt_value);  // ############# move here
         prompt_form.classList.remove('disabled');  // Allow form to send another image request
     }
     else {
         /* No image url yet, just make <img> transparent w/ opacity 0 (so it is initialized). 11/18/23 */
+        main.style.display = 'block';
+        // main.innerHTML =
+        //     `<p><span>${prompt_value}</span></p>
+        //     <img style="opacity: 0;" src="${img_url}" alt="">`;
+
         main.innerHTML =
-            `<p><span>${prompt_value}</span></p>
-            <img style="opacity: 0;" src="${img_url}" alt="">`;
+            `<p>Let's generate an AI image!</p>`;
+
     }
     // ################################## NEW
 
