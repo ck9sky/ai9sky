@@ -21,11 +21,15 @@ template (chatgpt_api_py.html) to obtain their values from context variables ret
 
 prompt_form.addEventListener('submit', () => {
     /* DANGER: To use Python openai Library in Django code, DO NOT use preventDefault(). We need the form submission to
-       fully complete, the Django template to receive its "refreshed" prompt_value and message context variables. ############## new comment
-
-    Best I can do with using database. Each prompt/message overwrites the previous prompt/image request,
-       does not look good (the app 'dalle_api_j' can do it, I think because it never "submits" form
-       to backend server. 11/18/23
+       fully complete, the Django template to receive its "refreshed" prompt_value and message context variables.
+       ----------------------------------------------------------------------------------------------------------------
+       OF COURSE not using preventDefault() IS THE REASON why this app is unable to show previous "chat log" of user's
+       prompts/message replies. IT WOULD TAKE more Django/Python logic for this app (chatgpt_api_py) to replicate what
+       chat_gpt_js is able to do. 11/18/23
+       ------------------------------------------------------------------------------------------------------------
+       TRICK: prompt_form.disabled = false/true. Form is disabled/enabled right before/after ChatGPT API call.
+       This is for stability, reduce API errors (and would allow multiple messages to be matched to their prompts,
+       but as of Nov 2023 this app only shows most recent message/prompt, i.e. preventDefault() not used in this app).
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
