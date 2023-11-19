@@ -21,7 +21,14 @@ $(function(){
 });
 
 prompt_form.addEventListener('submit', e => {
-    // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
+    /* STOP PAGE REFRESH: preventDefault() !!! This app's JavaScript approach to use of DALLE API requires that page
+       refresh be suppressed, OR USER NEVER SEES THE RESPONSE (image returned from AI).
+       TRICK A: preventDefault() does NOT suppress Django from receiving the GET request!
+       TRICK B: preventDefault() shuts down page refresh so that AI response (image) can be seen.
+       ------------------------------------------------------------------------------------------------------------
+       TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call.
+       This is for stability, reduce API errors and allows each image to be shown per its respective prompt.
+     */
     e.preventDefault();
     let prompt_value = prompt_input.value;
 
@@ -45,7 +52,9 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
+                    prompt_form.disabled = true;   // Disable form    ################# NEW
                     generateImage(api_key, prompt_value);
+                    prompt_form.disabled = false;   // Enable form again    ################# NEW
                 }
             }
         });  // .done()
