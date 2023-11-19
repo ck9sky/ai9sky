@@ -18,7 +18,13 @@ $(function(){
 });
 
 prompt_form.addEventListener('submit', e => {
-    // Prevent prompt_form from submitting anything (stop page refresh w/ so user can see results!).
+    /* STOP PAGE REFRESH: preventDefault() !!! This app's JavaScript approach to use of ChatGPT API requires that page
+       refresh be suppressed, OR USER NEVER SEES THE RESPONSE (message reply from AI).
+       TRICK #1: preventDefault() does NOT suppress Django from receiving the GET request!
+       TRICK #2: preventDefault() shuts down page refresh so that AI response (message) can be seen.
+       ------------------------------------------------------------------------------------------------------------
+       HOWEVER, the form itself needs to be disabled until prior response is finished! ??????? ############
+     */
     e.preventDefault();
     let prompt_value = prompt_input.value;
 

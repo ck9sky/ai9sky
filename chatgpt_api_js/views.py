@@ -29,6 +29,9 @@ class ChatGPT_API_JS_Test1(generic.FormView):
 
     def get(self, request, *args, **kwargs):
         """ The form for this view never posts anything, and is just used to deliver api key to javascript. 11/5/23 """
+
+        print("\nChatGPT_API_JS_Test1, get() ...\n")   ################ test
+
         response = super().get(request, *args, **kwargs)
         if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse({'chatgpt_api_key': settings.OPENAI_API_KEY})

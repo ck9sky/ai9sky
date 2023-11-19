@@ -51,6 +51,7 @@ function handleImage(){
         main.innerHTML =
             `<p><span>${prompt_value}</span></p>
             <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
+        handleRecents(img_url, prompt_value);  // ############# move here
     }
     else {  // No image url yet, just make <img> transparent w/ opacity 0 (so it is initialized). 11/18/23
         main.innerHTML =
@@ -59,10 +60,7 @@ function handleImage(){
     }
     // ################################## NEW
 
-
-
-
-    handleRecents(img_url, prompt_value);
+    // handleRecents(img_url, prompt_value);  // ########### move up
 
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
