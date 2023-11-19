@@ -47,8 +47,15 @@
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/5/23
         {% endcomment %}
-        <div class="new-message" id="prompt-form">
-            <form method="POST">
+
+<!-- ##################### OLD/ERROR: id prompt-form should be on the <form>? May need debug to fix?.... ####### -->
+{#        <div class="new-message" id="prompt-form">#}
+{#            <form method="POST">#}
+
+<!-- ##################### NEW/FIX: id prompt-form should be on the <form>? May need debug to fix?.... ####### -->
+        <div class="new-message">
+            <form method="POST" id="prompt-form">
+
                 {% csrf_token %}
                 {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
                     <!--suppress HtmlFormInputWithoutLabel -->
