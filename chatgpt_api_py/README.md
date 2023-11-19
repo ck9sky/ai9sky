@@ -5,7 +5,7 @@
 [https://github.com/openai/openai-python](https://github.com/openai/openai-python)  
 
 This app (chatgpt_api_py) accesses OpenAI ChatGPT API using the Python library "module" openai (discussed 
-in one of the links above). Hopefully it will be easier approach the the (mostly) "pure" JavaScript approach used 
+in one of the links above). Hopefully it will be easier approach than the (mostly) "pure" JavaScript approach used 
 in app 'chatgpt_api_js'.
 
 ### I need to use a database for this app?
