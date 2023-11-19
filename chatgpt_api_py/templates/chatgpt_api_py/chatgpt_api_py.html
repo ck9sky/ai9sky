@@ -36,8 +36,15 @@
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/5/23
         {% endcomment %}
-        <div class="new-message" id="prompt-form"> <!-- ########## id prompt-form should be on <form>, not <div>? But no error?! ####### -->
-            <form method="POST" action="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}">
+
+<!-- ##################### OLD/ERROR: id prompt-form should be on the <form> ########################### -->
+{#        <div class="new-message" id="prompt-form">#}
+{#            <form method="POST" action="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}">#}
+
+<!-- ##################### NEW/FIX: id prompt-form should be on the <form> ########################### -->
+        <div class="new-message">
+            <form method="POST" action="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}"  id="prompt-form">
+
                 {% csrf_token %}
                 {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
                     <!--suppress HtmlFormInputWithoutLabel -->
