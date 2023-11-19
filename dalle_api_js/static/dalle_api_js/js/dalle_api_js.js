@@ -77,7 +77,7 @@ function generateImage(api_key, prompt_value){
        -- ENDPOINTS | Images (side bar)
        -- Create image ... etc.
      */
-    prompt_form.classList.add('disabled');
+    prompt_form.classList.add('disabled');  // Add bootstrap class .disabled (form original Treehouse video)
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none). */
     main.style.display = 'block';
     /* Echo prompt back by adding html to main element */
@@ -124,10 +124,16 @@ function handleImage(img_url, prompt_value){
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
 
     prompt_input.value = '';  // Reset prompt back to blank
-    prompt_form.classList.remove('disabled');  // Allow form to send another image request
+
+    // ############ move to after handleRecents() ########
+    // prompt_form.classList.remove('disabled');  // Allow form to send another image request
+
     $prompt_input.unbind("click");              // Unbind click event again! (Trick #1)
     // // handleScroll();  // Unnecessary? Not used. 11/18/23
     handleRecents(img_url, prompt_value);
+
+    // ############ move here
+    prompt_form.classList.remove('disabled');  // Allow form to send another image request
 
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
