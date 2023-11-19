@@ -138,7 +138,8 @@ form button {
   color: #1B202D;
   cursor: pointer;
 }
-form.disabled {
-  pointer-events: none;
-  opacity: 0; /* Make invisible for a moment (display none looks bad) */
-}
+/* ################# REMOVE/UNNECESSARY ################ */
+/*form.disabled {*/
+/*  pointer-events: none;*/
+/*  opacity: 0; !* Make invisible for a moment (display none looks bad) *!*/
+/*}*/
