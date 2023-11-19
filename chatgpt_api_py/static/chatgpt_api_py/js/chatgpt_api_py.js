@@ -13,19 +13,25 @@ template (chatgpt_api_py.html) to obtain their values from context variables ret
 /* $(function(){}); */
 
 (function(){
-    /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
-       starts to load, no waiting) */
+    /* PLEASE DO NOT "INITIALIZE" (CALL) createMessageInstance() IN $(function(){}). We want "SIAF" (function(){})()
+       to call it even before page load is completed! Calling in SIAF is faster for user. 11/18/23
+    */
     createMessageInstance();
 })();
 
 prompt_form.addEventListener('submit', () => {
-    /* Best I can do with using database. Each prompt/message overwrites the previous prompt/image request,
+    /* DANGER: To use Python openai Library in Django code, DO NOT use preventDefault(). We need the form submission to
+       fully complete, the Django template to receive its "refreshed" prompt_value and message context variables. ############## new comment
+
+    Best I can do with using database. Each prompt/message overwrites the previous prompt/image request,
        does not look good (the app 'dalle_api_j' can do it, I think because it never "submits" form
        to backend server. 11/18/23
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
+        prompt_form.disabled = true;   // Disable form    ################# NEW
         createMessageInstance();
+        prompt_form.disabled = false;   // Enable form again    ################# NEW
     }
 })
 

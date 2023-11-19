@@ -17,8 +17,9 @@ can use template (chatgpt_api_py.html) to obtain their values from context varia
 /* $(function(){}); */
 
 (function(){
-    /* Runs once on page load. This runs faster than calling in ready function (runs immediately when page
-       starts to load, no waiting). I MUST CALL THIS ONCE ON PAGE LOAD, IT "INITIALIZES" THE PAGE(?) */
+    /* PLEASE DO NOT "INITIALIZE" (CALL) handleImage() IN $(function(){}). We want "SIAF" (function(){})()
+       to call it even before page load is completed! Calling in SIAF is faster for user. 11/18/23
+    */
     handleImage();
 })();
 
