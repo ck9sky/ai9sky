@@ -25,9 +25,6 @@ prompt_form.addEventListener('submit', e => {
        refresh be suppressed, OR USER NEVER SEES THE RESPONSE (image returned from AI).
        TRICK A: preventDefault() does NOT suppress Django from receiving the GET request!
        TRICK B: preventDefault() shuts down page refresh so that AI response (image) can be seen.
-       ------------------------------------------------------------------------------------------------------------
-       TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call. ############### no
-       This is for stability, reduce API errors and allows each image to be shown per its respective prompt. ############### no
      */
     e.preventDefault();  // (TRICKS A,B)
     let prompt_value = prompt_input.value;
@@ -52,9 +49,7 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-                    // prompt_form.disabled = true;   // Disable form (TRICK C)   ################# NEW no!
                     generateImage(api_key, prompt_value);
-                    // prompt_form.disabled = false;   // Enable form again    ################# NEW no!
                 }
             }
         });  // .done()
@@ -77,7 +72,8 @@ function generateImage(api_key, prompt_value){
        -- ENDPOINTS | Images (side bar)
        -- Create image ... etc.
      */
-    prompt_form.classList.add('disabled');  // Add bootstrap class .disabled (form original Treehouse video)
+    // Block a another request until this one finished w/ bootstrap disabled class (form original Treehouse video)
+    prompt_form.classList.add('disabled');
     /* Add css display 'block' to main element so it's no longer hidden (w/ display none). */
     main.style.display = 'block';
     /* Echo prompt back by adding html to main element */
@@ -124,16 +120,10 @@ function handleImage(img_url, prompt_value){
          <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
 
     prompt_input.value = '';  // Reset prompt back to blank
-
-    // ############ move to after handleRecents() ########
-    // prompt_form.classList.remove('disabled');  // Allow form to send another image request
-
     $prompt_input.unbind("click");              // Unbind click event again! (Trick #1)
     // // handleScroll();  // Unnecessary? Not used. 11/18/23
     handleRecents(img_url, prompt_value);
-
-    // ############ move here
-    prompt_form.classList.remove('disabled');  // Allow form to send another image request
+    prompt_form.classList.remove('disabled');  // Allow form to send another image request (bootstrap disabled class)
 
     // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23

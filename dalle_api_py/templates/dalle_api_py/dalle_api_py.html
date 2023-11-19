@@ -48,20 +48,13 @@
             THIS IS THE FORM FROM ORIGINAL TREEHOUSE VIDEO. Adapted for a Django template (WHICH requires a
             Django view and form and csrf token in order to not crash to browser. 11/18/23
         {% endcomment %}
-
-{#        <div id="prompt-form">  <!-- ################### new div: SHOULD(NO??!!) id="prompt-form" go here instead ????? -->#}
-        <!-- ######### move id prompt-form -->
         <form method="POST" action="{% url 'dalle_api_py:dalle_api_py_test1' %}" class="mt-1" id="prompt-form">
-{#        <form method="POST" action="{ % url 'dalle_api_py:dalle_api_py_test1' % }" class="mt-1">#}
             {% csrf_token %}
             {% comment %} Django form convention: name="prompt", id="id_prompt" {% endcomment %}
             <!--suppress HtmlFormInputWithoutLabel -->
             <input type="text" name="prompt" id="id_prompt" class="px-2 py-1" placeholder="Generate an image with AI">
             <button type="submit" id="id_prompt_btn">generate</button>
         </form>
-
-{#        </div>#}
-
         <script>
             // DANGER: You also need to refresh js global var 'prompt', not just 'img_url'. 11/18/23
             prompt_value = "{{ prompt }}";

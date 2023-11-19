@@ -49,15 +49,12 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['chatgpt_api_key'];
                 if (prompt_value !== '') {
-
-                    prompt_form.disabled = true;   // Disable form (TRICK C)    ################# NEW
-
+                    prompt_form.disabled = true;   // Disable form (TRICK C), use disabled attrb, not bootstrap disabled class
                     createMessageInstance(prompt_value);
                     askChatGPT(api_key, prompt_value);
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
-
-                    prompt_form.disabled = false;   // Enable form again    ################# NEW
+                    prompt_form.disabled = false;   // Enable form again
                 }
             }
         });  // .done()
@@ -149,7 +146,7 @@ function createMessageInstance(prompt_value){
          </div>`;
 }
 
-// // // Unnecessary? 11/18/23
+// // // Unnecessary? (Used in video) 11/18/23
 // // function handleScroll(){
 // //    // Scrolls the chatlog to the bottom
 // //    chatLog.scrollTop = chatLog.scrollHeight;
