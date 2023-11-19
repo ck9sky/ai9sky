@@ -38,27 +38,7 @@ prompt_form.addEventListener('submit', () => {
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
-
-
-        // $(prompt_input).val("Generate an image with AI");   // Only jQuery can do this? ############## NEW no ??????????????
-
-        // prompt_form.disabled = true;  // ######### no?
-
-        // if (img_url !== "") {
-        //     // // // ################# MOVE NEXT ~ 9 LINES TO NEW CLICK HANDLER ...
-        //     // // ######### OLD? problems? use jquery instead? ######## 11/18/23
-        //     // main.style.display = 'block';
-        //     // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  // ######### new?
-        //
-        //     // ########## NEW use jquery ########################### 11/18/23
-        //     $(main).remove();
-        //     $(`<main style="display: block;">
-        //     <p>Generating image for <span>${prompt_value}</span>...</p>
-        // </main>`).insertAfter(".recents");
-        // }
-
         handleImage();
-        // prompt_form.disabled = false;  // ######## no?
     }
 })
 
@@ -117,22 +97,6 @@ function handleImage(){
     /* Replace innerHTML of main tag with the image. Changing opacity of prompt_form 0/1 is like hide/show, but it
        seems smoother than css display none/block. 11/17/23
      */
-
-    // ########## move next 5 lines to below WHEN img_url !== "" #########
-    // prompt_form.style.opacity = 1.0;
-    // prompt_form.classList.add('disabled');  // Add bootstrap class .disabled (form original Treehouse video)
-    // /* Add css display 'block' to main element so it's no longer hidden (w/ display none). */
-    // main.style.display = 'block';
-    // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
-
-    // // ################################## OLD
-    // main.innerHTML =
-    //     `<p><span>${prompt_value}</span></p>
-    //      <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
-    // // ################################## OLD
-
-    // ################################## NEW
-
     if (img_url !== "") {
         /* Echo prompt back by adding html to main element */
 
@@ -143,17 +107,18 @@ function handleImage(){
         // main.style.display = 'block';  // ###### already done above
         // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  ######## no LOL
 
-        // // ########## OLD? problem? use jquery? ############# 11/18/23
-        // main.innerHTML =
-        //     `<p><span>${prompt_value}</span></p>
-        //     <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
+        // ########## OLD? problem? use jquery? ############# 11/18/23
+        main.style.display = 'block';
+        main.innerHTML =
+            `<p><span>${prompt_value}</span></p>
+            <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
 
-        // ############# NEW? use jquery ########## 11/18/23
-        $(main).remove();
-        $(`<main style="display: block;">
-            <p><span>${prompt_value}</span></p>
-            <img src="${img_url}" alt="Generated image of ${prompt_value}">
-        </main>`).insertAfter(".recents");
+        // // ############# NEW? use jquery ########## 11/18/23
+        // $(main).remove();
+        // $(`<main style="display: block;">
+        //     <p><span>${prompt_value}</span></p>
+        //     <img src="${img_url}" alt="Generated image of ${prompt_value}">
+        // </main>`).insertAfter(".recents");
 
 
         handleRecents(img_url, prompt_value);  // ############# move here
