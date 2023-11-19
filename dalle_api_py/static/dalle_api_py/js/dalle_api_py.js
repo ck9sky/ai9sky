@@ -57,15 +57,9 @@ function handleImage(){
      */
     if (img_url !== "") {
         /* Echo prompt back by adding html to main element */
-
-        // ########### moved 5 lines above here, and stop using 4th / 5th lines #########
         prompt_form.style.opacity = 1.0;
         prompt_form.classList.add('disabled');  // Add bootstrap class .disabled (form original Treehouse video)
         /* Add css display 'block' to main element so it's no longer hidden (w/ display none). */
-        // main.style.display = 'block';  // ###### already done above
-        // main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  ######## no LOL
-
-        // ########## OLD? problem? use jquery? ############# 11/18/23
         main.style.display = 'block';
         main.innerHTML =
             `<p><span>${prompt_value}</span></p>
@@ -74,21 +68,12 @@ function handleImage(){
         prompt_form.classList.remove('disabled');  // Allow form to send another image request
     }
     else {
-        /* No image url yet, just make <img> transparent w/ opacity 0 (so it is initialized). 11/18/23 */
+        /* Seen on page load (AT LEAST on very first page load, but previous image gets "cached" somehow? */
         main.style.display = 'block';
-        // main.innerHTML =
-        //     `<p><span>${prompt_value}</span></p>
-        //     <img style="opacity: 0;" src="${img_url}" alt="">`;
-
         main.innerHTML =
             `<p>Let's generate an AI image!</p>`;
 
     }
-    // ################################## NEW
-
-    // handleRecents(img_url, prompt_value);  // ########### move up
-
-    // // // ------------------------------------------------------------------------------------------------
     // // // During debug, I found this jquery also worked, but above innerHTML logic much simpler. 11/17/23
     // // $(main).remove();
     // // $(`<main style="display: block;">
