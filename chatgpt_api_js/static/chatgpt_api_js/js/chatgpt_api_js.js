@@ -20,10 +20,11 @@ $(function(){
 prompt_form.addEventListener('submit', e => {
     /* STOP PAGE REFRESH: preventDefault() !!! This app's JavaScript approach to use of ChatGPT API requires that page
        refresh be suppressed, OR USER NEVER SEES THE RESPONSE (message reply from AI).
-       TRICK #1: preventDefault() does NOT suppress Django from receiving the GET request!
-       TRICK #2: preventDefault() shuts down page refresh so that AI response (message) can be seen.
+       TRICK A: preventDefault() does NOT suppress Django from receiving the GET request!
+       TRICK B: preventDefault() shuts down page refresh so that AI response (message) can be seen.
        ------------------------------------------------------------------------------------------------------------
-       HOWEVER, the form itself needs to be disabled until prior response is finished! ??????? ############
+       TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after ChatGPT API call.
+       This is for stability, reduce API errors and allows each message to be shown under its respective prompt.
      */
     e.preventDefault();
     let prompt_value = prompt_input.value;
@@ -48,10 +49,15 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['chatgpt_api_key'];
                 if (prompt_value !== '') {
+
+                    prompt_form.disabled = true;   // Disable form    ################# NEW
+
                     createMessageInstance(prompt_value);
                     askChatGPT(api_key, prompt_value);
                     prompt_input.value = '';  // Reset prompt back to blank
                     $prompt_input.unbind("click");  // Unbind click event again! (Trick #1)
+
+                    prompt_form.disabled = false;   // Enable form again    ################# NEW
                 }
             }
         });  // .done()
