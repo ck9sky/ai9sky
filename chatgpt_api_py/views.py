@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.contrib import messages
-from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -26,22 +25,27 @@ class ChatGPT_API_PY_Test1(generic.FormView):
     """
     form_class = forms.ChatGPT_API_PY_Test1_Prompt_Form
     template_name = "chatgpt_api_py/chatgpt_api_py.html"
-    plus_context = dict()  # Special trick: plus_context custom attrb, but maybe there is better way to "NOT" use a Django db?
+    plus_context = dict()
 
     def get_success_url(self, *args, **kwargs):
         """ Does not leave the page """
         return reverse_lazy("chatgpt_api_py:chatgpt_api_py_test1")
 
     def get_context_data(self, **kwargs):
+        """ Setting plus_context var to null string are "using it" does not seem needed in this app (chatgpt_api_py),
+            but was needed in dalle_api_py to avoid odd "caching error", read discussion in view DALLE_API_PY_Test1.
+            11/18/23"""
         context = super().get_context_data(**kwargs)
         if self.plus_context:
             if 'prompt' in self.plus_context:
                 context['prompt'] = self.plus_context['prompt']
+                self.plus_context['prompt'] = ""      # Prevent caching error? (Probably not in this app...)
             else:
                 context['prompt'] = ""
 
             if 'message' in self.plus_context:
                 context['message'] = self.plus_context['message']
+                self.plus_context['message'] = ""     # Prevent caching error? (Probably not in this app...)
             else:
                 context['message'] = "Thinking"
         else:
