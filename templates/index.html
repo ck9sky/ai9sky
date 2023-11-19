@@ -10,44 +10,44 @@
             {% comment %}{ % if request.user.is_authenticated % }{% endcomment %}
 
             <a href="{% url 'chatgpt_api_js:chatgpt_api_js_test1' %}"
-                    class="badge badge-primary mx-0 my-1 p-1 " id="id_chatgpt-api-js-app-btn"
+                    class="badge badge-dark mx-0 my-1 p-1 " id="id_chatgpt-api-js-app-btn"
                     tabindex="-1" role="button">
                 <span class="m-0 p-0"
                     onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
                     onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
                     onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
-                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">ChatGPT: Mostly JavaScript (No Python OpenAI Python Library)</span></a><br>
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}" tabindex="0">
+                        <span style="color: Pink;">ChatGPT</span>: Not Python OpenAI Library (Mostly JavaScript)</span></a><br>
 
             <a href="{% url 'chatgpt_api_py:chatgpt_api_py_test1' %}"
-                    class="badge badge-primary mx-0 my-2 p-1" id="id_chatgpt-api-py-app-btn"
+                    class="badge badge-dark mx-0 my-2 p-1" id="id_chatgpt-api-py-app-btn"
                     tabindex="-1" role="button">
                 <span class="m-0 p-0"
                     onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
                     onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
                     onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
-                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">ChatGPT: Using Python OpenAI Python Library</span></a><br>
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"  tabindex="0">
+                        <span style="color: Pink;">ChatGPT</span>: Use Python OpenAI Library</span></a><br>
 
             <a href="{% url 'dalle_api_js:dalle_api_js_test1' %}"
-                    class="badge badge-primary mx-0 my-2 p-1" id="id_dalle-api-js-app-btn"
+                    class="badge badge-dark mx-0 my-2 p-1" id="id_dalle-api-js-app-btn"
                     tabindex="-1" role="button">
                 <span class="m-0 p-0"
                     onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
                     onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
                     onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
-                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">DALLE (Images): Mostly JavaScript (No Python OpenAI Python Library)</span></a><br>
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"  tabindex="0">
+                        <span style="color: Pink;">DALLE (Images)</span>: Not Python OpenAI Library (Mostly JavaScript)</span></a><br>
 
             <a href="{% url 'dalle_api_py:dalle_api_py_test1' %}"
-                    class="badge badge-primary mx-0 my-2 p-1" id="id_dalle-api-py-app-btn"
+                    class="badge badge-dark mx-0 my-2 p-1" id="id_dalle-api-py-app-btn"
                     tabindex="-1" role="button">
                 <span class="m-0 p-0"
                     onmousedown="{% include '_inline_js_hndlr_span_mousedown.html' %}"
                     onkeydown="{% include '_inline_js_hndlr_span_anchor_keydown.html' %}"
                     onfocus="{% include '_inline_js_hndlr_span_focus.html' %}"
-                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"
-                    tabindex="0">DALLE (Images): Using Python OpenAI Python Library</span></a><br>
+                    onblur="{% include '_inline_js_hndlr_span_blur.html' %}"  tabindex="0">
+                        <span style="color: Pink;">DALLE (Images)</span>: Use Python OpenAI Library</span></a><br>
             {% endspaceless %}
 		</div>
 	</div>
