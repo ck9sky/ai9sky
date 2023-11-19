@@ -31,15 +31,15 @@ prompt_form.addEventListener('submit', () => {
        prompts/image replies. IT WOULD TAKE more Django/Python logic for this app (dalle_api_py) to replicate what
        dalle_api_js is able to do. 11/18/23
        ------------------------------------------------------------------------------------------------------------
-       TRICK: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call.
-       This is for stability, reduce API errors (and would allow multiple imaages to be matched to their prompts,
-       but as of Nov 2023 this app only shows most recent image/prompt, i.e. preventDefault() not used in this app).
+       TRICK: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call.  ############### no
+       This is for stability, reduce API errors (and would allow multiple imaages to be matched to their prompts,.  ############### no
+       but as of Nov 2023 this app only shows most recent image/prompt, i.e. preventDefault() not used in this app)..  ############### no
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
-        prompt_form.disabled = true;   // Disable form    ################# NEW
+        // prompt_form.disabled = true;   // Disable form    ################# NEW no!
         handleImage();
-        prompt_form.disabled = false;   // Enable form again    ################# NEW
+        // prompt_form.disabled = false;   // Enable form again    ################# NEW no!
     }
 })
 

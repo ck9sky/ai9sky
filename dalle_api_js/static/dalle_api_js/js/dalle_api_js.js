@@ -26,8 +26,8 @@ prompt_form.addEventListener('submit', e => {
        TRICK A: preventDefault() does NOT suppress Django from receiving the GET request!
        TRICK B: preventDefault() shuts down page refresh so that AI response (image) can be seen.
        ------------------------------------------------------------------------------------------------------------
-       TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call.
-       This is for stability, reduce API errors and allows each image to be shown per its respective prompt.
+       TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call. ############### no
+       This is for stability, reduce API errors and allows each image to be shown per its respective prompt. ############### no
      */
     e.preventDefault();  // (TRICKS A,B)
     let prompt_value = prompt_input.value;
@@ -52,9 +52,9 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-                    prompt_form.disabled = true;   // Disable form (TRICK C)   ################# NEW
+                    // prompt_form.disabled = true;   // Disable form (TRICK C)   ################# NEW no!
                     generateImage(api_key, prompt_value);
-                    prompt_form.disabled = false;   // Enable form again    ################# NEW
+                    // prompt_form.disabled = false;   // Enable form again    ################# NEW no!
                 }
             }
         });  // .done()
