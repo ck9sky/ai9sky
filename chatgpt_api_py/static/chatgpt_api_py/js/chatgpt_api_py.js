@@ -24,8 +24,8 @@ prompt_form.addEventListener('submit', () => {
        fully complete, the Django template to receive its "refreshed" prompt_value and message context variables.
        ----------------------------------------------------------------------------------------------------------------
        OF COURSE not using preventDefault() IS THE REASON why this app is unable to show previous "chat log" of user's
-       prompts/message replies. IT WOULD TAKE more Django/Python logic for this app (chatgpt_api_py) to replicate what
-       chat_gpt_js is able to do. 11/18/23
+       prompt/message replies. IT WOULD TAKE more Django/Python logic for this app (chatgpt_api_py) to replicate what
+       chatgpt_api_js is able to do. 11/18/23
        ------------------------------------------------------------------------------------------------------------
        TRICK: prompt_form.disabled = false/true. Form is disabled/enabled right before/after ChatGPT API call.
        This is for stability, reduce API errors (and would allow multiple messages to be matched to their prompts,
