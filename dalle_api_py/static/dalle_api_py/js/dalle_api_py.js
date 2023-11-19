@@ -47,7 +47,7 @@ prompt_form.addEventListener('submit', () => {
 // //        An aside: implicit form submission for prompt_input means when user hits Enter, this click event also fires. */
 // //     if (prompt_value !=="" && img_url !== "") {
 // //         main.style.display = 'block';
-// //         main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;  // ######### new?
+// //         main.innerHTML = `<p>Generating image for <span>${prompt_value}</span>...</p>`;
 // //     }
 // // });
 
@@ -64,7 +64,7 @@ function handleImage(){
         main.innerHTML =
             `<p><span>${prompt_value}</span></p>
             <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
-        handleRecents(img_url, prompt_value);  // ############# move here
+        handleRecents(img_url, prompt_value);
         prompt_form.classList.remove('disabled');  // Allow form to send another image request
     }
     else {

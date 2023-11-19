@@ -33,9 +33,9 @@ prompt_form.addEventListener('submit', () => {
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
-        prompt_form.disabled = true;   // Disable form    ################# NEW
+        prompt_form.disabled = true;   // Disable form (use disabled attrb, not the bootstrap disabled class)
         createMessageInstance();
-        prompt_form.disabled = false;   // Enable form again    ################# NEW
+        prompt_form.disabled = false;   // Enable form again
     }
 })
 
