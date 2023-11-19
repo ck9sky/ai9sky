@@ -140,6 +140,7 @@ form button {
 }
 
 form.disabled {
+  /* This appears to do nothing as of Nov 2023(?) */
   pointer-events: none;
   opacity: 0; /* Make invisible for a moment (display none looks bad) */
 }
