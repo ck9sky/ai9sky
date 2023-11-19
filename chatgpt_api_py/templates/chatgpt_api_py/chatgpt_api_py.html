@@ -52,8 +52,8 @@
             </form>
         </div>
         <script>
+            // DANGER: You also need to refresh js global var 'prompt', not just 'message'. 11/18/23
             iconStr = "{{ staticTag }}img/icon/chatgpt-icon-150x150.png{{ QM }}{{ VERSION_CACHE_BUST }}";
-            // DANGER: You also need to refresh js global var prompt!
             prompt = "{{ prompt }}";
             message = "{{ message }}";
         </script>
