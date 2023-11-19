@@ -39,9 +39,29 @@ function handleImage(){
      */
     prompt_form.style.opacity = 1.0;
     main.style.display = 'block';
-    main.innerHTML =
-        `<p><span>${prompt_value}</span></p>
-         <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
+
+    // // ################################## OLD
+    // main.innerHTML =
+    //     `<p><span>${prompt_value}</span></p>
+    //      <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
+    // // ################################## OLD
+
+    // ################################## NEW
+    if (img_url !== "") {
+        main.innerHTML =
+            `<p><span>${prompt_value}</span></p>
+            <img src="${img_url}" alt="Generated image of ${prompt_value}">`;
+    }
+    else {  // No image url yet, just make <img> transparent w/ opacity 0 (so it is initialized). 11/18/23
+        main.innerHTML =
+            `<p><span>${prompt_value}</span></p>
+            <img style="opacity: 0;" src="${img_url}" alt="">`;
+    }
+    // ################################## NEW
+
+
+
+
     handleRecents(img_url, prompt_value);
 
     // // // ------------------------------------------------------------------------------------------------
