@@ -29,7 +29,7 @@ prompt_form.addEventListener('submit', e => {
        TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call.
        This is for stability, reduce API errors and allows each image to be shown per its respective prompt.
      */
-    e.preventDefault();
+    e.preventDefault();  // (TRICKS A,B)
     let prompt_value = prompt_input.value;
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
@@ -52,7 +52,7 @@ prompt_form.addEventListener('submit', e => {
                  */
                 let api_key = data['dalle_api_key'];
                 if (prompt_value !== '') {
-                    prompt_form.disabled = true;   // Disable form    ################# NEW
+                    prompt_form.disabled = true;   // Disable form (TRICK C)   ################# NEW
                     generateImage(api_key, prompt_value);
                     prompt_form.disabled = false;   // Enable form again    ################# NEW
                 }

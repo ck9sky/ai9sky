@@ -26,7 +26,7 @@ prompt_form.addEventListener('submit', e => {
        TRICK C: prompt_form.disabled = false/true. Form is disabled/enabled right before/after ChatGPT API call.
        This is for stability, reduce API errors and allows each message to be shown under its respective prompt.
      */
-    e.preventDefault();
+    e.preventDefault();  // (TRICKS A,B)
     let prompt_value = prompt_input.value;
 
     // Trick #2: Effectively "rebind" the id_prompt click event SO THAT YOU CAN FORCE A CLICK EVENT.
@@ -50,7 +50,7 @@ prompt_form.addEventListener('submit', e => {
                 let api_key = data['chatgpt_api_key'];
                 if (prompt_value !== '') {
 
-                    prompt_form.disabled = true;   // Disable form    ################# NEW
+                    prompt_form.disabled = true;   // Disable form (TRICK C)    ################# NEW
 
                     createMessageInstance(prompt_value);
                     askChatGPT(api_key, prompt_value);
