@@ -20,6 +20,7 @@ can use template (chatgpt_api_py.html) to obtain their values from context varia
     /* PLEASE DO NOT "INITIALIZE" (CALL) handleImage() IN $(function(){}). We want "SIAF" (function(){})()
        to call it even before page load is completed! Calling in SIAF is faster for user. 11/18/23
     */
+    // img_url = "";  // ########### new no!!!
     handleImage();
 })();
 
@@ -31,15 +32,17 @@ prompt_form.addEventListener('submit', () => {
        prompts/image replies. IT WOULD TAKE more Django/Python logic for this app (dalle_api_py) to replicate what
        dalle_api_js is able to do. 11/18/23
        ------------------------------------------------------------------------------------------------------------
-       TRICK: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE API call.  ############### no
-       This is for stability, reduce API errors (and would allow multiple imaages to be matched to their prompts,.  ############### no
-       but as of Nov 2023 this app only shows most recent image/prompt, i.e. preventDefault() not used in this app)..  ############### no
+       TRICK (dalle_api_py ONLY: prompt_form.disabled = false/true. Form is disabled/enabled right before/after DALLE
+       API call. This is for stability, reduce API errors (and maybe would have allowed multiple images to be matched
+       to their prompts, but as of Nov 2023 this app only shows most recent image/prompt,
+       i.e. preventDefault() not used in this app). 11/18/23
      */
     let prompt_value = prompt_input.value;
     if (prompt_value !== "") {
-        // prompt_form.disabled = true;   // Disable form    ################# NEW no!
+        $(prompt_input).val("Generate and an image with AI");   // Only jQuery can do this? ############## NEW
+        prompt_form.disabled = true;
         handleImage();
-        // prompt_form.disabled = false;   // Enable form again    ################# NEW no!
+        prompt_form.disabled = false;
     }
 })
 
