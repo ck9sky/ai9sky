@@ -38,10 +38,13 @@ IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL L
    trigger AUTOMATIC DELETION OF YOUR OPENAI API KEY. Very odd feeling to have your api key "vanish", 
    and you waste time figuring out what just happened. IN NOV 2023 I HAD TO CREATE new API key several times 
    (AND of course updated ~/.env_ai9sky & restarted Terminal).
-2. Social login w/ Google cdk_______@_____.com seems to work ok for me, but I get confused by OpenAI 
-   site browsing. As below, you may need to copy/paste the api keys url to see your api key(s).  
-3. WARNING: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.  
-   BUT, to access Personal settings, YOU MAY NEED TO LOGIN "AGAIN" (even if it seems unnecessary?)
+2. A bit embarrassing to admit it, but I don't get how to use OpenAI.ocm's website. I don't think it is 
+   related to social login w/ Google cdk_______@_____.com, but it's a remote possiblity. I found the urls I discuss 
+   below may be far easier to use instead of navigating OpenAI.com (where some pages seem to have no navations buttons or menu). 
+   Especially frustrating was accessing my list of api keys--easier to copy/paste url [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+3. WARNING: I think OpenAI.com has a lower level auth key that continues to let you use ChatGPT or DALLE even after force logoff 
+   of your account, where force logoff happens after only a few minutes (?), and you are never notified about it. This can also 
+   be a bit confusing, like you have to REMEMBER to LOGIN "again"?
 4. BROWSE TO YOUR API KEYS PAGE:  
    Maybe this: [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) (worked 11/17/23)  
    Maybe this: [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) (Personal icon picture | View API Keys)  
