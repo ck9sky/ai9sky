@@ -51,13 +51,13 @@ class DALLE_API_PY_Test1(generic.FormView):
         if self.plus_context:
             if 'prompt' in self.plus_context:
                 context['prompt'] = self.plus_context['prompt']
-                self.plus_context['prompt'] = ""     # Prevent caching error?
+                self.plus_context['prompt'] = ""     # Prevent "caching error"! This view only(?), but added to chatgpt_api_py.
             else:
                 context['prompt'] = ""
 
             if 'image_url' in self.plus_context:
                 context['image_url'] = self.plus_context['image_url']
-                self.plus_context['image_url'] = ""  # Prevent caching error?
+                self.plus_context['image_url'] = ""  # Prevent "c"aching error"! Serious oddity! Why only dalle py view??
             else:
                 context['image_url'] = ""
         else:
