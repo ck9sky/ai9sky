@@ -32,9 +32,9 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         return reverse_lazy("chatgpt_api_py:chatgpt_api_py_test1")
 
     def get_context_data(self, **kwargs):
-        """ Setting plus_context var to null string are "using it" does not seem needed in this app (chatgpt_api_py),
-            but was needed in dalle_api_py to avoid odd "caching error", read discussion in view DALLE_API_PY_Test1.
-            11/18/23"""
+        """ Setting plus_context vars back to null string does not seem needed in this app(?) (chatgpt_api_py),
+            but was needed in dalle_api_py(?) to avoid odd "caching error" (read discussion in view DALLE_API_PY_Test1).
+            11/18/23 """
         context = super().get_context_data(**kwargs)
         if self.plus_context:
             if 'prompt' in self.plus_context:
@@ -77,6 +77,6 @@ class ChatGPT_API_PY_Test1(generic.FormView):
         )
 
         self.plus_context['prompt'] = question
-        self.plus_context['message'] = chat_completion.choices[0].message.content
+        self.plus_context['message'] = chat_completion.choices[0].message.content  # Send AI reply 'message' to template!
         return super().form_valid(form)
 
