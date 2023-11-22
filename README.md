@@ -8,9 +8,10 @@ this project is dedicated to a single API and/or method of accessing that API.__
 with APIs from other sites (such as Google or Facebook).
 
 In the future I made add one or more apps to experiment with *clones* of 3rd party AI models&mdash;3rd 
-party models would reside in *this* website/project (instead of being accessed via API of a 
-*different* website). Downloading 3rd party AI models is probably much more sophisticated way
-of using AI and may require special knowledge or training I do not currently have.
+party models that would reside in *this* website/project (instead of being accessed via API of a 
+*different* website). Downloading 3rd party AI models is probably much more sophisticated way 
+of using AI and may require special knowledge or training I do not currently have. But you would never 
+lose access to your 3rd party model as long as you own the original "clone" (and maybe paid money for it).
 
 ## Use Markdown syntax for this document (README.md):
 
@@ -33,9 +34,10 @@ IMAGES, OTHER STATIC MEDIA ETC. WILL NOT BE SEEN BY USER AND YOUR WEBSITE WILL L
 
 ## Notes on getting API Key from OpenAI.com
 
-1. DANGER: SOMETIMES, WITH NO WARNING, MY OPENAI API KEY SEEMS TO BE AUTOMATICALLY DELETED BY OPENAI.  
-   I think it may be related to debugging, where an API experiences too may errors (by me!).  
-   I HAVE HAD TO CREATE new API key several times (then update ~/.env_ai9sky & restart Terminal).
+1. WARNING: I think intense debug where you send "too many" odd or illogical requests to OpenAI.com can 
+   trigger AUTOMATIC DELETION OF YOUR OPENAI API KEY. Very odd feeling to have your api key "vanish", 
+   and you waste time figuring out what just happened. IN NOV 2023 I HAD TO CREATE new API key several times 
+   (AND of course updated ~/.env_ai9sky & restarted Terminal).
 2. Social login w/ Google cdk_______@_____.com seems to work ok for me, but I get confused by OpenAI 
    site browsing. As below, you may need to copy/paste the api keys url to see your api key(s).  
 3. WARNING: OpenAI seems to have a "remember me" feature that "sort of" keeps you logged in.  
